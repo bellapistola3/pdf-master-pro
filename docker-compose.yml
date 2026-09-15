@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    ports:
+      - '4000:4000'
+    environment:
+      - PORT=4000
+      - NODE_ENV=production
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
+      - STORAGE_DIR=/app/storage
+      - MAX_FILE_SIZE_MB_FREE=${MAX_FILE_SIZE_MB_FREE:-25}
+      - MAX_FILE_SIZE_MB_PRO=${MAX_FILE_SIZE_MB_PRO:-500}
+      - FREE_DAILY_OPS=${FREE_DAILY_OPS:-5}
+      - CORS_ORIGIN=${CORS_ORIGIN:-*}
+      - LLM_PROVIDER=${LLM_PROVIDER:-none}
+      - LLM_API_KEY=${LLM_API_KEY:-}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+      - STRIPE_PRICE_ID_PRO=${STRIPE_PRICE_ID_PRO:-}
+      - STRIPE_PRICE_ID_BUSINESS=${STRIPE_PRICE_ID_BUSINESS:-}
+    volumes:
+      - api_storage:/app/storage
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
+    ports:
+      - '8080:80'
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  api_storage:

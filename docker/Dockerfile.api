@@ -1,0 +1,42 @@
+# PDF Master Pro — API Dockerfile
+# Multi-stage build: compile TypeScript, then run on a slim image with all
+# required PDF-processing binaries installed.
+
+FROM node:20-bookworm-slim AS builder
+WORKDIR /app
+COPY apps/api/package*.json ./
+RUN npm install
+COPY apps/api/tsconfig.json ./
+COPY apps/api/src ./src
+RUN npm run build
+
+FROM node:20-bookworm-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+
+# Real binary dependencies — not optional, the tools genuinely shell out to these.
+# - ghostscript: compress, PDF/A conversion
+# - qpdf: protect/unlock/repair
+# - poppler-utils: pdftoppm (rasterize), pdftotext (text extraction)
+# - tesseract-ocr + language packs: OCR
+#
+# Uncomment libreoffice to activate Word/PowerPoint/Excel → PDF (large image, ~600MB+):
+# RUN apt-get update && apt-get install -y --no-install-recommends libreoffice && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ghostscript \
+    qpdf \
+    poppler-utils \
+    tesseract-ocr \
+    tesseract-ocr-bul \
+    tesseract-ocr-eng \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY apps/api/package*.json ./
+RUN npm install --omit=dev
+COPY --from=builder /app/dist ./dist
+
+RUN mkdir -p /app/storage/uploads /app/storage/outputs
+VOLUME ["/app/storage"]
+
+EXPOSE 4000
+CMD ["node", "dist/server.js"]

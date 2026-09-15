@@ -1,0 +1,49 @@
+services:
+  - type: web
+    name: pdf-master-pro-api
+    runtime: docker
+    dockerfilePath: ./docker/Dockerfile.api
+    dockerContext: .
+    plan: free
+    # NOTE: Render's Free plan does not support persistent disks. This means
+    # STORAGE_DIR (uploaded files, users.json, jobs.json) is EPHEMERAL — it
+    # resets whenever the service redeploys or Render restarts it. That's a
+    # fine trade-off to get something live and test the whole product for
+    # free, but it means:
+    #   - registered accounts can disappear unexpectedly
+    #   - free tier "spins down" after 15 min idle and takes ~30-60s to wake
+    #     up on the next request (the first request after idle will be slow)
+    # Before accepting real paying customers, switch to render.yaml (paid
+    # 'starter' plan + persistent disk) — see GO_LIVE_CHECKLIST.md Section 5.
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: STORAGE_DIR
+        value: /app/storage
+      - key: APP_BASE_URL
+        sync: false # set to your Vercel URL after deploying the web app
+      - key: CORS_ORIGIN
+        sync: false # set to your Vercel URL — do not leave as '*' once real users exist
+      - key: MAX_FILE_SIZE_MB_FREE
+        value: 25
+      - key: MAX_FILE_SIZE_MB_PRO
+        value: 500
+      - key: FREE_DAILY_OPS
+        value: 5
+      - key: LLM_PROVIDER
+        value: none
+      - key: LLM_API_KEY
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_PRICE_ID_PRO
+        sync: false
+      - key: STRIPE_PRICE_ID_BUSINESS
+        sync: false

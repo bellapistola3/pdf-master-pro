@@ -1,0 +1,7 @@
+# PDF Master Pro — Web Dockerfile
+# The MVP web app is a static SPA (vanilla HTML/CSS/JS calling the API directly),
+# so we just need a lightweight static file server.
+FROM nginx:1.27-alpine
+COPY apps/web /usr/share/nginx/html
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
