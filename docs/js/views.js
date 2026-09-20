@@ -83,11 +83,15 @@ function heroIllustration() {
 
 function landingView() {
   const featured = TOOLS.filter((t) => t.featured).slice(0, 6);
+  const trustItems = state.lang === 'bg'
+    ? ['🔒 Автоматично изтриване на файлове', '⚡ Без задължителна регистрация', '🇧🇬 OCR на български език', '💳 Безплатен старт, без карта']
+    : ['🔒 Files auto-deleted after processing', '⚡ No signup required to try', '🇧🇬 Real Bulgarian OCR support', '💳 Free to start, no card needed'];
   return `
   ${navBar('#/')}
   <main>
-    <section class="max-w-6xl mx-auto px-6 pt-16 pb-20 grid md:grid-cols-2 gap-12 items-center">
-      <div>
+    <section class="relative max-w-6xl mx-auto px-6 pt-16 pb-10 grid md:grid-cols-2 gap-12 items-center overflow-hidden">
+      <div class="hero-glow"></div>
+      <div class="relative z-10">
         <h1 class="font-display text-5xl md:text-6xl font-semibold leading-[1.05] mb-6">${t('heroTitle')}</h1>
         <p class="text-lg mb-8 max-w-md" style="color: var(--ink-soft)">${t('heroSubtitle')}</p>
         <div class="flex flex-wrap gap-4">
@@ -95,17 +99,23 @@ function landingView() {
           <a href="#/tools" class="btn-secondary">${t('ctaAllTools')}</a>
         </div>
       </div>
-      <div class="flex justify-center md:justify-end">${heroIllustration()}</div>
+      <div class="relative z-10 flex justify-center md:justify-end">${heroIllustration()}</div>
     </section>
 
     <section class="max-w-6xl mx-auto px-6 pb-20">
+      <div class="flex flex-wrap justify-center md:justify-between gap-x-8 gap-y-3 surface rounded-2xl px-6 py-4">
+        ${trustItems.map((item) => `<span class="trust-item">${item}</span>`).join('')}
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-20 reveal">
       <h2 class="font-display text-3xl font-semibold mb-8">${state.lang === 'bg' ? 'Най-търсени инструменти' : 'Most popular tools'}</h2>
       <div class="grid md:grid-cols-3 gap-5">
         ${featured.map((tool, i) => toolCardHtml(tool, i === 0)).join('')}
       </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 pb-20">
+    <section class="max-w-6xl mx-auto px-6 pb-20 reveal">
       <h2 class="font-display text-3xl font-semibold mb-8">${t('whyTitle')}</h2>
       <div class="grid md:grid-cols-3 gap-6">
         ${[['why1Title', 'why1Body'], ['why2Title', 'why2Body'], ['why3Title', 'why3Body']].map(([tt, bb]) => `
@@ -116,7 +126,7 @@ function landingView() {
       </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 pb-24">
+    <section class="max-w-6xl mx-auto px-6 pb-24 reveal">
       <div class="surface rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <h2 class="font-display text-2xl font-semibold mb-2">${state.lang === 'bg' ? 'Сигурна обработка на файлове' : 'Secure file processing'}</h2>
@@ -133,7 +143,9 @@ function toolCardHtml(tool, big = false) {
   const badge = tool.roadmap ? `<span class="chip" style="border-color: var(--stamp); color: var(--stamp)">${state.lang === 'bg' ? 'Скоро' : 'Roadmap'}</span>` : '';
   return `
   <a href="#/tools/${tool.slug}" class="tool-card surface p-6 flex flex-col gap-4 ${big ? 'featured md:col-span-1' : ''}" tabindex="0">
-    <div class="w-10 h-10" style="color: var(--signal)">${iconFor(tool.category)}</div>
+    <div class="icon-circle" style="color: var(--signal)">
+      <div class="w-5 h-5">${iconFor(tool.category)}</div>
+    </div>
     <div>
       <div class="flex items-center gap-2 mb-1">
         <h3 class="font-semibold text-lg">${tool[state.lang]}</h3>

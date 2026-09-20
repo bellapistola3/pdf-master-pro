@@ -29,6 +29,7 @@ function render() {
   };
   app.innerHTML = (views[route.view] || notFoundView)();
   window.scrollTo(0, 0);
+  setupRevealObserver();
 
   // Dashboard shows plan info that can change server-side at any time (Stripe
   // webhook). Refresh from /auth/me so an upgrade/cancellation is reflected
@@ -55,6 +56,25 @@ async function refreshCurrentUser() {
 
 window.addEventListener('hashchange', render);
 window.addEventListener('DOMContentLoaded', render);
+
+function setupRevealObserver() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
+    return;
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.reveal:not(.in-view)').forEach((el) => observer.observe(el));
+}
 
 function renderProgress(container, job) {
   const statusLabel = { queued: t('statusQueued'), processing: t('statusProcessing'), failed: t('statusFailed'), completed: t('statusCompleted') }[job.status] || job.status;
