@@ -285,7 +285,7 @@ body.dark-mode .surface.rounded-2xl {
 }
 
 .site-header {
-  background: #FDEBDD;
+  background: #FFC98A;
 }
 .site-header .nav-link,
 .site-header a {
@@ -293,10 +293,10 @@ body.dark-mode .surface.rounded-2xl {
 }
 
 .site-footer {
-  background: #FDEBDD;
+  background: #FFC98A;
 }
 
 body.dark-mode .site-header,
 body.dark-mode .site-footer {
-  background: #4A3020;
+  background: #C97A2E;
 }
