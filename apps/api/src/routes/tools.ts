@@ -315,7 +315,7 @@ function jobResponse(job: ReturnType<typeof getJob> extends null ? never : any) 
     status: job.status,
     errorMessage: job.errorMessage,
     expiresAt: job.expiresAt,
-    downloadUrl: job.status === 'completed' ? `/api/jobs/${job.id}/download` : null,
+    downloadUrl: job.status === 'completed' ? `/jobs/${job.id}/download` : null,
   };
 }
 

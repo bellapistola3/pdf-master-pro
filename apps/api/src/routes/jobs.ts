@@ -23,7 +23,7 @@ jobsRouter.get('/:id', async (req: AuthedRequest, res) => {
     createdAt: job.createdAt,
     completedAt: job.completedAt,
     expiresAt: job.expiresAt,
-    downloadUrl: job.status === 'completed' ? `/api/jobs/${job.id}/download` : null,
+    downloadUrl: job.status === 'completed' ? `/jobs/${job.id}/download` : null,
   });
 });
 
