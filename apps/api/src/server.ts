@@ -19,9 +19,24 @@ const app = express();
 app.set('trust proxy', 1); // required for correct client IPs / rate limiting behind Render/Fly/Vercel/any reverse proxy
 
 app.use(helmet());
+// Always allow the production site's domains (custom domain + GitHub Pages
+// fallback), in addition to whatever CORS_ORIGIN is set to in Render. This
+// way switching or adding a custom domain never silently breaks the app
+// with CORS errors — no dashboard env var edit required.
+const ALWAYS_ALLOWED_ORIGINS = [
+  'https://pdfdavinci.com',
+  'https://www.pdfdavinci.com',
+  'http://pdfdavinci.com',
+  'http://www.pdfdavinci.com',
+  'https://bellapistola3.github.io',
+];
+const configuredOrigins =
+  config.corsOrigin === '*' ? [] : config.corsOrigin.split(',').map((o) => o.trim()).filter(Boolean);
+const allowedOrigins = Array.from(new Set([...ALWAYS_ALLOWED_ORIGINS, ...configuredOrigins]));
+
 app.use(
   cors({
-    origin: config.corsOrigin === '*' ? true : config.corsOrigin.split(','),
+    origin: config.corsOrigin === '*' ? true : allowedOrigins,
     credentials: true,
   })
 );
