@@ -9,6 +9,8 @@ function routeFromHash() {
   if (hash === '/register') return { view: 'register' };
   if (hash === '/terms') return { view: 'terms' };
   if (hash === '/privacy') return { view: 'privacy' };
+  if (hash === '/about') return { view: 'about' };
+  if (hash === '/faq') return { view: 'faq' };
   return { view: '404' };
 }
 
@@ -25,6 +27,8 @@ function render() {
     register: registerView,
     terms: () => legalPageView('terms'),
     privacy: () => legalPageView('privacy'),
+    about: aboutView,
+    faq: faqView,
     '404': notFoundView,
   };
   app.innerHTML = (views[route.view] || notFoundView)();

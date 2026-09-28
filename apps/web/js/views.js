@@ -55,9 +55,11 @@ function footer() {
         <div class="font-semibold mb-2" style="color: var(--ink)">${state.lang === 'bg' ? 'Продукт' : 'Product'}</div>
         <a href="#/tools" class="block mb-1">${state.lang === 'bg' ? 'Инструменти' : 'Tools'}</a>
         <a href="#/pricing" class="block mb-1">${state.lang === 'bg' ? 'Цени' : 'Pricing'}</a>
+        <a href="#/faq" class="block mb-1">${state.lang === 'bg' ? 'Често задавани въпроси' : 'FAQ'}</a>
       </div>
       <div>
         <div class="font-semibold mb-2" style="color: var(--ink)">${state.lang === 'bg' ? 'Компания' : 'Company'}</div>
+        <a href="#/about" class="block mb-1">${state.lang === 'bg' ? 'За нас' : 'About us'}</a>
         <a href="#/terms" class="block mb-1">${t('termsTitle')}</a>
         <a href="#/privacy" class="block mb-1">${t('privacyTitle')}</a>
         <span class="block mb-1">© ${new Date().getFullYear()} PDF Master Pro</span>
@@ -433,6 +435,79 @@ function legalPageView(kind) {
     </div>
   </main>
   ${footer()}`;
+}
+
+function aboutView() {
+  const bg = state.lang === 'bg';
+  return `
+  ${navBar()}
+  <main class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="font-display text-4xl font-semibold mb-6">${bg ? 'За нас' : 'About us'}</h1>
+    <div class="surface rounded-2xl p-8 space-y-5 leading-relaxed" style="color: var(--ink-soft)">
+      <p>${bg
+        ? 'PDF Master Pro е създаден с една проста цел: да направи работата с PDF файлове бърза, лесна и достъпна на български език — без излишни стъпки, без принудителна регистрация и без скрити такси за основните функции.'
+        : 'PDF Master Pro was built with one simple goal: make working with PDF files fast, easy, and accessible — no unnecessary steps, no forced sign-up, and no hidden fees for the core tools.'}</p>
+      <p>${bg
+        ? 'Разработваме продукта активно — всеки инструмент (сливане, разделяне, компресиране, OCR, конвертиране и още) е реално работеща функционалност, а не демонстрация. Файловете се обработват сигурно и се изтриват автоматично след обработка.'
+        : 'The product is actively developed — every tool (merge, split, compress, OCR, convert and more) is a real, working feature, not a demo. Files are processed securely and deleted automatically after processing.'}</p>
+      <p>${bg
+        ? 'Стремим се непрекъснато да добавяме нови функции и да подобряваме съществуващите, водени от обратната връзка на потребителите.'
+        : "We're continuously adding new features and improving existing ones, guided by user feedback."}</p>
+      <p>${bg
+        ? 'Имаш въпрос, предложение или проблем? Пиши ни — виж данните за контакт в '
+        : 'Have a question, suggestion, or issue? Reach out — see contact details in our '}<a href="#/privacy" style="color: var(--signal)">${bg ? 'Политика за поверителност' : 'Privacy Policy'}</a>.</p>
+    </div>
+  </main>
+  ${footer()}`;
+}
+
+function faqView() {
+  const bg = state.lang === 'bg';
+  const faqs = bg ? [
+    ['Безплатен ли е PDF Master Pro?', 'Да — безплатният план позволява 5 операции на ден без регистрация. За по-високи лимити, OCR, batch обработка и конвертиране можеш да ъпгрейднеш до Pro или Business план.'],
+    ['Трябва ли да се регистрирам, за да ползвам инструментите?', 'Не е задължително за основните инструменти — можеш да обработваш файлове анонимно. Регистрация е нужна само ако искаш история между устройства или платен план.'],
+    ['Безопасно ли е да качвам моите файлове?', 'Да. Файловете се обработват през криптирана връзка (HTTPS) и се изтриват автоматично от сървъра ни след кратък период (2 часа за безплатен план, 24 часа за Pro/Business).'],
+    ['Какви файлови формати поддържате?', 'Основно PDF, както и изображения (JPG/PNG за конвертиране към/от PDF). Постоянно добавяме нови формати.'],
+    ['Как да отменя абонамента си?', 'От Таблото → "Управление на плащанията" — това отваря Stripe Customer Portal, където можеш да управляваш или отмениш абонамента си по всяко време, без да пишеш на поддръжка.'],
+    ['Поддържате ли OCR на български език?', 'Да — разпознаването на текст (OCR) поддържа както български, така и английски език.'],
+    ['Какво се случва след изтичане на файловете ми?', 'Обработените файлове се трият автоматично от сървъра ни след срока на съхранение. Свали ги навреме, ако искаш да ги запазиш.'],
+    ['Имате ли API за разработчици?', 'API достъп е част от Business плана. Свържи се с нас за повече информация.'],
+  ] : [
+    ['Is PDF Master Pro free?', 'Yes — the free plan includes 5 operations per day with no sign-up required. Upgrade to Pro or Business for higher limits, OCR, batch processing, and file conversion.'],
+    ['Do I need to register to use the tools?', "No, not for the core tools — you can process files anonymously. Registration is only needed if you want history across devices or a paid plan."],
+    ['Is it safe to upload my files?', 'Yes. Files are processed over an encrypted connection (HTTPS) and automatically deleted from our servers after a short period (2 hours on the free plan, 24 hours on Pro/Business).'],
+    ['What file formats do you support?', 'Primarily PDF, plus images (JPG/PNG for converting to/from PDF). We are continuously adding more formats.'],
+    ['How do I cancel my subscription?', 'From your Dashboard → "Manage billing" — this opens the Stripe Customer Portal, where you can manage or cancel your subscription any time, no support ticket needed.'],
+    ['Do you support OCR in Bulgarian?', 'Yes — text recognition (OCR) supports both Bulgarian and English.'],
+    ['What happens after my files expire?', 'Processed files are automatically deleted from our servers after the retention period. Download them in time if you want to keep them.'],
+    ['Do you have an API for developers?', 'API access is included in the Business plan. Contact us for details.'],
+  ];
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(([q, a]) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  };
+  return `
+  ${navBar()}
+  <main class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="font-display text-4xl font-semibold mb-10">${bg ? 'Често задавани въпроси' : 'Frequently Asked Questions'}</h1>
+    <div class="space-y-4">
+      ${faqs.map(([q, a]) => `
+        <details class="surface rounded-2xl p-6 group">
+          <summary class="font-semibold cursor-pointer flex items-center justify-between gap-4">
+            ${q}
+            <span style="color: var(--signal)" class="shrink-0">+</span>
+          </summary>
+          <p class="mt-3 text-sm leading-relaxed" style="color: var(--ink-soft)">${a}</p>
+        </details>`).join('')}
+    </div>
+  </main>
+  ${footer()}
+  <script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`;
 }
 
 function dashboardView() {
