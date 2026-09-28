@@ -25,7 +25,7 @@ function navBar(active) {
   ];
   const user = currentUser();
   return `
-  <header class="sticky top-0 z-30 backdrop-blur bg-[var(--paper)]/90 border-b" style="border-color: var(--line)">
+  <header class="site-header sticky top-0 z-30 backdrop-blur border-b" style="border-color: var(--line)">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#/" class="font-display text-xl font-semibold flex items-center gap-2">
         <span style="color: var(--stamp)">●</span> PDF Master Pro
@@ -45,7 +45,7 @@ function navBar(active) {
 
 function footer() {
   return `
-  <footer class="border-t mt-24" style="border-color: var(--line)">
+  <footer class="site-footer border-t mt-24" style="border-color: var(--line)">
     <div class="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8 text-sm" style="color: var(--ink-soft)">
       <div>
         <div class="font-display text-lg font-semibold mb-2" style="color: var(--ink)">PDF Master Pro</div>

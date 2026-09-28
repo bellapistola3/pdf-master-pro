@@ -283,3 +283,20 @@ body.dark-mode .surface.rounded-2xl {
 .font-display {
   text-wrap: balance;
 }
+
+.site-header {
+  background: #FDEBDD;
+}
+.site-header .nav-link,
+.site-header a {
+  color: var(--ink);
+}
+
+.site-footer {
+  background: #FDEBDD;
+}
+
+body.dark-mode .site-header,
+body.dark-mode .site-footer {
+  background: #4A3020;
+}
