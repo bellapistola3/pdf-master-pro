@@ -21,7 +21,7 @@ app.set('trust proxy', 1); // required for correct client IPs / rate limiting be
 app.use(helmet());
 app.use(
   cors({
-    origin: config.corsOrigin === '*' ? true : config.corsOrigin.split(','),
+    origin: config.corsOrigin === '*' ? true : config.corsOrigin.split(',').map((o) => o.trim().replace(/\/$/, '')),
     credentials: true,
   })
 );

@@ -16,9 +16,9 @@ services:
       - key: STORAGE_DIR
         value: /app/storage
       - key: APP_BASE_URL
-        sync: false # set to your deployed web app URL after first deploy
+        value: https://pdfdavinci.com
       - key: CORS_ORIGIN
-        sync: false # set to your deployed web app URL — do not leave as '*' in production
+        value: https://pdfdavinci.com,https://www.pdfdavinci.com,https://bellapistola3.github.io # comma-separated, no spaces
       - key: MAX_FILE_SIZE_MB_FREE
         value: 25
       - key: MAX_FILE_SIZE_MB_PRO
