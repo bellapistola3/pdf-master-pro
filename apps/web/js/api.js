@@ -60,6 +60,11 @@ function downloadUrlFor(job) {
   return job.downloadUrl ? `${API_BASE}${job.downloadUrl}` : null;
 }
 
+async function fetchJobHistory() {
+  const data = await apiRequest('/jobs');
+  return data.jobs || [];
+}
+
 async function login(email, password) {
   const data = await apiRequest('/auth/login', { method: 'POST', body: { email, password } });
   localStorage.setItem('pmp_token', data.token);

@@ -40,6 +40,41 @@ function render() {
   // without requiring the user to log out and back in.
   if (route.view === 'dashboard' && currentUser()) {
     refreshCurrentUser();
+    loadJobHistory();
+  }
+}
+
+async function loadJobHistory() {
+  const container = document.getElementById('recent-jobs');
+  if (!container) return;
+  try {
+    const jobs = await fetchJobHistory();
+    if (jobs.length === 0) {
+      container.innerHTML = state.lang === 'bg' ? 'Обработи файл, за да видиш история тук.' : 'Process a file to see history here.';
+      return;
+    }
+    const statusLabel = { queued: t('statusQueued'), processing: t('statusProcessing'), failed: t('statusFailed'), completed: t('statusCompleted'), expired: state.lang === 'bg' ? 'Изтекъл' : 'Expired' };
+    container.innerHTML = `
+      <ul class="divide-y" style="border-color: var(--line)">
+        ${jobs.map((job) => {
+          const date = new Date(job.createdAt).toLocaleString(state.lang === 'bg' ? 'bg-BG' : 'en-US', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+          const label = statusLabel[job.status] || job.status;
+          return `
+          <li class="py-3 flex items-center justify-between gap-4">
+            <div class="min-w-0">
+              <div class="font-medium truncate">${escapeHtml(job.toolType)}</div>
+              <div class="text-xs" style="color: var(--ink-soft)">${date} · ${label}</div>
+            </div>
+            ${job.downloadUrl
+              ? `<a href="${API_BASE}${job.downloadUrl}" class="btn-secondary" download>${t('downloadBtn')}</a>`
+              : job.status === 'failed'
+                ? `<span class="chip" style="border-color: var(--stamp); color: var(--stamp)">${state.lang === 'bg' ? 'Грешка' : 'Failed'}</span>`
+                : `<span class="chip" style="color: var(--ink-soft)">${state.lang === 'bg' ? 'Изтекъл' : 'Expired'}</span>`}
+          </li>`;
+        }).join('')}
+      </ul>`;
+  } catch {
+    container.innerHTML = state.lang === 'bg' ? 'Неуспешно зареждане на история.' : 'Could not load history.';
   }
 }
 
