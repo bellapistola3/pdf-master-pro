@@ -92,7 +92,7 @@ function landingView() {
     <section class="relative max-w-6xl mx-auto px-6 pt-16 pb-10 grid md:grid-cols-2 gap-12 items-center overflow-hidden">
       <div class="hero-glow"></div>
       <div class="relative z-10">
-        <h1 class="font-display text-5xl md:text-6xl font-semibold leading-[1.05] mb-6">${t('heroTitle')}</h1>
+        <h1 class="font-display text-5xl md:text-6xl font-semibold leading-[1.05] mb-6 gradient-text">${t('heroTitle')}</h1>
         <p class="text-lg mb-8 max-w-md" style="color: var(--ink-soft)">${t('heroSubtitle')}</p>
         <div class="flex flex-wrap gap-4">
           <a href="#/tools" class="btn-primary">${t('ctaStart')}</a>
@@ -314,7 +314,8 @@ function pricingView() {
     <h1 class="font-display text-4xl font-semibold mb-12 text-center">${t('pricingTitle')}</h1>
     <div class="grid md:grid-cols-3 gap-6 items-start">
       ${plans.map((p) => `
-        <div class="surface rounded-3xl p-8 ${p.highlighted ? 'ring-2' : ''}" ${p.highlighted ? 'style="--tw-ring-color: var(--stamp)"' : ''}>
+        <div class="surface rounded-3xl p-8 ${p.highlighted ? 'ring-2 md:-translate-y-3' : ''}" ${p.highlighted ? 'style="--tw-ring-color: var(--stamp)"' : ''}>
+          ${p.highlighted ? `<div class="chip inline-block mb-4" style="border-color: var(--stamp); color: var(--stamp)">${state.lang === 'bg' ? 'Най-избиран' : 'Most popular'}</div>` : ''}
           <h2 class="font-display text-2xl font-semibold mb-1">${p.name}</h2>
           <p class="text-3xl font-semibold mb-6">${p.price}</p>
           <ul class="space-y-3 mb-8 text-sm">
