@@ -16,6 +16,8 @@ UI, and codebase (not a clone of any existing PDF tool).
 > at the repo root is the ordered, concrete path from this codebase to a
 > real paying customer.
 >
+> **Custom domain (pdfdavinci.com) DNS setup** → `DOMAIN_SETUP_BG.md` (Bulgarian).
+>
 > **Want to see it live for free first, no domain/credit card needed?** →
 > `DEPLOY_FREE_BG.md` (Bulgarian) walks through GitHub + Render free tier
 > + Vercel free tier, step by step.

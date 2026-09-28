@@ -31,7 +31,12 @@ const ALWAYS_ALLOWED_ORIGINS = [
   'https://bellapistola3.github.io',
 ];
 const configuredOrigins =
-  config.corsOrigin === '*' ? [] : config.corsOrigin.split(',').map((o) => o.trim()).filter(Boolean);
+  config.corsOrigin === '*'
+    ? []
+    : config.corsOrigin
+        .split(',')
+        .map((o) => o.trim().replace(/\/$/, ''))
+        .filter(Boolean);
 const allowedOrigins = Array.from(new Set([...ALWAYS_ALLOWED_ORIGINS, ...configuredOrigins]));
 
 app.use(

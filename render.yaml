@@ -28,9 +28,9 @@ services:
       - key: DATABASE_URL
         sync: false # Postgres connection string (e.g. from Neon.tech) — without this, user/job data is stored in ephemeral JSON files
       - key: APP_BASE_URL
-        sync: false # set to your Vercel URL after deploying the web app
+        value: https://pdfdavinci.com
       - key: CORS_ORIGIN
-        sync: false # set to your Vercel URL — do not leave as '*' once real users exist
+        value: https://pdfdavinci.com,https://www.pdfdavinci.com,https://bellapistola3.github.io # comma-separated, no spaces
       - key: MAX_FILE_SIZE_MB_FREE
         value: 25
       - key: MAX_FILE_SIZE_MB_PRO

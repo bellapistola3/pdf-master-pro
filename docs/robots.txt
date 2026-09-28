@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bellapistola3.github.io/pdf-master-pro/sitemap.xml
+Sitemap: https://pdfdavinci.com/sitemap.xml
