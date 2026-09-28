@@ -290,19 +290,19 @@ function notFoundView() {
 function pricingView() {
   const plans = [
     {
-      id: 'free', name: 'Free', price: '0 лв.',
+      id: 'free', name: 'Free', price: state.lang === 'bg' ? '0 €' : '€0',
       features: state.lang === 'bg'
         ? ['5 операции на ден', 'До 25 MB на файл', 'Основни инструменти']
         : ['5 operations / day', 'Up to 25MB per file', 'Basic tools'],
     },
     {
-      id: 'pro', name: 'Pro', price: state.lang === 'bg' ? '19.99 лв./мес' : '$9.99/mo', highlighted: true,
+      id: 'pro', name: 'Pro', price: state.lang === 'bg' ? '9.99 €/мес' : '€9.99/mo', highlighted: true,
       features: state.lang === 'bg'
         ? ['500 операции / месец', 'До 500 MB на файл', 'OCR и batch обработка', 'PDF в Word/Excel', 'AI резюме']
         : ['500 operations / month', 'Up to 500MB per file', 'OCR & batch processing', 'PDF to Word/Excel', 'AI summary'],
     },
     {
-      id: 'business', name: 'Business', price: state.lang === 'bg' ? 'По договаряне' : 'Custom',
+      id: 'business', name: 'Business', price: state.lang === 'bg' ? '29.99 €/мес' : '€29.99/mo',
       features: state.lang === 'bg'
         ? ['Екипна употреба', 'API достъп', 'Приоритетна обработка', 'По-високи лимити']
         : ['Team usage', 'API access', 'Priority processing', 'Higher limits'],
