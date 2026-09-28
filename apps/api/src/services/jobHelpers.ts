@@ -22,7 +22,7 @@ export async function runJob(
   work: () => Promise<{ name: string; buffer: Buffer }[]>
 ): Promise<Job> {
   const id = nanoid();
-  const job = createJob({
+  await createJob({
     id,
     userId: req.userId ?? null,
     anonymousId: req.anonymousId ?? null,
@@ -44,16 +44,16 @@ export async function runJob(
       const fullPath = await saveBuffer(outputsDir, safeName, r.buffer);
       outputPaths.push(fullPath);
     }
-    return updateJob(id, {
+    return (await updateJob(id, {
       status: 'completed',
       outputFiles: outputPaths,
       completedAt: new Date().toISOString(),
-    })!;
+    }))!;
   } catch (err: any) {
-    return updateJob(id, {
+    return (await updateJob(id, {
       status: 'failed',
       errorMessage: err?.message || 'Unknown processing error',
       completedAt: new Date().toISOString(),
-    })!;
+    }))!;
   }
 }

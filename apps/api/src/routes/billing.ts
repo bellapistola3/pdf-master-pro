@@ -35,7 +35,7 @@ billingRouter.post('/create-checkout-session', requireAuth, async (req: AuthedRe
     const priceId = priceIdForPlan(plan);
     if (!priceId) return res.status(400).json({ error: `No Stripe price configured for plan "${plan}"` });
 
-    const user = findUserById(req.userId!);
+    const user = await findUserById(req.userId!);
     if (!user) return res.status(404).json({ error: 'User not found' });
 
     // Reuse an existing Stripe customer if we already created one for this user.
@@ -43,7 +43,7 @@ billingRouter.post('/create-checkout-session', requireAuth, async (req: AuthedRe
     if (!customerId) {
       const customer = await stripe.customers.create({ email: user.email, metadata: { userId: user.id } });
       customerId = customer.id;
-      updateUser(user.id, { stripeCustomerId: customerId });
+      await updateUser(user.id, { stripeCustomerId: customerId });
     }
 
     const session = await stripe.checkout.sessions.create({
@@ -70,7 +70,7 @@ billingRouter.post('/create-checkout-session', requireAuth, async (req: AuthedRe
 billingRouter.post('/create-portal-session', requireAuth, async (req: AuthedRequest, res) => {
   try {
     const stripe = stripeClient();
-    const user = findUserById(req.userId!);
+    const user = await findUserById(req.userId!);
     if (!user?.stripeCustomerId) {
       return res.status(400).json({ error: 'No billing account found for this user yet — subscribe first.' });
     }
@@ -116,7 +116,7 @@ billingRouter.post('/webhook', async (req, res) => {
         const userId = session.metadata?.userId || (session.client_reference_id ?? undefined);
         const plan = (session.metadata?.plan as Plan) || 'pro';
         if (userId) {
-          updateUser(userId, {
+          await updateUser(userId, {
             plan,
             stripeCustomerId: (session.customer as string) ?? undefined,
             stripeSubscriptionId: (session.subscription as string) ?? undefined,
@@ -127,19 +127,19 @@ billingRouter.post('/webhook', async (req, res) => {
       }
       case 'customer.subscription.updated': {
         const sub = event.data.object as Stripe.Subscription;
-        const user = findUserByStripeCustomerId(sub.customer as string);
+        const user = await findUserByStripeCustomerId(sub.customer as string);
         if (user) {
           const priceId = sub.items.data[0]?.price?.id;
           const plan = sub.status === 'active' || sub.status === 'trialing' ? planForPriceId(priceId || '') : 'free';
-          updateUser(user.id, { plan, stripeSubscriptionId: sub.id });
+          await updateUser(user.id, { plan, stripeSubscriptionId: sub.id });
         }
         break;
       }
       case 'customer.subscription.deleted': {
         const sub = event.data.object as Stripe.Subscription;
-        const user = findUserByStripeCustomerId(sub.customer as string);
+        const user = await findUserByStripeCustomerId(sub.customer as string);
         if (user) {
-          updateUser(user.id, { plan: 'free', stripeSubscriptionId: null });
+          await updateUser(user.id, { plan: 'free', stripeSubscriptionId: null });
           console.log(`[stripe webhook] user ${user.id} downgraded to free (subscription ended)`);
         }
         break;

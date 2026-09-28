@@ -25,6 +25,8 @@ services:
         generateValue: true
       - key: STORAGE_DIR
         value: /app/storage
+      - key: DATABASE_URL
+        sync: false # Postgres connection string (e.g. from Neon.tech) — without this, user/job data is stored in ephemeral JSON files
       - key: APP_BASE_URL
         sync: false # set to your Vercel URL after deploying the web app
       - key: CORS_ORIGIN

@@ -8,14 +8,15 @@ import { listAllJobs } from '../services/jobStore';
  * PRODUCTION: replace with a `usage_limits` table + atomic counter (see
  * docs/DATABASE.md) to avoid the O(n) scan below at scale.
  */
-export function enforceDailyQuota(req: AuthedRequest, res: Response, next: NextFunction) {
+export async function enforceDailyQuota(req: AuthedRequest, res: Response, next: NextFunction) {
   if (req.plan !== 'free') return next();
 
   const identity = req.userId ?? req.anonymousId ?? 'unknown';
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
 
-  const jobsToday = listAllJobs().filter((j) => {
+  const allJobs = await listAllJobs();
+  const jobsToday = allJobs.filter((j) => {
     const owner = j.userId ?? j.anonymousId;
     return owner === identity && new Date(j.createdAt) >= startOfDay;
   });

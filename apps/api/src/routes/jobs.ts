@@ -7,8 +7,8 @@ import { assertInsideStorage } from '../services/storage';
 
 export const jobsRouter = Router();
 
-jobsRouter.get('/:id', (req: AuthedRequest, res) => {
-  const job = getJob(req.params.id);
+jobsRouter.get('/:id', async (req: AuthedRequest, res) => {
+  const job = await getJob(req.params.id);
   if (!job) return res.status(404).json({ error: 'Job not found' });
   // Only the owner (or an anonymous caller matching the original anonymousId) can view it.
   const owner = job.userId ?? job.anonymousId;
@@ -27,8 +27,8 @@ jobsRouter.get('/:id', (req: AuthedRequest, res) => {
   });
 });
 
-jobsRouter.get('/:id/download', (req: AuthedRequest, res) => {
-  const job = getJob(req.params.id);
+jobsRouter.get('/:id/download', async (req: AuthedRequest, res) => {
+  const job = await getJob(req.params.id);
   if (!job) return res.status(404).json({ error: 'Job not found' });
   const owner = job.userId ?? job.anonymousId;
   const caller = req.userId ?? req.anonymousId;

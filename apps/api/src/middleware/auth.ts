@@ -15,13 +15,13 @@ export interface AuthedRequest extends Request {
  * Stripe webhook that upgrades someone's plan takes effect on their very next call.
  * Never blocks the request.
  */
-export function identify(req: AuthedRequest, res: Response, next: NextFunction) {
+export async function identify(req: AuthedRequest, res: Response, next: NextFunction) {
   const authHeader = req.headers.authorization;
   if (authHeader?.startsWith('Bearer ')) {
     try {
       const token = authHeader.slice('Bearer '.length);
       const payload = jwt.verify(token, config.jwtSecret) as { sub: string };
-      const user = findUserById(payload.sub);
+      const user = await findUserById(payload.sub);
       if (user) {
         req.userId = user.id;
         req.plan = user.plan;

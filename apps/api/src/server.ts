@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 
 import { config } from './config';
+import { initDb, usingDatabase } from './services/db';
 import { identify } from './middleware/auth';
 import { toolsRouter } from './routes/tools';
 import { toolsAdvancedRouter } from './routes/toolsAdvanced';
@@ -60,15 +61,26 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
   res.status(status).json({ error: err.message || 'Internal server error' });
 });
 
-const server = app.listen(config.port, () => {
-  console.log(`PDF Master Pro API listening on port ${config.port} (${config.nodeEnv})`);
-  startCleanupWorker();
-});
+let server: ReturnType<typeof app.listen>;
+
+initDb()
+  .then(() => {
+    console.log(usingDatabase ? '[db] using Postgres (DATABASE_URL set)' : '[db] DATABASE_URL not set — falling back to local JSON file storage (NOT persistent on hosts without a disk, e.g. Render free tier)');
+    server = app.listen(config.port, () => {
+      console.log(`PDF Master Pro API listening on port ${config.port} (${config.nodeEnv})`);
+      startCleanupWorker();
+    });
+  })
+  .catch((err) => {
+    console.error('[db] failed to initialize database, exiting:', err);
+    process.exit(1);
+  });
 
 // Graceful shutdown — important on Render/Fly/Railway, which send SIGTERM
 // before restarting/redeploying a container and expect it to exit cleanly.
 function shutdown(signal: string) {
   console.log(`[server] received ${signal}, shutting down gracefully...`);
+  if (!server) return process.exit(0);
   server.close(() => {
     console.log('[server] closed all connections, exiting.');
     process.exit(0);

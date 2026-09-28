@@ -13,6 +13,7 @@ export const config = {
   nodeEnv: process.env.NODE_ENV || 'development',
   jwtSecret: process.env.JWT_SECRET || 'dev-only-insecure-secret-change-me',
   storageDir: process.env.STORAGE_DIR || path.resolve(__dirname, '../../storage'),
+  databaseUrl: process.env.DATABASE_URL || '',
   maxFileSizeMbFree: parseInt(process.env.MAX_FILE_SIZE_MB_FREE || '25', 10),
   maxFileSizeMbPro: parseInt(process.env.MAX_FILE_SIZE_MB_PRO || '500', 10),
   freeJobExpiryHours: parseInt(process.env.FREE_JOB_EXPIRY_HOURS || '2', 10),
