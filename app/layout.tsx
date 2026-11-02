@@ -6,7 +6,7 @@ import { ADSENSE_CLIENT_ID, SEO_PAGES, SITE_NAME, SITE_URL } from '@/lib/seoConf
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#4f46e5',
+  themeColor: '#1e1b4b',
 };
 
 export const metadata: Metadata = {
@@ -58,6 +58,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Force HTTPS Upgrade for all resources and instant redirect from HTTP to HTTPS */}
+        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (typeof window !== 'undefined' && window.location.protocol === 'http:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                  window.location.replace('https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash);
+                }
+              })();
+            `,
+          }}
+        />
         {/* Google AdSense Asynchronous Script (Zero-Blocking for Core Web Vitals) */}
         <Script
           id="adsense-init"
