@@ -13,38 +13,8 @@ export default function Footer() {
           {/* Column 1: Brand & Mission */}
           <div className="flex flex-col justify-between">
             <div>
-              <Link href="/" className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 via-orange-500 to-indigo-600 p-[1.5px] shadow-md shadow-amber-500/20">
-                  <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-slate-950">
-                    <svg
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      aria-hidden="true"
-                    >
-                      <circle
-                        cx="20"
-                        cy="20"
-                        r="16"
-                        stroke="#F59E0B"
-                        strokeWidth="1.6"
-                        strokeDasharray="3 2"
-                      />
-                      <path
-                        d="M12 9C12 7.89543 12.8954 7 14 7H22.5L29 13.5V31C29 32.1046 28.1046 33 27 33H14C12.8954 33 12 32.1046 12 31V9Z"
-                        fill="#312E81"
-                        stroke="#FBBF24"
-                        strokeWidth="1.8"
-                      />
-                      <path
-                        d="M20.5 16L17 22.5H20.5L19.5 28L24 21H20.5L20.5 16Z"
-                        fill="#FBBF24"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <span className="text-xl font-black tracking-tight text-white">
+              <Link href="/" className="mb-4 inline-flex items-center">
+                <span className="text-2xl font-black tracking-tight text-white">
                   PDF
                   <span className="bg-gradient-to-r from-amber-300 to-indigo-400 bg-clip-text text-transparent">
                     DaVinci

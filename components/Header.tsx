@@ -35,60 +35,12 @@ export default function Header({ hasLoadedFile = false, onResetFile }: HeaderPro
         <div className="flex items-center gap-8">
           <Link
             href="/"
-            className="group flex items-center gap-3.5 focus:outline-none"
+            className="group flex items-center focus:outline-none"
             aria-label="PDFDaVinci Home"
           >
-            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-indigo-600 p-[2px] shadow-lg shadow-amber-500/25 transition-transform duration-200 group-hover:scale-105">
-              <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-slate-950/90">
-                <svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8"
-                  aria-hidden="true"
-                >
-                  <circle
-                    cx="20"
-                    cy="20"
-                    r="16"
-                    stroke="url(#davinciGold)"
-                    strokeWidth="1.6"
-                    strokeDasharray="3 2"
-                  />
-                  <path
-                    d="M12 9C12 7.89543 12.8954 7 14 7H22.5L29 13.5V31C29 32.1046 28.1046 33 27 33H14C12.8954 33 12 32.1046 12 31V9Z"
-                    fill="url(#davinciIndigo)"
-                    stroke="url(#davinciGold)"
-                    strokeWidth="1.8"
-                  />
-                  <path
-                    d="M22 7V13C22 13.5523 22.4477 14 23 14H29"
-                    stroke="#FBBF24"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M20.5 16L17 22.5H20.5L19.5 28L24 21H20.5L20.5 16Z"
-                    fill="#FBBF24"
-                  />
-                  <defs>
-                    <linearGradient id="davinciGold" x1="6" y1="6" x2="34" y2="34" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#FDE68A" />
-                      <stop offset="0.5" stopColor="#F59E0B" />
-                      <stop offset="1" stopColor="#818CF8" />
-                    </linearGradient>
-                    <linearGradient id="davinciIndigo" x1="12" y1="7" x2="29" y2="33" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#312E81" />
-                      <stop offset="1" stopColor="#1E1B4B" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-
             <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-black tracking-tight text-white sm:text-2xl">
+              <div className="flex items-center gap-2.5">
+                <span className="text-2xl font-black tracking-tight text-white sm:text-[26px]">
                   PDF
                   <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-indigo-300 bg-clip-text text-transparent">
                     DaVinci
