@@ -130,19 +130,31 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Legal & GDPR */}
+          {/* Column 4: Company, Legal & GDPR Links */}
           <div>
             <div className="mb-3 flex items-center gap-2 text-white">
               <Sparkles className="h-4 w-4 text-amber-400" />
-              <h3 className="text-sm font-bold uppercase tracking-wider">Legal & GDPR Policy</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider">Company & Legal</h3>
             </div>
-            <p className="mb-4 text-sm leading-relaxed text-slate-400">
-              PDFDaVinci is 100% free to use with no subscriptions. To keep this utility free for
-              everyone, we display non-intrusive, zero-CLS advertisements via Google AdSense in
-              compliance with Google Publisher Policies.
-            </p>
+            <ul className="mb-4 space-y-2 text-sm">
+              <li>
+                <Link href="/about" className="font-medium text-slate-300 transition hover:text-amber-400">
+                  About Us & RAM Architecture
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="font-medium text-slate-300 transition hover:text-amber-400">
+                  Terms of Service (Rules of Use)
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="font-medium text-slate-300 transition hover:text-amber-400">
+                  Privacy Policy & GDPR / Cookies
+                </Link>
+              </li>
+            </ul>
             <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-3 text-xs text-slate-300">
-              <div className="font-semibold text-white">Security Status: ACTIVE</div>
+              <div className="font-semibold text-white">Security Status: 256-BIT SSL ACTIVE</div>
               <div className="mt-1 text-slate-400">
                 Domain: <span className="text-amber-400">https://pdfdavinci.com</span>
               </div>
@@ -154,6 +166,18 @@ export default function Footer() {
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-8 text-xs text-slate-500 sm:flex-row">
           <p>© {currentYear} PDFDaVinci (pdfdavinci.com). All rights reserved.</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link href="/about" className="transition hover:text-slate-300">
+              About Us
+            </Link>
+            <span>•</span>
+            <Link href="/terms" className="transition hover:text-slate-300">
+              Terms of Service
+            </Link>
+            <span>•</span>
+            <Link href="/privacy" className="transition hover:text-slate-300">
+              Privacy Policy
+            </Link>
+            <span>•</span>
             <Link href="/sitemap.xml" className="transition hover:text-slate-300">
               Sitemap.xml
             </Link>
@@ -161,8 +185,6 @@ export default function Footer() {
             <Link href="/robots.txt" className="transition hover:text-slate-300">
               Robots.txt
             </Link>
-            <span>•</span>
-            <span className="text-emerald-400/90">100% Zero-Server Storage</span>
           </div>
         </div>
       </div>

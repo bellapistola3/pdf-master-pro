@@ -1,0 +1,110 @@
+import React from 'react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { Scale, ArrowLeft } from 'lucide-react';
+import { SITE_NAME, SITE_URL } from '@/lib/seoConfig';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service & Acceptable Use Policy',
+  description:
+    'Read the official Terms of Service for PDFDaVinci (pdfdavinci.com). 100% free client-side PDF conversion for personal and commercial use with full document ownership.',
+  alternates: {
+    canonical: `${SITE_URL}/terms/`,
+  },
+  openGraph: {
+    title: `Terms of Service | ${SITE_NAME}`,
+    description:
+      'Official Terms of Use for PDFDaVinci.com — free local in-browser PDF conversion utility.',
+    url: `${SITE_URL}/terms/`,
+    siteName: SITE_NAME,
+    locale: 'en_US',
+    type: 'website',
+  },
+};
+
+export default function TermsPage() {
+  return (
+    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900">
+      <Header />
+
+      <main className="mx-auto max-w-4xl flex-1 px-4 py-12 sm:px-6 sm:py-16">
+        <Link
+          href="/"
+          className="mb-6 inline-flex items-center gap-1.5 text-xs font-extrabold text-indigo-600 hover:text-indigo-800"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          <span>Back to PDF Converter</span>
+        </Link>
+
+        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-12">
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3.5 py-1 text-xs font-extrabold text-indigo-700">
+            <Scale className="h-4 w-4" />
+            Legal Agreement • Last Updated: November 2026
+          </div>
+
+          <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            Terms of Service & Rules of Use
+          </h1>
+
+          <div className="mt-6 space-y-6 text-sm leading-relaxed text-slate-600 sm:text-base">
+            <section>
+              <h2 className="text-xl font-extrabold text-slate-900">1. Acceptance of Terms</h2>
+              <p className="mt-2">
+                By accessing and using <strong>PDFDaVinci</strong> (<a href="https://pdfdavinci.com" className="text-indigo-600 underline">https://pdfdavinci.com</a>), you agree to comply with and be bound by these Terms of Service. If you do not agree with any part of these terms, please discontinue use of the website immediately.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-extrabold text-slate-900">
+                2. Description of Client-Side RAM Service
+              </h2>
+              <p className="mt-2">
+                PDFDaVinci provides a client-side web application that converts PDF files into JPG images (ZIP), editable Microsoft Word (.doc) documents, and plain text (.txt) files. All document parsing, rendering, and archiving execute <strong>100% locally inside your web browser’s volatile memory (RAM)</strong> using JavaScript, HTML5 Canvas, and Web Workers. PDFDaVinci does not upload, receive, store, or host user files on any backend server.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-extrabold text-slate-900">
+                3. Document Ownership & Copyright
+              </h2>
+              <p className="mt-2">
+                You retain <strong>100% ownership, copyright, and intellectual property rights</strong> in all documents you open and convert using PDFDaVinci. Because your files never leave your device, PDFDaVinci never acquires any license, right, or access to your content. You are solely responsible for ensuring you have the legal right to process and convert the files you load into your browser.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-extrabold text-slate-900">
+                4. Free Personal & Commercial Use
+              </h2>
+              <p className="mt-2">
+                PDFDaVinci is provided free of charge for both personal and commercial document workflows. You may not attempt to reverse-engineer, scrape, overload, or redistribute our website’s proprietary interface code as a competing commercial service without prior written consent.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-extrabold text-slate-900">
+                5. Disclaimer of Warranties (&ldquo;As-Is&rdquo;)
+              </h2>
+              <p className="mt-2">
+                The tools on PDFDaVinci.com are provided on an &ldquo;AS IS&rdquo; and &ldquo;AS AVAILABLE&rdquo; basis without warranties of any kind, whether express or implied. While our 2.0x HiDPI rendering and coordinate-aware text parsers are engineered for maximum accuracy, complex or corrupted PDF files may vary in output formatting depending on your browser and hardware environment.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-extrabold text-slate-900">
+                6. Limitation of Liability
+              </h2>
+              <p className="mt-2">
+                In no event shall PDFDaVinci or its developers be liable for any direct, indirect, incidental, or consequential damages arising out of the use or inability to use our client-side conversion tools. Always keep a backup of your original PDF files on your device.
+              </p>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

@@ -17,19 +17,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/pdf-to-jpg/`,
       lastModified,
       changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.95,
     },
     {
       url: `${SITE_URL}/pdf-to-word/`,
       lastModified,
       changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.95,
     },
     {
       url: `${SITE_URL}/pdf-to-text/`,
       lastModified,
       changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.95,
+    },
+    {
+      url: `${SITE_URL}/about/`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/terms/`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/privacy/`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
   ];
 }

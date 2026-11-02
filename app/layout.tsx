@@ -18,11 +18,13 @@ export const metadata: Metadata = {
   description: SEO_PAGES.home.metaDescription,
   keywords: SEO_PAGES.home.keywords,
   applicationName: SITE_NAME,
+  manifest: '/manifest.json',
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
+  category: 'Utilities & Productivity',
   alternates: {
-    canonical: SITE_URL,
+    canonical: `${SITE_URL}/`,
   },
   robots: {
     index: true,
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     siteName: SITE_NAME,
     title: SEO_PAGES.home.title,
     description: SEO_PAGES.home.metaDescription,
@@ -47,6 +49,24 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SEO_PAGES.home.title,
     description: SEO_PAGES.home.metaDescription,
+  },
+};
+
+const globalWebsiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  alternateName: 'PDFDaVinci Client-Side PDF Converter',
+  url: `${SITE_URL}/`,
+  inLanguage: 'en-US',
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: `${SITE_URL}/`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/icon.svg`,
+    },
   },
 };
 
@@ -70,6 +90,10 @@ export default function RootLayout({
               })();
             `,
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalWebsiteSchema) }}
         />
         {/* Google AdSense Asynchronous Script (Zero-Blocking for Core Web Vitals) */}
         <Script

@@ -1,0 +1,16 @@
+{
+  "name": "PDFDaVinci — 100% Client-Side RAM PDF Converter",
+  "short_name": "PDFDaVinci",
+  "description": "Convert PDF to JPG, Word (.doc), and Text (.txt) online for free inside your browser RAM with zero server uploads.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1e1b4b",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
