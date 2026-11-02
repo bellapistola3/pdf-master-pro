@@ -30,9 +30,10 @@ export default function Header({ hasLoadedFile = false, onResetFile }: HeaderPro
     <header className="sticky top-0 z-30 w-full border-b border-indigo-500/40 bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 text-white shadow-xl shadow-indigo-950/20">
       <div className="h-1 w-full bg-gradient-to-r from-amber-400 via-indigo-500 to-emerald-400" />
 
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 py-3.5 sm:px-8 lg:px-12">
-        {/* Custom Bespoke Logo PDFDaVinci + Navigation */}
-        <div className="flex items-center gap-8">
+      {/* 3-Column Symmetrical Header Grid: Left Brand | Dead-Center Navigation | Right Security Status */}
+      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 py-3.5 sm:px-8 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-12">
+        {/* Column 1 (Left): Brand Wordmark */}
+        <div className="flex items-center justify-start">
           <Link
             href="/"
             className="group flex items-center focus:outline-none"
@@ -46,7 +47,7 @@ export default function Header({ hasLoadedFile = false, onResetFile }: HeaderPro
                     DaVinci
                   </span>
                 </span>
-                <span className="hidden rounded-md border border-amber-400/40 bg-amber-400/15 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-amber-300 sm:inline-block">
+                <span className="hidden rounded-md border border-amber-400/40 bg-amber-400/15 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-amber-300 sm:inline-block">
                   PRO RAM
                 </span>
               </div>
@@ -55,30 +56,33 @@ export default function Header({ hasLoadedFile = false, onResetFile }: HeaderPro
               </span>
             </div>
           </Link>
-
-          {/* Desktop Navigation Pills */}
-          <nav aria-label="Primary Navigation" className="hidden items-center gap-2 lg:flex">
-            {navLinks.map((item) => {
-              const isActive = isRouteActive(item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`rounded-xl px-4 py-2 text-sm font-bold transition-all ${
-                    isActive
-                      ? 'bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-md shadow-indigo-500/30 ring-1 ring-amber-300/50'
-                      : 'text-slate-200 hover:bg-white/10 hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
         </div>
 
-        {/* Right Security Badge + "Load Another PDF" Button */}
-        <div className="flex items-center gap-3">
+        {/* Column 2 (Exact Geometric Center): Symmetrical Navigation Pill Dock */}
+        <nav
+          aria-label="Primary Navigation"
+          className="hidden items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] p-1.5 backdrop-blur-md lg:flex xl:gap-3"
+        >
+          {navLinks.map((item) => {
+            const isActive = isRouteActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`whitespace-nowrap rounded-xl px-4 py-2 text-sm font-bold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 xl:px-5 ${
+                  isActive
+                    ? 'bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-md shadow-indigo-500/30 ring-1 ring-amber-300/50'
+                    : 'text-slate-200 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Column 3 (Right): Security Badge + "Load Another PDF" Button */}
+        <div className="flex items-center justify-end gap-3">
           <div
             title="All files are processed 100% locally inside your browser RAM without any server uploads"
             className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/15 px-4 py-2 text-xs font-bold text-emerald-300 shadow-sm backdrop-blur-sm"
@@ -106,7 +110,7 @@ export default function Header({ hasLoadedFile = false, onResetFile }: HeaderPro
       </div>
 
       {/* Mobile Sub-Navigation */}
-      <div className="flex items-center gap-1.5 overflow-x-auto border-t border-indigo-800/60 bg-slate-950/60 px-4 py-2 lg:hidden">
+      <div className="flex items-center justify-center gap-1.5 overflow-x-auto border-t border-indigo-800/60 bg-slate-950/60 px-4 py-2 lg:hidden">
         {navLinks.map((item) => {
           const isActive = isRouteActive(item.href);
           return (
