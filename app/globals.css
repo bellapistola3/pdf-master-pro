@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 selection:bg-indigo-600 selection:text-white;
+  }
+}
+
+/* CLS-защитени класове за Google AdSense контейнери */
+@layer components {
+  .ad-slot-leaderboard {
+    min-height: 90px;
+    overflow: hidden;
+  }
+
+  .ad-slot-rectangle {
+    min-height: 250px;
+    overflow: hidden;
+  }
+
+  .ad-slot-mobile {
+    min-height: 280px;
+    overflow: hidden;
+  }
+}

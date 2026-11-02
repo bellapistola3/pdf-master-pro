@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://pdfdavinci.com
+Sitemap: https://pdfdavinci.com/sitemap.xml
