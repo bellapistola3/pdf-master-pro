@@ -116,25 +116,29 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
       title: '100% Free Forever',
       subtitle: 'No credit card or trial trap',
       icon: Check,
-      iconBg: 'bg-emerald-500/15 text-emerald-600 border-emerald-200',
+      iconBg:
+        'bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/20',
     },
     {
       title: '100% Local RAM Mode',
       subtitle: 'Files never leave your device',
       icon: ShieldCheck,
-      iconBg: 'bg-indigo-500/15 text-indigo-600 border-indigo-200',
+      iconBg:
+        'bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/20',
     },
     {
       title: '2.0x HiDPI Quality',
       subtitle: 'Preserves original layout & fonts',
       icon: Sparkles,
-      iconBg: 'bg-amber-500/15 text-amber-600 border-amber-200',
+      iconBg:
+        'bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/20',
     },
     {
       title: 'Works on All Devices',
       subtitle: 'Windows, Mac, iOS & Android',
       icon: Laptop,
-      iconBg: 'bg-violet-500/15 text-violet-600 border-violet-200',
+      iconBg:
+        'bg-gradient-to-br from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/20',
     },
   ];
 
@@ -198,10 +202,10 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
               return (
                 <div
                   key={feat.title}
-                  className="flex h-full items-center gap-3.5 rounded-2xl border border-slate-200/90 bg-white p-4 text-left shadow-sm transition hover:border-indigo-300 hover:shadow-md"
+                  className="group flex h-full items-center gap-3.5 rounded-2xl border border-slate-200/90 bg-white p-4 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md"
                 >
                   <div
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border ${feat.iconBg}`}
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-200 group-hover:scale-105 ${feat.iconBg}`}
                   >
                     <Icon className="h-5 w-5 stroke-[2.5]" />
                   </div>

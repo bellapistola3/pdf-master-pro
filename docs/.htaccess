@@ -1,37 +1,45 @@
-# PDFDaVinci.com — Оптимизиран .htaccess за cPanel / Apache / LiteSpeed хостинг
+# PDFDaVinci.com — Hardened Production .htaccess (HTTPS, HSTS, CSP & Performance)
 Options -MultiViews -Indexes
 RewriteEngine On
 
-# 1. Принудително HTTPS криптиране
+# 1. Force 301 Permanent Redirect to HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 2. Чисти SEO маршрути и коректна 404 страница
+# 2. Enterprise Security Headers (HSTS, Anti-Clickjacking, XSS & MIME Protection)
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+</IfModule>
+
+# 3. Clean SEO Routes & Custom 404 Error Document
 ErrorDocument 404 /404.html
 
-# Ако заявката съответства на папка с index.html
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_FILENAME}/index.html -f
 RewriteRule ^(.*)$ $1/index.html [L]
 
-# Ако заявката е без наклонена черта, но има съответна директория с index.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}/index.html -f
 RewriteRule ^(.+?)/?$ $1/index.html [L]
 
-# 3. Коректни MIME типове за Web Worker и модерни асети
+# 4. Proper MIME Types for Web Workers & Vector Assets
 <IfModule mod_mime.c>
   AddType application/javascript .js .mjs
   AddType application/xml .xml
   AddType image/svg+xml .svg
 </IfModule>
 
-# 4. GZIP / Deflate компресия за 98-100 Google PageSpeed
+# 5. GZIP / Deflate Compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
 </IfModule>
 
-# 5. Browser Caching за Core Web Vitals
+# 6. Browser Caching for Core Web Vitals
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/html "access plus 0 seconds"

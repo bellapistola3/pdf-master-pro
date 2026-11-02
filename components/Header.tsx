@@ -88,8 +88,8 @@ export default function Header({ hasLoadedFile = false, onResetFile }: HeaderPro
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
             </span>
             <ShieldCheck className="h-4 w-4 text-emerald-400" />
-            <span className="hidden sm:inline">🔒 100% Local RAM Mode</span>
-            <span className="sm:hidden">🔒 Local RAM</span>
+            <span className="hidden sm:inline">100% Local RAM Mode</span>
+            <span className="sm:hidden">Local RAM</span>
           </div>
 
           {hasLoadedFile && onResetFile && (

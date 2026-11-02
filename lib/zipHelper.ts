@@ -1,7 +1,7 @@
 'use client';
 
 import JSZip from 'jszip';
-import type { RenderedPage } from './pdfEngine';
+import { sanitizeFileName, type RenderedPage } from './pdfEngine';
 
 /**
  * Packages all rendered pages from RAM into a compressed .ZIP archive
@@ -12,7 +12,8 @@ export async function generateImagesZipBlob(
   includeExtractedTextFile: boolean = true
 ): Promise<Blob> {
   const zip = new JSZip();
-  const baseName = originalFileName.replace(/\.pdf$/i, '') || 'pdfdavinci-document';
+  const safeOriginal = sanitizeFileName(originalFileName);
+  const baseName = safeOriginal.replace(/\.pdf$/i, '') || 'pdfdavinci-document';
   const imagesFolder = zip.folder(`${baseName}-images`);
 
   if (!imagesFolder) {

@@ -39,17 +39,58 @@ async function getPdfJs() {
 }
 
 /**
+ * Sanitizes any user-supplied filename to prevent path traversal, Zip-Slip, or XSS injection
+ */
+export function sanitizeFileName(rawName: string): string {
+  const cleaned = rawName
+    .replace(/[/\\?%*:|"<>]/g, '-')
+    .replace(/\.\.+/g, '.')
+    .replace(/[\x00-\x1f\x80-\x9f]/g, '')
+    .trim();
+  return cleaned.length > 0 ? cleaned.slice(0, 120) : 'pdfdavinci-document.pdf';
+}
+
+/**
+ * Verifies authentic PDF Magic Bytes (%PDF-) within the first 1024 bytes of the file buffer
+ */
+export function verifyPdfMagicBytes(buffer: ArrayBuffer): boolean {
+  const headerBytes = new Uint8Array(buffer, 0, Math.min(buffer.byteLength, 1024));
+  // %PDF- in ASCII is [0x25, 0x50, 0x44, 0x46, 0x2D]
+  for (let i = 0; i <= headerBytes.length - 5; i++) {
+    if (
+      headerBytes[i] === 0x25 &&
+      headerBytes[i + 1] === 0x50 &&
+      headerBytes[i + 2] === 0x44 &&
+      headerBytes[i + 3] === 0x46 &&
+      headerBytes[i + 4] === 0x2d
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
  * Loads a PDF file into browser RAM and returns the PDF document instance
  */
 export async function loadPdfFromRam(file: File) {
   const pdfjs = await getPdfJs();
   const arrayBuffer = await file.arrayBuffer();
+
+  if (!verifyPdfMagicBytes(arrayBuffer)) {
+    throw new Error(
+      'Security check failed: The selected file does not contain a valid %PDF header signature.'
+    );
+  }
+
   const typedArray = new Uint8Array(arrayBuffer);
 
   const loadingTask = pdfjs.getDocument({
     data: typedArray,
     cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
     cMapPacked: true,
+    isEvalSupported: false,
+    enableXfa: false,
   });
 
   const pdfDoc = await loadingTask.promise;
@@ -194,7 +235,7 @@ export async function processPdfInRam(
 
   return {
     meta: {
-      fileName: file.name,
+      fileName: sanitizeFileName(file.name),
       fileSize: file.size,
       pageCount: totalPages,
     },

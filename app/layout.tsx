@@ -78,14 +78,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Force HTTPS Upgrade for all resources and instant redirect from HTTP to HTTPS */}
-        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+        {/* Hardened Security Meta Policies (CSP, Nosniff, Referrer, Permissions & HTTPS Upgrade) */}
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: blob:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https: blob: data:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
+        />
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <meta
+          httpEquiv="Permissions-Policy"
+          content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                if (typeof window !== 'undefined' && window.location.protocol === 'http:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-                  window.location.replace('https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash);
+                if (typeof window !== 'undefined') {
+                  if (window.location.protocol === 'http:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                    window.location.replace('https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash);
+                  }
+                  if (window.top && window.top !== window.self) {
+                    try { window.top.location.replace(window.self.location.href); } catch (e) {}
+                  }
                 }
               })();
             `,

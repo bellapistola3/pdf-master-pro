@@ -96,7 +96,7 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
     h1: 'Ultra-Fast & 100% Private Online PDF Converter',
     heroSubtitle:
       'Transform your PDF files into high-resolution JPG images (ZIP), editable Microsoft Word (.doc) documents, or clean plain text (.txt) directly inside your browser RAM — zero servers, zero queues, zero privacy risk.',
-    badgeText: '🔒 100% Client-Side RAM Architecture • Zero Server Uploads',
+    badgeText: '100% Client-Side RAM Architecture • Zero Server Uploads',
     valueChecks: [
       '100% Free Forever — No Credit Card or Trial Trap',
       '100% Local RAM Mode — Files Never Leave Your Device',
@@ -191,7 +191,7 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
     h1: 'Convert PDF to High-Resolution JPG Images Online',
     heroSubtitle:
       'Turn every page of your PDF document into a crystal-clear, high-resolution JPG image. Download individual pages with one click or export the entire document as a ready-to-use ZIP archive — 100% locally in your browser.',
-    badgeText: '🖼️ 2.0x HiDPI Canvas Rendering • Instant ZIP Packaging',
+    badgeText: '2.0x HiDPI Canvas Rendering • Instant ZIP Packaging',
     valueChecks: [
       '2.0x Supersampled HiDPI Resolution (Crystal-Clear Text)',
       '1-Click Batch .ZIP Download or Single Page .JPG Save',
@@ -274,7 +274,7 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
     h1: 'Convert PDF to Editable Word (.DOC) — Free & No Email Required',
     heroSubtitle:
       'Extract your PDF content into a structured, ready-to-edit Microsoft Word (.doc) document with preserved paragraphs and page breaks — processed 100% locally inside your browser.',
-    badgeText: '📝 Direct Microsoft Word (.DOC) Export • Full UTF-8 Typography',
+    badgeText: 'Direct Microsoft Word (.DOC) Export • Full UTF-8 Typography',
     valueChecks: [
       'Compatible with Microsoft Word, Google Docs & LibreOffice',
       'Reconstructs Natural Paragraphs & Page Section Breaks',
@@ -356,7 +356,7 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
     h1: 'Extract Clean Plain Text from PDF Online (PDF to TXT)',
     heroSubtitle:
       'Pull all readable text from your PDF document with accurate line and page organization. Edit live in your browser, copy to clipboard with one click, or download as a clean .txt file.',
-    badgeText: '⚡ Coordinate-Aware Text Parser • 1-Click Clipboard Copy',
+    badgeText: 'Coordinate-Aware Text Parser • 1-Click Clipboard Copy',
     valueChecks: [
       'Coordinate-Aware Line & Paragraph Reconstruction',
       'Live In-Browser Editor with Word & Character Counters',

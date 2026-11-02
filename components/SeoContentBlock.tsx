@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import {
+  ArrowRight,
   Award,
   CheckCircle2,
   Cpu,
@@ -8,6 +9,7 @@ import {
   FileText,
   FileType2,
   HelpCircle,
+  Layers,
   ListOrdered,
   Lock,
   Scale,
@@ -17,105 +19,110 @@ import {
 } from 'lucide-react';
 import type { PageSeoData } from '@/lib/seoConfig';
 import AdBanner from './ads/AdBanner';
+import InteractivePipelineStudio from './InteractivePipelineStudio';
 
 interface SeoContentBlockProps {
   pageData: PageSeoData;
 }
 
+const specializedToolCards = [
+  {
+    href: '/',
+    badge: 'ALL-IN-ONE STUDIO',
+    title: 'All-in-One PDF Converter',
+    description:
+      'Switch seamlessly between JPG, Word, Text, and Page Inspector in one unified workspace.',
+    icon: Layers,
+    iconStyle:
+      'bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/25',
+    badgeStyle: 'bg-indigo-50 text-indigo-700 border-indigo-200/80',
+    hoverBorder: 'hover:border-indigo-400',
+  },
+  {
+    href: '/pdf-to-jpg',
+    badge: '300 DPI RASTER',
+    title: 'PDF to High-Res JPG (ZIP)',
+    description:
+      'Render every PDF page at 2.0x Retina resolution and download all images in a single ZIP archive.',
+    icon: FileImage,
+    iconStyle:
+      'bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/25',
+    badgeStyle: 'bg-amber-50 text-amber-800 border-amber-200/80',
+    hoverBorder: 'hover:border-amber-400',
+  },
+  {
+    href: '/pdf-to-word',
+    badge: 'EDITABLE .DOC',
+    title: 'PDF to Editable Word (.DOC)',
+    description:
+      'Reconstruct paragraphs, headings, and page breaks for Microsoft Word, Google Docs & LibreOffice.',
+    icon: FileType2,
+    iconStyle:
+      'bg-gradient-to-br from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/25',
+    badgeStyle: 'bg-blue-50 text-blue-700 border-blue-200/80',
+    hoverBorder: 'hover:border-blue-400',
+  },
+  {
+    href: '/pdf-to-text',
+    badge: 'UTF-8 EXTRACTOR',
+    title: 'Extract PDF to Text (.TXT)',
+    description:
+      'Extract clean, coordinate-sorted UTF-8 plain text with instant live editing and 1-click copy.',
+    icon: FileText,
+    iconStyle:
+      'bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/25',
+    badgeStyle: 'bg-emerald-50 text-emerald-800 border-emerald-200/80',
+    hoverBorder: 'hover:border-emerald-400',
+  },
+];
+
 export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
   return (
     <article className="mx-auto mt-12 w-full max-w-[1440px] px-4 sm:px-8 lg:px-12">
-      {/* SECTION 1: 2-Column "How It Works" with 100% Equal-Height Stretched Alignment */}
+      {/* SECTION 1: 2-Column "How It Works" with Interactive Studio Window & Equal-Height Steps */}
       <section
         aria-labelledby="howto-heading"
         className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-10"
       >
-        <div className="mb-8">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3.5 py-1 text-xs font-extrabold text-indigo-700">
-            <ListOrdered className="h-3.5 w-3.5" />
-            Step-by-Step User Guide
+        <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200/80 bg-indigo-50 px-3.5 py-1 text-xs font-extrabold text-indigo-700">
+              <ListOrdered className="h-3.5 w-3.5" />
+              Interactive Step-by-Step Guide
+            </div>
+            <h2
+              id="howto-heading"
+              className="mt-2.5 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
+            >
+              {pageData.howToTitle}
+            </h2>
           </div>
-          <h2
-            id="howto-heading"
-            className="mt-2.5 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
-          >
-            {pageData.howToTitle}
-          </h2>
+          <div className="inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50/80 px-4 py-2 text-xs font-extrabold text-emerald-800">
+            <ShieldCheck className="h-4 w-4 text-emerald-600" />
+            <span>100% Client-Side RAM • Zero Cloud Latency</span>
+          </div>
         </div>
 
-        {/* items-stretch guarantees Left Dark Card and Right 3-Step Stack share exact top & bottom edges */}
+        {/* items-stretch guarantees Left Interactive Studio and Right 3-Step Stack share exact top & bottom edges */}
         <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12">
-          {/* Left Column: Full-Height Stretched Visual RAM Pipeline Card */}
-          <div className="flex h-full flex-col justify-between rounded-2xl border border-indigo-900 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-6 text-white shadow-xl sm:p-8 lg:col-span-5">
-            <div className="flex items-center justify-between border-b border-indigo-800/70 pb-4">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-amber-300">
-                ⚡ In-Memory RAM Pipeline
-              </span>
-              <span className="rounded-full border border-emerald-400/30 bg-emerald-500/20 px-3 py-1 text-xs font-extrabold text-emerald-300">
-                0 Bytes Uploaded
-              </span>
-            </div>
+          {/* Left Column: Interactive Live Format Preview & Quick-Launch Studio */}
+          <InteractivePipelineStudio />
 
-            <div className="my-6 space-y-5">
-              {/* Source PDF Box */}
-              <div className="flex items-center justify-between rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                <div className="flex items-center gap-3.5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-sm font-black text-slate-950 shadow-md">
-                    PDF
-                  </div>
-                  <div>
-                    <p className="text-sm font-extrabold text-white">Your Local PDF File</p>
-                    <p className="text-xs text-indigo-200">
-                      Parsed directly inside browser volatile RAM
-                    </p>
-                  </div>
-                </div>
-                <Lock className="h-5 w-5 shrink-0 text-emerald-400" />
-              </div>
-
-              {/* Arrow Indicator */}
-              <div className="flex items-center justify-center gap-2 py-1 text-xs font-extrabold uppercase tracking-wider text-amber-300">
-                <span>↓ Mozilla PDF.js Web Worker Engine ↓</span>
-              </div>
-
-              {/* 3 Output Formats Grid */}
-              <div className="grid grid-cols-3 gap-3 text-center">
-                <div className="rounded-xl border border-indigo-400/30 bg-indigo-900/50 p-3.5">
-                  <FileImage className="mx-auto mb-1.5 h-6 w-6 text-amber-300" />
-                  <p className="text-xs font-extrabold text-white">.JPG / .ZIP</p>
-                  <p className="mt-0.5 text-[11px] text-indigo-200">2.0x HiDPI</p>
-                </div>
-                <div className="rounded-xl border border-indigo-400/30 bg-indigo-900/50 p-3.5">
-                  <FileType2 className="mx-auto mb-1.5 h-6 w-6 text-cyan-300" />
-                  <p className="text-xs font-extrabold text-white">.DOC Word</p>
-                  <p className="mt-0.5 text-[11px] text-indigo-200">Editable</p>
-                </div>
-                <div className="rounded-xl border border-indigo-400/30 bg-indigo-900/50 p-3.5">
-                  <FileText className="mx-auto mb-1.5 h-6 w-6 text-emerald-300" />
-                  <p className="text-xs font-extrabold text-white">.TXT File</p>
-                  <p className="mt-0.5 text-[11px] text-indigo-200">Clean UTF-8</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between border-t border-indigo-800/70 pt-4 text-xs text-indigo-200">
-              <span>Hardware-Accelerated 2D Canvas</span>
-              <span className="font-bold text-emerald-300">✓ 100% Client-Side</span>
-            </div>
-          </div>
-
-          {/* Right Column: 3 Equal-Flex Steps Aligned Top-to-Bottom with Left Card */}
+          {/* Right Column: 3 Equal-Flex Steps Aligned Top-to-Bottom with Left Interactive Studio */}
           <div className="flex h-full flex-col justify-between gap-4 lg:col-span-7">
             {pageData.howToSteps.map((step, index) => (
               <div
                 key={step.name}
                 id={`step-${index + 1}`}
-                className="flex flex-1 items-center gap-5 rounded-2xl border border-slate-200/90 bg-slate-50/80 p-5 transition hover:border-indigo-300 hover:bg-white hover:shadow-md sm:p-6"
+                className="group flex flex-1 items-start gap-5 rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white to-slate-50/90 p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md sm:items-center sm:p-6"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 text-lg font-black text-white shadow-md shadow-indigo-600/25">
-                  {index + 1}
+                <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/25 transition-transform group-hover:scale-105">
+                  <span className="text-[9px] font-extrabold uppercase tracking-widest text-indigo-200">
+                    STEP
+                  </span>
+                  <span className="text-lg font-black leading-none">0{index + 1}</span>
                 </div>
-                <div>
+                <div className="flex-1">
                   <h3 className="text-base font-extrabold text-slate-900 sm:text-lg">
                     {step.name}
                   </h3>
@@ -163,7 +170,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
           {pageData.reviews.map((rev) => (
             <div
               key={rev.title}
-              className="flex h-full flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm"
+              className="flex h-full flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm transition hover:border-indigo-200 hover:shadow-md"
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">
@@ -174,7 +181,9 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
                     <Star className="h-4 w-4 fill-emerald-500 text-emerald-500" />
                     <Star className="h-4 w-4 fill-emerald-500 text-emerald-500" />
                   </div>
-                  <span className="text-xs font-bold text-emerald-700">{rev.date}</span>
+                  <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700">
+                    {rev.date}
+                  </span>
                 </div>
 
                 <h3 className="text-base font-extrabold text-slate-900">{rev.title}</h3>
@@ -195,7 +204,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
       {/* SLOT C (In-Article AdSense): Between Reviews and Security Banner */}
       <AdBanner slotId="3344556677" variant="in-article" />
 
-      {/* SECTION 3: Wide, Spacious Zero-Server Security Compliance Banner (Fixed Layout!) */}
+      {/* SECTION 3: Wide, Spacious Zero-Server Security Compliance Banner */}
       <section
         aria-label="Security & Privacy Certifications"
         className="mt-10 rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 p-6 text-white shadow-xl sm:p-10"
@@ -203,27 +212,28 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/15 px-3.5 py-1 text-xs font-extrabold text-emerald-300">
             <ShieldCheck className="h-4 w-4" />
-            Zero-Server Privacy Architecture
+            Hardened Zero-Server Privacy & Security Architecture
           </div>
           <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
             Your Confidential Files Never Leave Your Device
           </h2>
           <p className="mt-2.5 text-sm leading-relaxed text-slate-300 sm:text-base">
             Unlike cloud PDF converters that store your documents for 48 hours on external servers,
-            PDFDaVinci processes 100% of your files locally inside your browser’s volatile RAM.
-            Closing your tab immediately purges all memory.
+            PDFDaVinci processes 100% of your files locally inside your browser’s volatile RAM with
+            strict Content-Security-Policy (CSP), Magic-Byte PDF signature verification, and
+            disabled script evaluation. Closing your tab immediately purges all memory.
           </p>
         </div>
 
-        {/* 4 Wide, Spacious Horizontal Security Cards — Zero Cramping or Text Wrapping */}
+        {/* 4 Wide, Spacious Horizontal Security Cards */}
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
               <Lock className="h-6 w-6" />
             </div>
             <div>
-              <div className="text-base font-extrabold text-white">256-Bit SSL</div>
-              <div className="text-xs font-medium text-slate-300">HTTPS Encrypted</div>
+              <div className="text-base font-extrabold text-white">256-Bit SSL & CSP</div>
+              <div className="text-xs font-medium text-slate-300">HTTPS & XSS Protected</div>
             </div>
           </div>
 
@@ -243,7 +253,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
             </div>
             <div>
               <div className="text-base font-extrabold text-white">GDPR & CCPA</div>
-              <div className="text-xs font-medium text-slate-300">Full Privacy Compliance</div>
+              <div className="text-xs font-medium text-slate-300">Magic-Byte File Check</div>
             </div>
           </div>
 
@@ -259,10 +269,13 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
         </div>
       </section>
 
-      {/* SECTION 4: In-Depth SEO Articles & Technical Advantages */}
-      <section className="mt-10 space-y-8 rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-10">
+      {/* SECTION 4: In-Depth SEO Articles, Elevated Feature Cards & Redesigned Tool Showcase */}
+      <section className="mt-10 space-y-10 rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-10">
         {pageData.articleSections.map((section) => (
-          <div key={section.heading} className="border-b border-slate-100 pb-8 last:border-none last:pb-0">
+          <div
+            key={section.heading}
+            className="border-b border-slate-100 pb-8 last:border-none last:pb-0"
+          >
             <h2 className="text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">
               {section.heading}
             </h2>
@@ -273,14 +286,16 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
             </div>
 
             {section.bullets && section.bullets.length > 0 && (
-              <ul className="mt-5 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+              <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {section.bullets.map((bullet) => (
                   <li
                     key={bullet}
-                    className="flex items-start gap-3 rounded-xl border border-slate-200/70 bg-slate-50/80 p-4 text-sm font-medium text-slate-700"
+                    className="flex items-start gap-3.5 rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white to-slate-50/90 p-4 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-indigo-300 hover:shadow-md"
                   >
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-                    <span>{bullet}</span>
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-600">
+                      <CheckCircle2 className="h-4 w-4" />
+                    </div>
+                    <span className="leading-relaxed">{bullet}</span>
                   </li>
                 ))}
               </ul>
@@ -288,37 +303,63 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
           </div>
         ))}
 
-        {/* Internal SEO Silo Links */}
-        <div className="rounded-2xl bg-gradient-to-r from-indigo-50 via-slate-50 to-violet-50 p-6 ring-1 ring-indigo-100">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-700">
-            <Sparkles className="h-4 w-4" />
-            Explore All Specialized Tools on PDFDaVinci.com
+        {/* Redesigned Interactive SaaS Tool Cards ("Explore All Specialized Tools on PDFDaVinci.com") */}
+        <div className="rounded-3xl border border-indigo-100 bg-gradient-to-br from-slate-50 via-indigo-50/40 to-violet-50/40 p-6 sm:p-8">
+          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/80 bg-white px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-indigo-700 shadow-sm">
+                <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
+                Explore All Specialized Tools on PDFDaVinci.com
+              </div>
+              <h3 className="mt-2.5 text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">
+                Choose Your Dedicated Local RAM PDF Studio
+              </h3>
+            </div>
+            <span className="text-xs font-bold text-slate-500">
+              4 Instant Conversion Modes • 100% Free
+            </span>
           </div>
-          <div className="mt-4 grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
-            <Link
-              href="/"
-              className="rounded-xl bg-white p-4 text-xs font-extrabold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:ring-indigo-400"
-            >
-              ⚡ All-in-One PDF Converter →
-            </Link>
-            <Link
-              href="/pdf-to-jpg"
-              className="rounded-xl bg-white p-4 text-xs font-extrabold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:ring-indigo-400"
-            >
-              🖼️ High-Res PDF to JPG (ZIP) →
-            </Link>
-            <Link
-              href="/pdf-to-word"
-              className="rounded-xl bg-white p-4 text-xs font-extrabold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:ring-indigo-400"
-            >
-              📝 Editable PDF to Word (.DOC) →
-            </Link>
-            <Link
-              href="/pdf-to-text"
-              className="rounded-xl bg-white p-4 text-xs font-extrabold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:ring-indigo-400"
-            >
-              📄 Extract PDF to Text (.TXT) →
-            </Link>
+
+          <div className="mt-6 grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {specializedToolCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <Link
+                  key={card.href}
+                  href={card.href}
+                  className={`group flex h-full flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${card.hoverBorder}`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2">
+                      <div
+                        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl transition-transform duration-200 group-hover:scale-105 ${card.iconStyle}`}
+                      >
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <span
+                        className={`rounded-full border px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${card.badgeStyle}`}
+                      >
+                        {card.badge}
+                      </span>
+                    </div>
+
+                    <h4 className="mt-4 text-base font-extrabold text-slate-900 group-hover:text-indigo-600">
+                      {card.title}
+                    </h4>
+                    <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                      {card.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-3.5 text-xs font-extrabold text-indigo-600">
+                    <span>Launch Studio</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-50 text-indigo-600 transition-all group-hover:bg-indigo-600 group-hover:text-white">
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -348,7 +389,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
               key={faq.question}
               className="group rounded-2xl border border-slate-200 bg-slate-50/60 p-5 transition open:border-indigo-200 open:bg-white open:shadow-sm"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-bold text-slate-900">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-bold text-slate-900 focus:outline-none">
                 <span>{faq.question}</span>
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-indigo-600 transition group-open:rotate-45">
                   +
@@ -391,9 +432,10 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
           <div className="mt-6 border-t border-slate-100 pt-4">
             <Link
               href="/about"
-              className="text-xs font-extrabold text-indigo-600 hover:text-indigo-800"
+              className="inline-flex items-center gap-1.5 text-xs font-extrabold text-indigo-600 hover:text-indigo-800"
             >
-              Read Full About Us & Engineering Architecture →
+              <span>Read Full About Us & Engineering Architecture</span>
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
@@ -416,12 +458,20 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
             </p>
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-slate-100 pt-4 text-xs font-extrabold">
-            <Link href="/terms" className="text-indigo-600 hover:text-indigo-800">
-              Read Full Terms of Service →
+            <Link
+              href="/terms"
+              className="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800"
+            >
+              <span>Read Full Terms of Service</span>
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
             <span className="text-slate-300">•</span>
-            <Link href="/privacy" className="text-emerald-700 hover:text-emerald-900">
-              Read Privacy & GDPR Policy →
+            <Link
+              href="/privacy"
+              className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-900"
+            >
+              <span>Read Privacy & GDPR Policy</span>
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>

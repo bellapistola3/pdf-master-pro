@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { FileUp, Lock, ShieldCheck, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { FileUp, Lock, ShieldCheck, AlertCircle, CheckCircle2, Zap } from 'lucide-react';
 import DemoFileButton from './DemoFileButton';
+import { verifyPdfMagicBytes } from '@/lib/pdfEngine';
 
 interface DropzoneProps {
   onFileSelected: (file: File) => void;
@@ -14,7 +15,7 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
   const [isDragging, setIsDragging] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const validateAndSelectFile = (file: File | undefined) => {
+  const validateAndSelectFile = async (file: File | undefined) => {
     if (!file) return;
     setErrorMsg(null);
 
@@ -22,8 +23,20 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
       file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
 
     if (!isPdf) {
-      setErrorMsg('Please select a valid PDF document (.pdf).');
+      setErrorMsg('Security Alert: Please select a valid PDF document (.pdf).');
       return;
+    }
+
+    try {
+      const headerSlice = await file.slice(0, 1024).arrayBuffer();
+      if (!verifyPdfMagicBytes(headerSlice)) {
+        setErrorMsg(
+          'Security Alert: This file does not have a valid %PDF binary signature and was blocked.'
+        );
+        return;
+      }
+    } catch {
+      // Allow fallback to main engine check if slice fails
     }
 
     onFileSelected(file);
@@ -72,8 +85,9 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
               Instant Local RAM PDF Studio
             </span>
           </div>
-          <span className="text-xs font-bold text-indigo-600">
-            ⚡ Zero Cloud Wait • Unlimited Pages & File Size
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600">
+            <Zap className="h-3.5 w-3.5 text-amber-500" />
+            <span>Zero Cloud Wait • Magic-Byte Verified • Unlimited Pages</span>
           </span>
         </div>
 
