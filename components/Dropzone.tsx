@@ -62,19 +62,18 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
   };
 
   return (
-    <div id="converter-dropzone" className="mx-auto w-full max-w-4xl">
-      {/* Outer Elevated Frame (PDFAid-style Double Card Architecture) */}
-      <div className="rounded-[28px] border border-slate-200/90 bg-white p-3.5 shadow-2xl shadow-indigo-950/10 sm:p-5">
-        {/* Top Header Bar inside outer frame */}
-        <div className="mb-3 flex flex-wrap items-center justify-between gap-2 px-2">
-          <div className="flex items-center gap-2">
+    <div id="converter-dropzone" className="mx-auto w-full">
+      {/* Wide Double-Framed Card Container */}
+      <div className="rounded-[28px] border border-slate-200/90 bg-white p-4 shadow-2xl shadow-indigo-950/10 sm:p-6">
+        <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2 px-2">
+          <div className="flex items-center gap-2.5">
             <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
             <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700">
-              Upload Your PDF Document
+              Instant Local RAM PDF Studio
             </span>
           </div>
-          <span className="text-xs font-semibold text-indigo-600">
-            ⚡ Instant RAM Processing • Unlimited File Size
+          <span className="text-xs font-bold text-indigo-600">
+            ⚡ Zero Cloud Wait • Unlimited Pages & File Size
           </span>
         </div>
 
@@ -93,9 +92,9 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
               fileInputRef.current?.click();
             }
           }}
-          className={`group relative cursor-pointer rounded-2xl border-2 border-dashed px-6 py-9 text-center transition-all duration-200 sm:px-12 sm:py-12 ${
+          className={`group relative cursor-pointer rounded-2xl border-2 border-dashed px-6 py-10 text-center transition-all duration-200 sm:px-14 sm:py-14 ${
             isDragging
-              ? 'scale-[1.01] border-indigo-600 bg-indigo-50/90 shadow-inner'
+              ? 'scale-[1.005] border-indigo-600 bg-indigo-50/90 shadow-inner'
               : 'border-indigo-300 bg-gradient-to-b from-slate-50/90 to-indigo-50/30 hover:border-indigo-500 hover:bg-indigo-50/40'
           }`}
         >
@@ -107,7 +106,7 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
             className="hidden"
           />
 
-          {/* Multi-Layered Custom Vector Illustration (PDF Page + Cloud + Arrow + Sparkles) */}
+          {/* Multi-Layered Custom Vector Illustration */}
           <div className="mx-auto mb-5 flex h-24 w-28 items-center justify-center transition-transform duration-200 group-hover:scale-105">
             <svg
               viewBox="0 0 120 96"
@@ -116,9 +115,7 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
               className="h-full w-full drop-shadow-md"
               aria-hidden="true"
             >
-              {/* Background soft glow circle */}
               <circle cx="60" cy="48" r="42" fill="#EEF2FF" />
-              {/* Left tilted card */}
               <rect
                 x="22"
                 y="22"
@@ -130,7 +127,6 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
                 stroke="#818CF8"
                 strokeWidth="1.5"
               />
-              {/* Right tilted card */}
               <rect
                 x="62"
                 y="18"
@@ -142,7 +138,6 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
                 stroke="#F59E0B"
                 strokeWidth="1.5"
               />
-              {/* Main Center PDF Document */}
               <rect
                 x="38"
                 y="12"
@@ -153,7 +148,6 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
                 stroke="#4F46E5"
                 strokeWidth="2.2"
               />
-              {/* PDF Red/Indigo Header Badge */}
               <rect x="45" y="20" width="22" height="10" rx="3" fill="#4F46E5" />
               <text
                 x="48.5"
@@ -165,11 +159,9 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
               >
                 PDF
               </text>
-              {/* Document lines */}
               <line x1="45" y1="37" x2="75" y2="37" stroke="#CBD5E1" strokeWidth="2.2" strokeLinecap="round" />
               <line x1="45" y1="44" x2="71" y2="44" stroke="#CBD5E1" strokeWidth="2.2" strokeLinecap="round" />
               <line x1="45" y1="51" x2="65" y2="51" stroke="#CBD5E1" strokeWidth="2.2" strokeLinecap="round" />
-              {/* Foreground Upload Circle Badge */}
               <circle cx="60" cy="68" r="16" fill="#4F46E5" stroke="#FFFFFF" strokeWidth="3" />
               <path
                 d="M60 74V62M60 62L55 67M60 62L65 67"
@@ -178,25 +170,24 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              {/* Sparkle Accents */}
               <circle cx="24" cy="18" r="2.5" fill="#F59E0B" />
               <circle cx="96" cy="24" r="3" fill="#4F46E5" />
               <circle cx="92" cy="68" r="2.5" fill="#10B981" />
             </svg>
           </div>
 
-          <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+          <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
             Drop PDF files here
           </h2>
 
-          <p className="mx-auto mt-1.5 max-w-lg text-sm font-medium text-slate-500">
-            Convert to <strong className="text-slate-700">High-Res JPG (ZIP)</strong>,{' '}
-            <strong className="text-slate-700">Editable Word (.DOC)</strong>, or{' '}
-            <strong className="text-slate-700">Plain Text (.TXT)</strong> in seconds
+          <p className="mx-auto mt-2 max-w-xl text-sm font-medium text-slate-600 sm:text-base">
+            Convert to <strong className="text-slate-900">High-Res JPG (ZIP)</strong>,{' '}
+            <strong className="text-slate-900">Editable Word (.DOC)</strong>, or{' '}
+            <strong className="text-slate-900">Plain Text (.TXT)</strong> in seconds
           </p>
 
-          {/* PDFAid-style "────── OR ──────" Divider */}
-          <div className="mx-auto my-5 flex max-w-xs items-center justify-center gap-3">
+          {/* "────── OR ──────" Divider */}
+          <div className="mx-auto my-6 flex max-w-sm items-center justify-center gap-4">
             <span className="h-px flex-1 bg-slate-300/80" />
             <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400">
               OR
@@ -205,7 +196,7 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
           </div>
 
           {/* Primary CTA Buttons */}
-          <div className="flex flex-col items-center justify-center gap-3.5 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <button
               type="button"
               onClick={(e) => {
@@ -213,7 +204,7 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
                 if (!isProcessing) fileInputRef.current?.click();
               }}
               disabled={isProcessing}
-              className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-indigo-600/30 transition hover:from-indigo-700 hover:to-violet-700 active:scale-[0.99] sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-9 py-4 text-base font-extrabold text-white shadow-lg shadow-indigo-600/30 transition hover:from-indigo-700 hover:to-violet-700 active:scale-[0.99] sm:w-auto"
             >
               <FileUp className="h-5 w-5" />
               <span>Select PDF File</span>
@@ -223,16 +214,16 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
           </div>
 
           {/* Security & Trust Pills */}
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3 text-xs font-semibold text-slate-600">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 shadow-sm ring-1 ring-slate-200/90">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5 text-xs font-bold text-slate-700">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200/90">
               <ShieldCheck className="h-4 w-4 text-emerald-600" />
               No Cloud Uploads (100% RAM)
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 shadow-sm ring-1 ring-slate-200/90">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200/90">
               <Lock className="h-4 w-4 text-indigo-600" />
               256-Bit SSL & GDPR Ready
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 shadow-sm ring-1 ring-slate-200/90">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200/90">
               <CheckCircle2 className="h-4 w-4 text-amber-500" />
               100% Free • No Email or Card
             </span>

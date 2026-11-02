@@ -123,7 +123,7 @@ export default function ConversionPanels({
     .filter(Boolean).length;
 
   return (
-    <div className="mx-auto w-full max-w-5xl">
+    <div className="mx-auto w-full">
       {/* PANEL 1: PDF TO JPG (ZIP) */}
       {activeFormat === 'jpg' && (
         <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-md sm:p-8">

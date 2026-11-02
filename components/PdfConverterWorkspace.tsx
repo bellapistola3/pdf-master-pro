@@ -20,10 +20,14 @@ import {
 } from '@/lib/pdfEngine';
 import {
   AlertTriangle,
-  CheckCircle2,
+  Check,
   ChevronRight,
+  Cpu,
   FileUp,
   Home,
+  Laptop,
+  ShieldCheck,
+  Sparkles,
   Star,
 } from 'lucide-react';
 
@@ -106,18 +110,46 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
 
   const hasLoadedFile = Boolean(meta && pages.length > 0);
 
+  // Uniform 4 feature cards with identical 1-line title + 1-line subtitle structure
+  const uniformHeroFeatures = [
+    {
+      title: '100% Free Forever',
+      subtitle: 'No credit card or trial trap',
+      icon: Check,
+      iconBg: 'bg-emerald-500/15 text-emerald-600 border-emerald-200',
+    },
+    {
+      title: '100% Local RAM Mode',
+      subtitle: 'Files never leave your device',
+      icon: ShieldCheck,
+      iconBg: 'bg-indigo-500/15 text-indigo-600 border-indigo-200',
+    },
+    {
+      title: '2.0x HiDPI Quality',
+      subtitle: 'Preserves original layout & fonts',
+      icon: Sparkles,
+      iconBg: 'bg-amber-500/15 text-amber-600 border-amber-200',
+    },
+    {
+      title: 'Works on All Devices',
+      subtitle: 'Windows, Mac, iOS & Android',
+      icon: Laptop,
+      iconBg: 'bg-violet-500/15 text-violet-600 border-violet-200',
+    },
+  ];
+
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-slate-50 via-white to-slate-100/70 text-slate-900">
       <Header hasLoadedFile={hasLoadedFile} onResetFile={handleResetFile} />
 
       <main className="flex-1 pb-20">
-        {/* Hero Header Section */}
-        <section className="mx-auto max-w-5xl px-4 pt-6 text-center sm:px-6 sm:pt-10">
-          {/* Subpage Breadcrumb Navigation (PDFAid-style) */}
+        {/* Full-Width Hero Header Section */}
+        <section className="mx-auto w-full max-w-[1440px] px-4 pt-8 text-center sm:px-8 sm:pt-10 lg:px-12">
+          {/* Subpage Breadcrumb Navigation */}
           {pageData.slug !== '/' && (
             <nav
               aria-label="Breadcrumb"
-              className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3.5 py-1 text-xs font-semibold text-slate-600"
+              className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-4 py-1.5 text-xs font-semibold text-slate-600"
             >
               <Link href="/" className="inline-flex items-center gap-1 hover:text-indigo-600">
                 <Home className="h-3.5 w-3.5" />
@@ -129,13 +161,14 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
           )}
 
           {/* Top Trust & Rating Pill */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5">
-            <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/80 bg-indigo-50/90 px-4 py-1.5 text-xs font-bold text-indigo-800 shadow-sm">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs font-extrabold text-indigo-800 shadow-sm">
+              <Cpu className="h-3.5 w-3.5 text-indigo-600" />
               <span>{pageData.badgeText}</span>
             </div>
 
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50/90 px-3.5 py-1.5 text-xs font-extrabold text-emerald-900 shadow-sm">
-              <div className="flex items-center text-amber-500">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-xs font-extrabold text-emerald-900 shadow-sm">
+              <div className="flex items-center gap-0.5 text-amber-500">
                 <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-500" />
                 <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-500" />
                 <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-500" />
@@ -143,38 +176,58 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
                 <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-500" />
               </div>
               <span>4.9 / 5</span>
-              <span className="font-medium text-emerald-700">(2,840+ Users)</span>
+              <span className="font-semibold text-emerald-700">(2,840+ Verified Users)</span>
             </div>
           </div>
 
-          <h1 className="mx-auto mt-4 max-w-4xl text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl sm:leading-[1.13]">
+          <h1 className="mx-auto mt-5 max-w-5xl text-3xl font-black tracking-tight text-slate-900 sm:text-5xl lg:text-[54px] lg:leading-[1.12]">
             {pageData.h1}
           </h1>
 
-          <p className="mx-auto mt-3.5 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            {pageData.heroSubtitle}
-          </p>
+          {/* Styled, High-Contrast Lead Subtitle Container */}
+          <div className="mx-auto mt-5 max-w-4xl rounded-2xl border border-slate-200/80 bg-white/90 px-6 py-4 shadow-sm backdrop-blur-sm">
+            <p className="text-base font-medium leading-relaxed text-slate-700 sm:text-lg">
+              {pageData.heroSubtitle}
+            </p>
+          </div>
 
-          {/* PDFAid-Inspired Scannable Green-Checkmark Value Strip */}
-          <div className="mx-auto mt-6 grid max-w-4xl grid-cols-1 gap-2.5 text-left sm:grid-cols-2 lg:grid-cols-4">
-            {pageData.valueChecks.map((check) => (
-              <div
-                key={check}
-                className="flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white px-3.5 py-2.5 text-xs font-bold text-slate-700 shadow-sm"
-              >
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                <span className="leading-snug">{check}</span>
-              </div>
-            ))}
+          {/* 4 Perfectly Aligned, Equal-Height Feature Cards */}
+          <div className="mt-6 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {uniformHeroFeatures.map((feat) => {
+              const Icon = feat.icon;
+              return (
+                <div
+                  key={feat.title}
+                  className="flex h-full items-center gap-3.5 rounded-2xl border border-slate-200/90 bg-white p-4 text-left shadow-sm transition hover:border-indigo-300 hover:shadow-md"
+                >
+                  <div
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border ${feat.iconBg}`}
+                  >
+                    <Icon className="h-5 w-5 stroke-[2.5]" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="truncate text-sm font-extrabold text-slate-900">
+                      {feat.title}
+                    </div>
+                    <div className="truncate text-xs font-medium text-slate-500">
+                      {feat.subtitle}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        {/* Converter Workspace Section */}
-        <section aria-label="PDF Converter Workspace" className="mx-auto mt-7 max-w-6xl px-4 sm:px-6">
+        {/* Full-Width Converter Workspace Section */}
+        <section
+          aria-label="PDF Converter Workspace"
+          className="mx-auto mt-8 w-full max-w-[1440px] px-4 sm:px-8 lg:px-12"
+        >
           {errorMessage && (
             <div
               role="alert"
-              className="mx-auto mb-6 flex max-w-4xl items-start gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-medium text-red-800 shadow-sm"
+              className="mx-auto mb-6 flex w-full items-start gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-medium text-red-800 shadow-sm"
             >
               <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
               <div className="flex-1">
@@ -223,15 +276,15 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
         {/* SLOT B (Below Tool): Large rectangle/leaderboard banner right before SEO article */}
         <AdBanner slotId="2233445566" variant="rectangle" />
 
-        {/* Long-Form SEO Content Block with HowTo Diagram, Reviews, Security Banner, About/Terms & FAQs */}
+        {/* Full-Width SEO Content Block */}
         <SeoContentBlock pageData={pageData} />
       </main>
 
-      {/* PDFAid-Inspired Floating Sticky Bottom Quick-Upload Bar on Scroll (Desktop) */}
+      {/* Floating Sticky Bottom Quick-Upload Bar on Scroll (Desktop) */}
       {showFloatingUploadBar && !hasLoadedFile && (
-        <div className="fixed bottom-4 left-4 right-4 z-30 mx-auto hidden max-w-3xl items-center justify-between rounded-2xl border border-indigo-500/40 bg-slate-950/95 px-6 py-3.5 text-white shadow-2xl backdrop-blur-md md:flex">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-amber-300 font-black">
+        <div className="fixed bottom-4 left-4 right-4 z-30 mx-auto hidden max-w-4xl items-center justify-between rounded-2xl border border-indigo-500/40 bg-slate-950/95 px-6 py-3.5 text-white shadow-2xl backdrop-blur-md md:flex">
+          <div className="flex items-center gap-3.5">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 font-black text-amber-300">
               PDF
             </div>
             <div>

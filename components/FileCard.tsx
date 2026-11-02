@@ -11,7 +11,7 @@ interface FileCardProps {
 
 export default function FileCard({ meta, onRemoveFile }: FileCardProps) {
   return (
-    <div className="mx-auto mb-8 w-full max-w-5xl rounded-2xl border-2 border-indigo-100 bg-white p-5 shadow-md sm:p-6">
+    <div className="mx-auto mb-8 w-full rounded-2xl border-2 border-indigo-100 bg-white p-5 shadow-md sm:p-6">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex items-start gap-4">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-md shadow-indigo-500/20">

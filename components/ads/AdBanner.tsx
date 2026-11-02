@@ -12,10 +12,6 @@ interface AdBannerProps {
   className?: string;
 }
 
-/**
- * Responsive Google AdSense component with strictly reserved minimum heights
- * for guaranteed 0.000 Cumulative Layout Shift (CLS) and Google Publisher Policy compliance.
- */
 export default function AdBanner({
   slotId,
   variant = 'leaderboard',
@@ -48,7 +44,7 @@ export default function AdBanner({
   return (
     <aside
       aria-label="Sponsored Advertisement"
-      className={`my-8 mx-auto w-full max-w-5xl select-none px-2 ${className}`}
+      className={`my-8 mx-auto w-full max-w-[1440px] select-none px-4 sm:px-8 lg:px-12 ${className}`}
     >
       <div className="mb-1.5 flex items-center justify-center gap-2">
         <span className="h-px w-8 bg-slate-200" />
@@ -59,7 +55,7 @@ export default function AdBanner({
       </div>
 
       <div
-        className={`relative flex w-full items-center justify-center overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100/50 p-2 shadow-inner ${sizeClasses[variant]}`}
+        className={`relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100/50 p-2 shadow-inner ${sizeClasses[variant]}`}
       >
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center text-xs text-slate-400">
           <span className="font-medium text-slate-400/80">

@@ -58,7 +58,7 @@ export default function FormatSelector({
   ];
 
   return (
-    <section aria-label="Select Output Conversion Format" className="mx-auto mb-8 w-full max-w-5xl">
+    <section aria-label="Select Output Conversion Format" className="mx-auto mb-8 w-full">
       <div className="mb-3 flex items-center justify-between">
         <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500">
           Choose Output Format (Instant 1-Click Switch):
@@ -68,7 +68,7 @@ export default function FormatSelector({
         </span>
       </div>
 
-      <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {formatCards.map((card) => {
           const Icon = card.icon;
           const isSelected = activeFormat === card.id;
@@ -78,7 +78,7 @@ export default function FormatSelector({
               key={card.id}
               type="button"
               onClick={() => onSelectFormat(card.id)}
-              className={`group relative flex flex-col justify-between rounded-2xl border-2 p-4 text-left transition-all ${
+              className={`group relative flex h-full flex-col justify-between rounded-2xl border-2 p-5 text-left transition-all ${
                 isSelected
                   ? 'border-indigo-600 bg-indigo-50/70 shadow-md shadow-indigo-500/10 ring-2 ring-indigo-600/20'
                   : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50/80'
