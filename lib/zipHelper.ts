@@ -4,7 +4,7 @@ import JSZip from 'jszip';
 import type { RenderedPage } from './pdfEngine';
 
 /**
- * Пакетира всички рендирани страници от RAM паметта в компресиран .ZIP архив
+ * Packages all rendered pages from RAM into a compressed .ZIP archive
  */
 export async function generateImagesZipBlob(
   originalFileName: string,
@@ -16,7 +16,7 @@ export async function generateImagesZipBlob(
   const imagesFolder = zip.folder(`${baseName}-images`);
 
   if (!imagesFolder) {
-    throw new Error('Неуспешно инициализиране на ZIP директория в паметта.');
+    throw new Error('Failed to initialize in-memory ZIP folder.');
   }
 
   for (const page of pages) {
@@ -31,15 +31,15 @@ export async function generateImagesZipBlob(
     const combinedText = pages
       .map(
         (p) =>
-          `--- СТРАНИЦА ${p.pageNumber} ---\n${
-            p.textContent || '[Няма открит текстов слой на тази страница]'
+          `--- PAGE ${p.pageNumber} ---\n${
+            p.textContent || '[No embedded text layer detected on this page]'
           }`
       )
       .join('\n\n');
 
     zip.file(
       `${baseName}-extracted-text.txt`,
-      `Документ: ${originalFileName}\nКонвертирано локално чрез: https://pdfdavinci.com (100% Client-Side RAM)\nБрой страници: ${pages.length}\n\n${combinedText}`
+      `Document: ${originalFileName}\nConverted locally via: https://pdfdavinci.com (100% Client-Side RAM)\nTotal Pages: ${pages.length}\n\n${combinedText}`
     );
   }
 
@@ -53,7 +53,7 @@ export async function generateImagesZipBlob(
 }
 
 /**
- * Задейства браузърно сваляне на Blob обект без презареждане на страницата
+ * Triggers a browser download of a Blob object without reloading the page
  */
 export function triggerBrowserDownload(blob: Blob, downloadFileName: string): void {
   const url = URL.createObjectURL(blob);
@@ -70,7 +70,7 @@ export function triggerBrowserDownload(blob: Blob, downloadFileName: string): vo
 }
 
 /**
- * Задейства директно сваляне на DataURL (например индивидуална JPG страница)
+ * Triggers a direct download of a DataURL (e.g., individual JPG page)
  */
 export function triggerDataUrlDownload(dataUrl: string, downloadFileName: string): void {
   const anchor = document.createElement('a');

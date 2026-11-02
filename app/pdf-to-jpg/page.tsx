@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description: pageData.metaDescription,
     url: pageData.canonicalUrl,
     siteName: SITE_NAME,
-    locale: 'bg_BG',
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {

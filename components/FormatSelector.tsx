@@ -25,46 +25,46 @@ export default function FormatSelector({
   }> = [
     {
       id: 'jpg',
-      title: 'PDF към JPG (ZIP)',
-      subtitle: `Висока резолюция (2x DPI) • Пакетно сваляне на всички ${pageCount} стр.`,
-      badge: 'Най-популярен',
+      title: 'PDF to JPG (ZIP)',
+      subtitle: `High Resolution (2x HiDPI) • Batch download all ${pageCount} pages`,
+      badge: 'Most Popular',
       icon: FileImage,
       accentColor: 'from-indigo-600 to-blue-600',
     },
     {
       id: 'word',
-      title: 'PDF към Word (.doc)',
-      subtitle: 'Редактируем документ за Microsoft Word, Google Docs и LibreOffice',
-      badge: 'Редактируем .DOC',
+      title: 'PDF to Word (.doc)',
+      subtitle: 'Editable document for Microsoft Word, Google Docs & LibreOffice',
+      badge: 'Editable .DOC',
       icon: FileType2,
       accentColor: 'from-blue-600 to-cyan-600',
     },
     {
       id: 'text',
-      title: 'PDF към Текст (.txt)',
-      subtitle: 'Чист UTF-8 текст по страници + мигновено копиране в клипборда',
-      badge: 'Чист текст',
+      title: 'PDF to Text (.txt)',
+      subtitle: 'Clean UTF-8 text extraction by page + 1-click clipboard copy',
+      badge: 'Plain Text',
       icon: FileText,
       accentColor: 'from-emerald-600 to-teal-600',
     },
     {
       id: 'gallery',
-      title: 'Галерия Страници',
-      subtitle: 'Визуален преглед в голям мащаб и сваляне на отделни страници',
-      badge: `${pageCount} страници`,
+      title: 'Page Gallery',
+      subtitle: 'Side-by-side visual page inspector & individual JPG downloads',
+      badge: `${pageCount} Pages`,
       icon: LayoutGrid,
       accentColor: 'from-violet-600 to-purple-600',
     },
   ];
 
   return (
-    <section aria-label="Избор на формат за конвертиране" className="mx-auto mb-8 w-full max-w-5xl">
+    <section aria-label="Select Output Conversion Format" className="mx-auto mb-8 w-full max-w-5xl">
       <div className="mb-3 flex items-center justify-between">
         <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500">
-          Изберете изходен формат (превключване с 1 клик):
+          Choose Output Format (Instant 1-Click Switch):
         </h3>
         <span className="text-xs font-medium text-slate-400">
-          Без повторно зареждане на файла
+          No re-upload or re-parsing needed
         </span>
       </div>
 
@@ -110,7 +110,7 @@ export default function FormatSelector({
 
               <div className="mt-4 flex items-center justify-between border-t border-slate-200/70 pt-2.5 text-xs font-bold">
                 <span className={isSelected ? 'text-indigo-700' : 'text-slate-500'}>
-                  {isSelected ? '● Активен режим' : 'Превключи тук →'}
+                  {isSelected ? '● Active Mode' : 'Switch Mode →'}
                 </span>
               </div>
             </button>

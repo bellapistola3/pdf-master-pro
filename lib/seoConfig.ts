@@ -32,318 +32,318 @@ export interface PageSeoData {
 
 export const SITE_NAME = 'PDFDaVinci';
 export const SITE_URL = 'https://pdfdavinci.com';
-export const ADSENSE_CLIENT_ID = 'ca-pub-0000000000000000'; // Заменете с вашия реален Google AdSense Publisher ID
+export const ADSENSE_CLIENT_ID = 'ca-pub-0000000000000000'; // Replace with your live Google AdSense Publisher ID
 
 export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = {
   home: {
     slug: '/',
     canonicalUrl: `${SITE_URL}/`,
     defaultFormat: 'jpg',
-    title: 'PDFDaVinci — Безплатен Онлайн PDF Конвертор (100% Локално в Браузъра)',
+    title: 'PDFDaVinci — Free Online PDF Converter (100% Client-Side in Browser RAM)',
     metaDescription:
-      'Конвертирайте PDF в JPG, Word (.doc) и Текст (.txt) мигновено и 100% безплатно с PDFDaVinci. Обработка директно в RAM паметта на браузъра без качване на сървър.',
+      'Convert PDF to high-resolution JPG images, editable Word (.doc), and plain Text (.txt) instantly for free with PDFDaVinci. 100% local in-browser RAM processing with zero server uploads.',
     keywords: [
       'pdfdavinci',
       'convert pdf online',
       'pdf converter client side free',
-      'конвертиране на pdf',
-      'pdf в jpg',
-      'pdf в word',
-      'pdf в текст',
-      'сигурен pdf конвертор',
-      'безплатен pdf инструмент',
+      'free online pdf converter',
+      'pdf to jpg',
+      'pdf to word',
+      'pdf to text',
+      'secure local pdf converter',
+      'no upload pdf tool',
     ],
-    h1: 'Свръхбърз и 100% Сигурен PDF Конвертор в Браузъра',
+    h1: 'Ultra-Fast & 100% Private Client-Side PDF Converter',
     heroSubtitle:
-      'Преобразувайте вашите PDF документи в изображения с висока резолюция (JPG/PNG), редактируем Word (.doc) или чист текст (.txt) директно в оперативната памет (RAM) на вашето устройство — без сървъри и без чакане.',
-    badgeText: '🔒 100% Client-Side RAM Архитектура • Нулев риск за данните',
-    howToTitle: 'Как да конвертирате PDF файл с PDFDaVinci в 3 лесни стъпки',
+      'Transform your PDF files into high-resolution JPG images (ZIP), editable Microsoft Word (.doc) documents, or clean plain text (.txt) directly inside your browser RAM — zero servers, zero queues, zero privacy risk.',
+    badgeText: '🔒 100% Client-Side RAM Architecture • Zero Server Uploads',
+    howToTitle: 'How to Convert a PDF File Online with PDFDaVinci in 3 Simple Steps',
     howToSteps: [
       {
-        name: 'Стъпка 1: Изберете или провлачете PDF документ',
-        text: 'Кликнете върху голямото поле за избор на файл или провлачете вашия PDF документ директно в прозореца на PDFDaVinci. Можете също да използвате бутона за мигновен демо PDF файл.',
+        name: 'Step 1: Select or Drag & Drop Your PDF Document',
+        text: 'Click the upload dropzone or drag and drop any PDF file directly into PDFDaVinci. You can also click the Instant Demo button to test a synthesized 2-page PDF in RAM.',
       },
       {
-        name: 'Стъпка 2: Изберете желания изходен формат',
-        text: 'Превключете с един клик между 4-те налични режима: PDF към JPG (ZIP архив), PDF към Word (.doc), PDF към Текст (.txt) или Интерактивна галерия със страници.',
+        name: 'Step 2: Choose Your Output Format Instantly',
+        text: 'Switch seamlessly with a single click between our 4 core modes: PDF to High-DPI JPG (ZIP Archive), PDF to Editable Word (.doc), PDF to Plain Text (.txt), or Interactive Page Gallery.',
       },
       {
-        name: 'Стъпка 3: Свалете готовия файл мигновено',
-        text: 'Web Worker енджинът на PDFDaVinci обработва страниците локално чрез вашето устройство и ви позволява да свалите готовия файл без лимити, водни знаци или регистрация.',
+        name: 'Step 3: Download Your Converted Files Immediately',
+        text: 'Our Mozilla PDF.js Web Worker engine renders and extracts your pages locally using your device hardware, allowing instant downloads with no watermarks, no file size caps, and no email sign-up.',
       },
     ],
     articleSections: [
       {
-        heading: 'Защо PDFDaVinci е най-сигурният и бърз онлайн PDF конвертор?',
+        heading: 'Why PDFDaVinci Is the Safest & Fastest Online PDF Converter',
         paragraphs: [
-          'Традиционните онлайн PDF конвертори изискват да качите вашите чувствителни документи — договори, фактури, банкови извлечения, нотариални актове или лични данни — на отдалечени облачни сървъри. Това създава сериозен риск за поверителността, забавя процеса заради ъплоуд и даунлоуд трафика и често е съпроводено с изкуствени ограничения за брой файлове на ден.',
-          'PDFDaVinci (pdfdavinci.com) променя изцяло този стандарт чрез иновативна 100% Client-Side WebAssembly и HTML5 Canvas архитектура. Когато заредите файл в нашия инструмент, той никога не напуска вашия компютър или смартфон. Цялата математическа обработка, растеризация на векторните шрифтове и извличане на текстови слоеве се извършва локално в оперативната памет (RAM) на вашия браузър чрез изолиран Web Worker поток.',
+          'Traditional online PDF converters require you to upload sensitive documents — legal contracts, tax returns, bank statements, medical records, and NDA-protected agreements — to remote cloud servers. That creates serious data privacy risks, slows down conversion with upload and download bottlenecks, and frequently locks you behind daily file limits or paywalls.',
+          'PDFDaVinci (pdfdavinci.com) eliminates cloud uploads completely through a 100% Client-Side Web Worker and HTML5 Canvas architecture. When you open a file in PDFDaVinci, not a single byte ever leaves your computer or smartphone. Every calculation, vector font rasterization, and coordinate-based text extraction happens locally inside your browser’s volatile memory (RAM).',
         ],
         bullets: [
-          'Нулев мрежов трансфер на файлове: Документите ви остават на 100% във вашето устройство.',
-          'Свръхвисока скорост: Без опашки на сървъра и без чакане за качване на големи PDF файлове.',
-          'Пълна GDPR и корпоративна съвместимост: Идеално решение за счетоводители, юристи, лекари и държавни служители.',
-          'Без лимити и без абонаменти: Конвертирайте неограничен брой страници напълно безплатно.',
+          'Zero Network File Transfers: Your documents remain 100% on your own device at all times.',
+          'Instant Hardware Acceleration: No waiting in server queues or uploading large multi-megabyte PDFs.',
+          'Strict GDPR, HIPAA & Enterprise Compliance: Built for legal professionals, accountants, healthcare teams, and executives.',
+          'Completely Free & Unlimited: Convert unlimited pages with zero watermarks and no registration.',
         ],
       },
       {
-        heading: 'Всички основни PDF инструменти на едно място',
+        heading: 'All-in-One Multi-Format PDF Conversion Without Reloading',
         paragraphs: [
-          'Платформата PDFDaVinci обединява четирите най-търсени функции за работа с електронни документи в единен, интуитивен интерфейс без презареждане на страницата. Веднъж зареден в RAM паметта, вашият PDF документ може едновременно да бъде експортиран като серия от висококачествени JPG изображения, конвертиран в структуриран Microsoft Word (.doc) документ или извлечен като чист текст (.txt) с един бутон за копиране.',
-          'Благодарение на вградения Mozilla PDF.js енджин и хардуерното графично ускорение на браузъра, всяка страница се рендира с кристална ostroта (2x DPI скалиране), запазвайки оригиналните пропорции, графики, таблици и кирилски символи без дефекти в кодировката (UTF-8).',
+          'PDFDaVinci unifies the four most essential document workflows into a single reactive workspace. Once your PDF is parsed into browser RAM, you can switch between exporting a bundled ZIP archive of 2.0x HiDPI JPG images, generating a formatted Microsoft Word (.doc) file, or copying clean UTF-8 plain text (.txt) without ever re-processing the file.',
+          'Powered by Mozilla’s battle-tested PDF.js rendering engine and 2x supersampled HTML5 2D Canvas contexts, every page maintains razor-sharp typography, accurate vector graphics, and full international Unicode character fidelity.',
         ],
       },
       {
-        heading: 'Технически предимства на локалната обработка в RAM паметта',
+        heading: 'Technical Advantages of In-Memory Web Worker Processing',
         paragraphs: [
-          'При стандартните уеб приложения всяка операция натоварва централен сървър и зависи от скоростта на интернет връзката ви. С PDFDaVinci дори след първоначалното отваряне на сайта в браузъра, самият процес на конвертиране използва многоядрения процесор на вашето устройство чрез Web Workers. Това гарантира, че потребителският интерфейс остава напълно отзивчив (60 FPS), докато страниците се генерират във фонов режим и се пакетират автоматично чрез JSZip.',
+          'Cloud-based utilities throttle performance on shared backend CPUs. By offloading PDF parsing to an isolated background Web Worker thread on your own device, PDFDaVinci keeps the user interface silky-smooth at 60 FPS while rendering high-resolution pages and packaging compressed archives on the fly via JSZip. As soon as you close your browser tab, the browser’s garbage collector permanently wipes the allocated RAM.',
         ],
       },
     ],
     faqs: [
       {
-        question: 'Качват ли се моите PDF файлове на сървър на PDFDaVinci?',
+        question: 'Are my PDF files ever uploaded to a PDFDaVinci server?',
         answer:
-          'Не. PDFDaVinci работи на 100% локално във вашия уеб браузър (Client-Side RAM Mode). Нито един байт от вашия PDF файл не се изпраща по интернет, не се записва в база данни и не преминава през външни сървъри.',
+          'Never. PDFDaVinci runs 100% locally inside your web browser (Client-Side RAM Mode). Not a single byte of your PDF file is transmitted over the internet, stored in a database, or processed on an external server.',
       },
       {
-        question: 'Има ли ограничение за размера на файла или броя страници?',
+        question: 'Are there any file size limits or daily page restrictions?',
         answer:
-          'Няма изкуствени софтуерни ограничения от наша страна. Тъй като обработката се извършва директно в оперативната памет (RAM) на вашето устройство, можете да конвертирате документи с десетки и дори стотици страници бързо и безплатно.',
+          'No. Because all processing uses your own device’s RAM and CPU rather than a remote server, we never impose artificial file size limits, page count caps, countdown timers, or daily quotas.',
       },
       {
-        question: 'Поддържа ли PDFDaVinci документи на български език и кирилица?',
+        question: 'Does PDFDaVinci support multi-language fonts and Unicode characters?',
         answer:
-          'Да, напълно! Както визуалното рендиране към JPG/PNG изображения, така и извличането на текст за Word (.doc) и Text (.txt) използват пълна Unicode (UTF-8) поддръжка, запазвайки всички български символи и специални знаци.',
+          'Yes! Both our 2x HiDPI JPG visual renderer and our UTF-8 Word (.doc) and Text (.txt) extractors preserve international scripts, accented characters, symbols, and technical typography accurately.',
       },
       {
-        question: 'Трябва ли да се регистрирам или да въвеждам имейл адрес?',
+        question: 'Do I need to create an account or enter my email address?',
         answer:
-          'Не. PDFDaVinci е създаден за мигновена продуктивност — без регистрация, без въвеждане на имейл адрес, без абонаментни планове и без водни знаци върху конвертираните файлове.',
+          'No registration or email address is ever required. Your converted files download directly from your browser memory with one click and zero watermarks.',
       },
     ],
   },
 
   jpg: {
     slug: '/pdf-to-jpg',
-    canonicalUrl: `${SITE_URL}/pdf-to-jpg`,
+    canonicalUrl: `${SITE_URL}/pdf-to-jpg/`,
     defaultFormat: 'jpg',
-    title: 'PDF в JPG Конвертор Онлайн — Висока Резолюция & ZIP Архив | PDFDaVinci',
+    title: 'Convert PDF to JPG Online Free — High Resolution & ZIP Download | PDFDaVinci',
     metaDescription:
-      'Конвертирайте PDF в JPG изображения с висока резолюция (300 DPI качество) онлайн и безплатно. Свалете всички страници като ZIP архив или поотделно локално в браузъра.',
+      'Convert PDF pages to high-resolution JPG images (300 DPI equivalent) online for free. Download all pages as a single ZIP archive or save individual JPGs locally in your browser.',
     keywords: [
       'convert pdf to jpg',
       'pdf to image high resolution',
       'pdf to zip images',
-      'pdf в jpg',
-      'преобразуване на pdf в снимка',
-      'pdf към картинки',
+      'pdf to jpeg converter online free',
+      'save pdf pages as pictures',
+      'high dpi pdf to jpg',
       'pdfdavinci jpg',
     ],
-    h1: 'Конвертиране на PDF в JPG Изображения с Висока Резолюция',
+    h1: 'Convert PDF to High-Resolution JPG Images Online',
     heroSubtitle:
-      'Превърнете всяка страница от вашия PDF документ в кристално чисто JPG изображение. Свалете отделните страници с един клик или изтеглете целия документ като готов ZIP архив — 100% локално в браузъра.',
-    badgeText: '🖼️ High-DPI Canvas Рендиране • Автоматичен ZIP Архив',
-    howToTitle: 'Как да превърнете PDF страници в JPG изображения с PDFDaVinci',
+      'Turn every page of your PDF document into a crystal-clear, high-resolution JPG image. Download individual pages with one click or export the entire document as a ready-to-use ZIP archive — 100% locally in your browser.',
+    badgeText: '🖼️ 2.0x HiDPI Canvas Rendering • Instant ZIP Packaging',
+    howToTitle: 'How to Convert PDF Pages to High-Resolution JPG Images',
     howToSteps: [
       {
-        name: 'Стъпка 1: Заредете вашия PDF файл в конвертора',
-        text: 'Изберете PDF документа от вашето устройство или го пуснете в Dropzone зоната. Файлът се отваря мигновено в RAM паметта.',
+        name: 'Step 1: Load Your PDF Document into RAM',
+        text: 'Select a PDF file from your computer or phone, or drop it into the upload zone. The file opens immediately in local browser memory.',
       },
       {
-        name: 'Стъпка 2: Изберете качество на JPG рендиране',
-        text: 'Инструментът автоматично активира режим "PDF към JPG" с висока резолюция (2x мащабиране за кристален текст и графика).',
+        name: 'Step 2: Automatic 2.0x HiDPI Rasterization',
+        text: 'PDFDaVinci automatically activates High-Resolution JPG mode, rendering vector fonts and graphics at 2x supersampled resolution.',
       },
       {
-        name: 'Стъпка 3: Изтеглете ZIP архив или отделни JPG страници',
-        text: 'Натиснете "Генерирай и свали всички като .ZIP" за пакетно теглене или разгледайте галерията и свалете конкретна страница като индивидуален .jpg файл.',
+        name: 'Step 3: Download All as .ZIP or Save Individual JPGs',
+        text: 'Click "Download All as .ZIP" for one-click batch archiving, or browse the visual grid to preview and save specific pages as standalone .jpg files.',
       },
     ],
     articleSections: [
       {
-        heading: 'Професионално преобразуване на PDF в JPG с висока резолюция',
+        heading: 'Studio-Grade PDF to JPG Conversion with 2x Supersampling',
         paragraphs: [
-          'Когато трябва да споделите презентация, сертификат, архитектурна скица, фактура или брошура в социални мрежи, уебсайт или презентация, PDF форматът често е неудобен за директно визуализиране. Специализираният модул PDF към JPG на PDFDaVinci растеризира всяка векторна страница от документа в стандартно JPEG изображение с висока плътност на пикселите.',
-          'За разлика от обикновените скрийншоти, които губят детайлност при приближаване, нашият HTML5 Canvas енджин използва двукратно суперсемплиране (2.0x Scale Factor) и 92% JPEG компресия без видима загуба на качество. Така дори ситният шрифт в таблици и чертежи остава перфектно четлив.',
+          'When you need to embed a presentation slide, certificate, architectural blueprint, invoice, or brochure into a website, social media post, or slide deck, raw PDF files can be cumbersome to display. PDFDaVinci’s dedicated PDF to JPG engine rasterizes every vector page into a universally compatible JPEG image with ultra-crisp pixel density.',
+          'Unlike ordinary screen captures that blur small text, our HTML5 2D Canvas pipeline applies a 2.0x HiDPI scale factor paired with 92% studio-grade JPEG encoding. Even fine-print footnotes, financial tables, and intricate diagrams remain sharp on Retina and 4K displays.',
         ],
         bullets: [
-          'Пакетно архивиране с JSZip: Всички страници се събират в един подреден .zip файл с правилна номерация (page-001.jpg, page-002.jpg).',
-          'Индивидуален преглед и сваляне: Виждате миниатюра на всяка страница и можете да свалите само тази, която ви е необходима.',
-          'Бял непрозрачен фон: Автоматично подлагане на чист бял фон, за да се избегнат черни артефакти при прозрачни PDF слоеве.',
-          'Пълна конфиденциалност: Вашите снимки и документи се генерират директно от графичната карта на вашето устройство.',
+          'One-Click Batch ZIP Archive: Automatically bundles all rendered pages into a sequentially numbered .zip file (page-001.jpg, page-002.jpg).',
+          'Individual Page Inspection & Download: Preview every page thumbnail and download only the exact pages you need.',
+          'Pure White Alpha Backing: Automatically composites transparent PDF layers onto a clean white background to prevent dark artifacts.',
+          '100% Local GPU/CPU Execution: Zero upload wait time, even for image-heavy catalogs and portfolios.',
         ],
       },
       {
-        heading: 'Кога е най-добре да конвертирате PDF в JPG формат?',
+        heading: 'When Should You Convert a PDF to JPG Format?',
         paragraphs: [
-          'Форматът JPG (JPEG) е универсалният стандарт за изображения в интернет, поддържан от абсолютно всяко устройство, имейл клиент, CMS система (WordPress, Shopify) и мобилно приложение. Преобразуването на PDF в JPG е идеално, когато искате да предотвратите нежелана редакция на текста, да вградите страница от каталог директно в статия или да качите документ във формуляр, който приема само графични файлове (.jpg / .jpeg).',
-          'С PDFDaVinci целият процес отнема броени секунди дори за многостранични каталози, тъй като не губите време в качване на тежкия PDF към външен сървър и повторно теглене на генерираните изображения.',
+          'JPEG is the universal standard for digital imagery across every operating system, CMS platform (WordPress, Webflow, Shopify), email client, and mobile app. Converting PDF to JPG is ideal when you want to lock visual formatting against accidental edits, showcase document previews inline on a webpage, or upload verification documents to portals that only accept image files (.jpg / .jpeg).',
+          'Because PDFDaVinci performs both the rendering and the JSZip compression right inside your browser RAM, converting a 50-page presentation takes only seconds.',
         ],
       },
     ],
     faqs: [
       {
-        question: 'Каква е резолюцията на генерираните JPG изображения?',
+        question: 'What resolution are the exported JPG images?',
         answer:
-          'PDFDaVinci рендира страниците с 2x HiDPI скалиране спрямо базовия размер на PDF страницата (еквивалентно на висококачествен печат и кристална четливост на екрани с висока плътност като Retina и 4K монитори).',
+          'PDFDaVinci renders every PDF page at 2.0x HiDPI scale relative to the native PDF viewport dimensions (typically around 1190 × 1684 pixels for standard A4/Letter pages), ensuring crisp readability for both web publishing and printing.',
       },
       {
-        question: 'Мога ли да сваля само една конкретна страница от PDF файла като JPG?',
+        question: 'Can I download just one specific page from my PDF as a JPG?',
         answer:
-          'Да! След като заредите документа, можете да прегледате всяка страница поотделно и да я свалите индивидуално като .jpg изображение или да изтеглите всички страници наведнъж в един .zip архив.',
+          'Yes! Below the main "Download All as .ZIP" button, you will see a responsive grid of every rendered page. Each page card has its own "Download .JPG" button and a full-screen zoom preview.',
       },
       {
-        question: 'Запазват ли се цветовете и шрифтовете от оригиналния PDF?',
+        question: 'Are original colors, vector illustrations, and embedded fonts preserved?',
         answer:
-          'Да, вграденият Mozilla PDF.js векторно-растерен интерпретатор възпроизвежда на 100% оригиналните вградени шрифтове, векторни форми, градиенти и изображения в точните им цветове.',
+          'Yes. Our Mozilla PDF.js interpreter renders embedded fonts, vector paths, gradients, and high-res bitmap layers with 100% visual accuracy.',
       },
     ],
   },
 
   word: {
     slug: '/pdf-to-word',
-    canonicalUrl: `${SITE_URL}/pdf-to-word`,
+    canonicalUrl: `${SITE_URL}/pdf-to-word/`,
     defaultFormat: 'word',
-    title: 'PDF в Word Конвертор Онлайн Безплатно (.DOC / .DOCX) | PDFDaVinci',
+    title: 'Convert PDF to Word Online Free (.DOC / .DOCX) — No Email | PDFDaVinci',
     metaDescription:
-      'Конвертирайте PDF в редактируем Word документ (.doc) онлайн без имейл и без регистрация. 100% локална обработка в браузъра с PDFDaVinci за максимална сигурност.',
+      'Convert PDF to editable Microsoft Word (.doc) documents online for free without email or sign-up. 100% client-side in-browser processing with PDFDaVinci for complete privacy.',
     keywords: [
       'convert pdf to word docx free',
       'pdf to doc without email',
-      'pdf в word',
-      'конвертиране от pdf в word',
-      'редактиране на pdf в word',
+      'pdf to word converter online',
+      'editable word document from pdf',
+      'private pdf to word client side',
       'pdfdavinci word',
     ],
-    h1: 'Конвертиране на PDF в Word (.DOC) Без Имейл и Регистрация',
+    h1: 'Convert PDF to Editable Word (.DOC) — Free & No Email Required',
     heroSubtitle:
-      'Извлечете съдържанието на вашия PDF документ в готов за редактиране Microsoft Word (.doc) файл със запазена структура по страници и абзаци — мигновено и 100% локално във вашия браузър.',
-    badgeText: '📝 Директен Word (.DOC) Експорт • Пълна Кирилица (UTF-8)',
-    howToTitle: 'Как да конвертирате PDF в редактируем Word документ',
+      'Extract your PDF content into a structured, ready-to-edit Microsoft Word (.doc) document with preserved paragraphs and page breaks — processed 100% locally inside your browser.',
+    badgeText: '📝 Direct Microsoft Word (.DOC) Export • Full UTF-8 Typography',
+    howToTitle: 'How to Convert a PDF into an Editable Word Document Online',
     howToSteps: [
       {
-        name: 'Стъпка 1: Отворете PDF файла в PDFDaVinci',
-        text: 'Провлачете вашия PDF документ в полето за качване. Файлът се анализира локално в RAM паметта за част от секундата.',
+        name: 'Step 1: Open Your PDF in PDFDaVinci',
+        text: 'Drag and drop your PDF document into the converter box. The file is parsed locally in your browser RAM in milliseconds.',
       },
       {
-        name: 'Стъпка 2: Прегледайте структурирания Word изглед',
-        text: 'Режимът "PDF към Word (.doc)" автоматично извлича текстовите блокове, подрежда абзаците по координати и разделя документа по страници.',
+        name: 'Step 2: Review the Reconstructed Document Structure',
+        text: 'Our "PDF to Word (.doc)" engine analyzes X/Y glyph coordinates to rebuild natural lines, paragraphs, and page sections.',
       },
       {
-        name: 'Стъпка 3: Свалете готовия .DOC файл',
-        text: 'Кликнете върху бутона "Свали като Word (.doc)" и отворете файла директно в Microsoft Word, LibreOffice Writer или Google Docs.',
+        name: 'Step 3: Download Your .DOC File Instantly',
+        text: 'Click "Download as Word (.DOC)" and open your file directly in Microsoft Word, Google Docs, Apple Pages, or LibreOffice Writer.',
       },
     ],
     articleSections: [
       {
-        heading: 'Как работи локалното преобразуване на PDF в Word (.doc) без сървър?',
+        heading: 'How Client-Side PDF to Word (.doc) Conversion Works Without a Server',
         paragraphs: [
-          'Повечето безплатни сайтове за конвертиране на PDF в Word използват трикове: карат ви да чакате на опашка, изискват въвеждане на личен имейл адрес, за да ви пратят линк за сваляне, или запазват копие от вашите фирмени договори на техните сървъри. PDFDaVinci решава този проблем радикално.',
-          'Нашият интелигентен парсър анализира вътрешното дърво на PDF документа директно във вашия браузър, изчислява вертикалните и хоризонталните Y/X координати на всеки текстов елемент и реконструира естествения поток на редовете и параграфите. След това генерира валиден Microsoft Word-съвместим документ с пълна UTF-8 спецификация, стилове за шрифт, отстояния и разделители за страници.',
+          'Most "free" online PDF to Word converters trap users with dark patterns: forcing you to wait in slow queues, demanding your personal email address to send a download link, or storing copies of your private contracts on third-party servers. PDFDaVinci takes a fundamentally transparent approach.',
+          'Our client-side document parser inspects the internal text matrix of each PDF page directly in your browser RAM, calculates vertical and horizontal coordinate deltas, and reconstructs clean paragraphs and section breaks. It then synthesizes a standards-compliant Microsoft Word (.doc) document complete with UTF-8 encoding, print page layout headers, and optional embedded page visuals.',
         ],
         bullets: [
-          'Съвместимост с Microsoft Word, Google Docs, Apple Pages и LibreOffice.',
-          'Без изискване за имейл адрес и без спам бюлетини.',
-          'Запазване на логическата структура на абзаците и номерацията по страници.',
-          'Идеален за бърза редакция на договори, оферти, курсови работи, молби и декларации.',
+          'Opens seamlessly in Microsoft Word (Office 365 / 2007–2024), Google Docs, and LibreOffice.',
+          'Zero Email Gatekeepers: Instant direct download from your browser.',
+          'Preserves logical reading order, paragraph spacing, and multi-page section breaks.',
+          'Optional Visual Page Embedding: Include high-res page snapshots inside the Word file for scanned forms or complex tables.',
         ],
       },
       {
-        heading: 'Максимална поверителност за юридически, финансови и бизнес документи',
+        heading: 'Unmatched Confidentiality for Legal, Financial & Academic Documents',
         paragraphs: [
-          'Когато преобразувате трудов договор, оферта с ценови параметри или медицински документ от PDF в Word, сигурността на информацията е критична. Тъй като PDFDaVinci функционира изцяло в паметта на вашето устройство (RAM), документът никога не напуска вашата локална среда. Веднага щом затворите таба на браузъра, паметта се освобождава автоматично от Garbage Collector-а на браузъра.',
+          'When converting an employment agreement, commercial proposal, resume, or academic thesis from PDF to Word, document confidentiality is non-negotiable. Because PDFDaVinci executes entirely inside your local browser memory, your intellectual property never touches an external server.',
         ],
       },
     ],
     faqs: [
       {
-        question: 'В какъв формат се сваля конвертираният Word файл?',
+        question: 'Which word processors can open the downloaded .doc file?',
         answer:
-          'Файлът се генерира като стандартен HTML-базиран .doc документ със специални Microsoft Office XML мета-тагове, който се отваря безпроблемно във всички версии на Microsoft Word (2007–2024 / Office 365), LibreOffice и Google Docs.',
+          'The exported .doc file uses Microsoft Office XML/HTML document specifications with UTF-8 BOM headers, making it 100% compatible with Microsoft Word, Google Docs, LibreOffice Writer, WPS Office, and Apple Pages.',
       },
       {
-        question: 'Изисква ли се въвеждане на имейл за сваляне на Word файла?',
+        question: 'Do I have to provide an email address to download my Word file?',
         answer:
-          'Никога. Свалянето започва моментално в браузъра ви веднага след натискане на бутона, без регистрация и без въвеждане на лични данни.',
+          'Never. Your converted Word document is synthesized directly in your browser and downloads immediately when you click the button.',
       },
       {
-        question: 'Как се обработват PDF файлове с кирилица при експорт към Word?',
+        question: 'What if my PDF contains scanned pages or complex visual charts?',
         answer:
-          'PDFDaVinci вгражда изрична UTF-8 кодировка и стандартна типография в генерирания Word документ, което гарантира 100% правилно разчитане на български, английски и многостранни символи.',
+          'In the PDF to Word panel, you can check the option "Embed high-resolution visual page snapshots inside the Word document" to include crisp visual renders alongside the extracted text.',
       },
     ],
   },
 
   text: {
     slug: '/pdf-to-text',
-    canonicalUrl: `${SITE_URL}/pdf-to-text`,
+    canonicalUrl: `${SITE_URL}/pdf-to-text/`,
     defaultFormat: 'text',
-    title: 'Извличане на Текст от PDF Онлайн (PDF към TXT Конвертор) | PDFDaVinci',
+    title: 'Extract Text from PDF Online Free (PDF to TXT Converter) | PDFDaVinci',
     metaDescription:
-      'Извлечете чист текст от всеки PDF файл онлайн за секунди. Копирайте текста в клипборда или го свалете като .txt файл — 100% локално в браузъра с PDFDaVinci.',
+      'Extract clean plain text from any PDF file online in seconds. Edit in-browser, copy to clipboard with 1 click, or download as a UTF-8 .txt file — 100% locally with PDFDaVinci.',
     keywords: [
       'extract text from pdf online',
       'pdf to txt converter',
-      'извличане на текст от pdf',
-      'pdf в текст',
-      'копиране на текст от pdf',
+      'copy text from pdf online free',
+      'pdf text extractor client side',
+      'convert pdf to plain text',
       'pdfdavinci text',
     ],
-    h1: 'Мигновено Извличане на Чист Текст от PDF (PDF в TXT)',
+    h1: 'Extract Clean Plain Text from PDF Online (PDF to TXT)',
     heroSubtitle:
-      'Извадете целия текст от вашия PDF документ с перфектна подредба по редове и страници. Редактирайте директно в браузъра, копирайте с 1 клик или свалете като .txt файл.',
-    badgeText: '⚡ Интелигентен Текстов Парсър • Копиране с 1 Клик',
-    howToTitle: 'Как да извлечете текст от PDF документ онлайн',
+      'Pull all readable text from your PDF document with accurate line and page organization. Edit live in your browser, copy to clipboard with one click, or download as a clean .txt file.',
+    badgeText: '⚡ Coordinate-Aware Text Parser • 1-Click Clipboard Copy',
+    howToTitle: 'How to Extract Plain Text from a PDF Document Online',
     howToSteps: [
       {
-        name: 'Стъпка 1: Изберете PDF документ за анализ',
-        text: 'Качете вашия PDF файл в локалния конвертор на PDFDaVinci или стартирайте демонстрационния файл с един клик.',
+        name: 'Step 1: Select a PDF File to Parse',
+        text: 'Drop your PDF into PDFDaVinci’s local dropzone or click the Instant Demo button to test right away.',
       },
       {
-        name: 'Стъпка 2: Прегледайте и копирайте извлечения текст',
-        text: 'Инструментът автоматично подрежда текстовите слоеве от всички страници в интерактивно текстово поле с брояч на думи и символи.',
+        name: 'Step 2: Inspect & Edit Extracted Text Live',
+        text: 'The parser automatically extracts text layers across all pages into an interactive editor complete with live page, word, and character counters.',
       },
       {
-        name: 'Стъпка 3: Копирайте в клипборда или свалете като .TXT',
-        text: 'Натиснете "Копирай целия текст" за директно поставяне в друга програма или "Свали като .TXT файл" за архивиране.',
+        name: 'Step 3: Copy to Clipboard or Download as .TXT',
+        text: 'Click "Copy Full Text" to paste directly into your workflow or AI prompt, or click "Download .TXT File" to save a UTF-8 text file.',
       },
     ],
     articleSections: [
       {
-        heading: 'Прецизно извличане на текст от PDF без счупени редове',
+        heading: 'Precision PDF Text Extraction Without Broken Line Wrapping',
         paragraphs: [
-          'Често при директно маркиране и копиране (Ctrl+C / Ctrl+V) от стандартен PDF четец текстът се разпада на хаотични фрагменти, липсват разстояния между думите или редовете се сливат неправилно. Текстовият енджин на PDFDaVinci решава този проблем чрез позиционен анализ на глифовете и текстовите матрици във всяка страница.',
-          'Алгоритъмът проследява промяната във вертикалната координата на всеки текстов обект и автоматично разпознава кога започва нов ред или нов абзац. Освен това всяка страница е ясно отделена с маркер, което прави ориентацията в големи документи, книги, научни статии и технически спецификации изключително лесна.',
+          'Copying and pasting text directly from a standard PDF viewer often results in garbled line breaks, missing spaces between words, or jumbled multi-column layouts. PDFDaVinci’s PDF to Text engine solves this by analyzing the transformation matrix and Y-axis coordinates of every text item on the page.',
+          'By detecting vertical baseline shifts, the parser accurately determines where lines and paragraphs begin and end. Every page is clearly separated with a clean header marker, making it effortless to navigate long research papers, e-books, legal briefs, and technical manuals.',
         ],
         bullets: [
-          'Интерактивен текстов редактор директно в страницата с брой думи и символи.',
-          'Бутон за мигновено копиране на целия текст в системния клипборд.',
-          'Чист UTF-8 .txt експорт, подходящ за обработка с AI (ChatGPT, Claude), анализ на данни и индексиране.',
-          'Нулево забавяне: десетки страници текст се извличат за по-малко от секунда.',
+          'Interactive In-Browser Text Editor with real-time Page, Word, and Character counts.',
+          'Instant 1-Click Copy to system clipboard.',
+          'Clean UTF-8 .txt export — ideal for LLM prompts (ChatGPT, Claude, Gemini), data mining, and code editors.',
+          'Sub-Second Speed: Extracts dozens of pages of text in milliseconds inside browser RAM.',
         ],
       },
       {
-        heading: 'Полезни приложения на конвертора PDF към TXT',
+        heading: 'Built for Researchers, Developers, Writers & AI Workflows',
         paragraphs: [
-          'Извличането на чист текст от PDF е незаменимо за студенти, изследователи, копирайтъри, програмисти и SEO специалисти. Можете бързо да подготвите съдържание от PDF доклади за подаване към езикови модели, да проверите броя на думите и символите в документ или да прехвърлите информацията в код редактор или база данни без излишно форматиране.',
+          'Whether you are preparing PDF reports for AI summarization, auditing document word counts, or migrating legacy PDF documentation into Markdown or CMS platforms, PDFDaVinci delivers clean, unformatted text instantly without exposing proprietary data to external APIs.',
         ],
       },
     ],
     faqs: [
       {
-        question: 'Мога ли да копирам текста директно без да свалям файл?',
+        question: 'Can I copy the extracted PDF text without downloading a file?',
         answer:
-          'Да! В панела "PDF към Текст" разполагате с удобен бутон "Копирай в клипборда", както и с интерактивно поле, от което можете да маркирате или редактирате конкретен пасаж.',
+          'Yes! The PDF to Text workspace features a one-click "Copy Full Text" button as well as an interactive text area where you can edit or select specific passages before copying.',
       },
       {
-        question: 'Показва ли инструментът статистика за брой думи и символи?',
+        question: 'Does the tool show word count and character count statistics?',
         answer:
-          'Да, веднага след извличането на текста PDFDaVinci изчислява и показва общия брой страници, брой думи и брой символи в документа.',
+          'Yes. As soon as your PDF is loaded, PDFDaVinci displays the total page count, word count, and character count, updating dynamically if you edit the text in the browser.',
       },
       {
-        question: 'Работи ли със сканирани PDF файлове без текстов слой?',
+        question: 'How does it handle scanned PDFs that do not contain a text layer?',
         answer:
-          'Инструментът извлича всички векторни текстови слоеве, вградени в PDF файла. Ако документът е чисто сканирано изображение без текстов слой, препоръчваме да използвате режима "PDF към JPG" за експорт на сканираните страници с висока резолюция.',
+          'PDFDaVinci extracts all embedded vector text streams from the PDF. If a page is a pure scanned bitmap without an embedded text layer, the tool clearly notes it and lets you switch to "PDF to JPG" mode with 1 click to export high-resolution page images.',
       },
     ],
   },
@@ -359,7 +359,7 @@ export function generateJsonLdSchemas(pageData: PageSeoData) {
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'All',
     browserRequirements: 'Requires JavaScript and HTML5 Canvas support',
-    inLanguage: 'bg-BG',
+    inLanguage: 'en-US',
     isAccessibleForFree: true,
     offers: {
       '@type': 'Offer',
@@ -389,7 +389,7 @@ export function generateJsonLdSchemas(pageData: PageSeoData) {
     tool: [
       {
         '@type': 'HowToTool',
-        name: 'Уеб браузър (Chrome, Firefox, Edge, Safari)',
+        name: 'Modern Web Browser (Chrome, Firefox, Edge, Safari)',
       },
     ],
     step: pageData.howToSteps.map((step, index) => ({

@@ -13,13 +13,13 @@ interface AdBannerProps {
 }
 
 /**
- * Интелигентен Google AdSense компонент с твърдо резервирани минимални височини
- * за гарантиран 0.000 Cumulative Layout Shift (CLS) и спазване на Google Publisher Policies.
+ * Responsive Google AdSense component with strictly reserved minimum heights
+ * for guaranteed 0.000 Cumulative Layout Shift (CLS) and Google Publisher Policy compliance.
  */
 export default function AdBanner({
   slotId,
   variant = 'leaderboard',
-  label = 'РЕКЛАМА / ADVERTISEMENT',
+  label = 'ADVERTISEMENT',
   className = '',
 }: AdBannerProps) {
   const adInitialized = useRef(false);
@@ -34,7 +34,7 @@ export default function AdBanner({
         adInitialized.current = true;
       }
     } catch {
-      // В локална среда или при активен AdBlocker не хвърляме грешка в конзолата
+      // Silently ignore in local dev or when an ad blocker is active
     }
   }, []);
 
@@ -47,7 +47,7 @@ export default function AdBanner({
 
   return (
     <aside
-      aria-label="Спонсорирана рекламна секция"
+      aria-label="Sponsored Advertisement"
       className={`my-8 mx-auto w-full max-w-5xl select-none px-2 ${className}`}
     >
       <div className="mb-1.5 flex items-center justify-center gap-2">
@@ -61,7 +61,6 @@ export default function AdBanner({
       <div
         className={`relative flex w-full items-center justify-center overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100/50 p-2 shadow-inner ${sizeClasses[variant]}`}
       >
-        {/* Визуален placeholder за разработка и CLS защита преди рендиране на AdSense */}
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center text-xs text-slate-400">
           <span className="font-medium text-slate-400/80">
             PDFDaVinci AdSense Slot ({slotId})

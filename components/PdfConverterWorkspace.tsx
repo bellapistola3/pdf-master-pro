@@ -39,7 +39,7 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
       currentPage: 0,
       totalPages: 1,
       percentage: 5,
-      statusText: 'Инициализиране на локалния RAM PDF енджин...',
+      statusText: 'Initializing local in-browser RAM PDF engine...',
     });
 
     try {
@@ -54,9 +54,9 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
       const message =
         err instanceof Error
           ? err.message
-          : 'Възникна грешка при локалното разчитане на PDF файла.';
+          : 'An unexpected error occurred while reading the PDF file locally.';
       setErrorMessage(
-        `Неуспешно разчитане на PDF документа: ${message}. Проверете дали файлът не е защитен с парола или повреден.`
+        `Failed to parse PDF document: ${message}. Please verify that the file is not password-protected or corrupted.`
       );
       setMeta(null);
       setPages([]);
@@ -81,7 +81,7 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
       <Header hasLoadedFile={hasLoadedFile} onResetFile={handleResetFile} />
 
       <main className="flex-1 pb-16">
-        {/* Hero заглавна секция */}
+        {/* Hero Header Section */}
         <section className="mx-auto max-w-5xl px-4 pt-8 text-center sm:px-6 sm:pt-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/80 bg-indigo-50/80 px-4 py-1.5 text-xs font-bold text-indigo-800 shadow-sm">
             <span>{pageData.badgeText}</span>
@@ -96,8 +96,8 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
           </p>
         </section>
 
-        {/* Работна зона на конвертора */}
-        <section aria-label="PDF Конвертор Работна Зона" className="mx-auto mt-8 max-w-6xl px-4 sm:px-6">
+        {/* Converter Workspace Section */}
+        <section aria-label="PDF Converter Workspace" className="mx-auto mt-8 max-w-6xl px-4 sm:px-6">
           {errorMessage && (
             <div
               role="alert"
@@ -105,7 +105,7 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
             >
               <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
               <div className="flex-1">
-                <p className="font-bold">Грешка при обработка на файла</p>
+                <p className="font-bold">Document Processing Error</p>
                 <p className="mt-0.5 text-xs text-red-700">{errorMessage}</p>
               </div>
               <button
@@ -113,7 +113,7 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
                 onClick={() => setErrorMessage(null)}
                 className="rounded-lg bg-red-100 px-2.5 py-1 text-xs font-bold text-red-800 hover:bg-red-200"
               >
-                Затвори
+                Dismiss
               </button>
             </div>
           )}
@@ -133,10 +133,10 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
             </>
           )}
 
-          {/* СЛОТ А (В средата): Под формата за избор/конвертиране и над резултатите за сваляне */}
+          {/* SLOT A (Mid-Tool): Below converter controls and above download results */}
           <AdBanner slotId="1122334455" variant="leaderboard" />
 
-          {/* Резултати, прогрес лента и бутони за сваляне */}
+          {/* Conversion Results, Progress Bar & Download Actions */}
           <ConversionPanels
             activeFormat={activeFormat}
             meta={meta}
@@ -147,16 +147,16 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
           />
         </section>
 
-        {/* СЛОТ Б (Под инструмента): Голям банер точно преди SEO статията */}
+        {/* SLOT B (Below Tool): Large rectangle/leaderboard banner right before SEO article */}
         <AdBanner slotId="2233445566" variant="rectangle" />
 
-        {/* Дълъг SEO блок с HowTo, техническа статия, In-Article Ad (Слот В) и ЧЗВ */}
+        {/* Long-Form SEO Content Block with HowTo, Technical Guide, In-Article Ad (Slot C), and FAQs */}
         <SeoContentBlock pageData={pageData} />
       </main>
 
       <Footer />
 
-      {/* СЛОТ Г (Мобилен Sticky Footer): За висок мобилен CTR */}
+      {/* SLOT D (Mobile Sticky Footer): High-viewability mobile banner */}
       <StickyBottomAd slotId="4455667788" />
     </div>
   );

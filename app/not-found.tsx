@@ -13,11 +13,11 @@ export default function NotFound() {
           <FileQuestion className="h-10 w-10" />
         </div>
         <h1 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-          404 — Страницата не е намерена
+          404 — Page Not Found
         </h1>
         <p className="mt-3 max-w-md text-sm text-slate-600 sm:text-base">
-          Търсената от вас страница в <strong>PDFDaVinci.com</strong> не съществува или е преместена.
-          Използвайте бутоните по-долу за директен достъп до PDF конверторите.
+          The page you are looking for on <strong>PDFDaVinci.com</strong> does not exist or has been
+          moved. Choose one of our local RAM PDF converters below:
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
@@ -25,25 +25,25 @@ export default function NotFound() {
             className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-indigo-700"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Към Началния PDF Конвертор</span>
+            <span>Back to All-in-One PDF Converter</span>
           </Link>
           <Link
             href="/pdf-to-jpg"
             className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100"
           >
-            PDF в JPG
+            PDF to JPG
           </Link>
           <Link
             href="/pdf-to-word"
             className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100"
           >
-            PDF в Word
+            PDF to Word
           </Link>
           <Link
             href="/pdf-to-text"
             className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100"
           >
-            PDF в Текст
+            PDF to Text
           </Link>
         </div>
       </main>

@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'bg_BG',
+    locale: 'en_US',
     url: SITE_URL,
     siteName: SITE_NAME,
     title: SEO_PAGES.home.title,
@@ -56,9 +56,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="bg">
+    <html lang="en">
       <head>
-        {/* Google AdSense Асинхронен Скрипт (Zero-Blocking за Core Web Vitals) */}
+        {/* Google AdSense Asynchronous Script (Zero-Blocking for Core Web Vitals) */}
         <Script
           id="adsense-init"
           async

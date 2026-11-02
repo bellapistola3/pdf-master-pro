@@ -22,7 +22,7 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
       file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
 
     if (!isPdf) {
-      setErrorMsg('Моля, изберете валиден PDF документ (.pdf).');
+      setErrorMsg('Please select a valid PDF document (.pdf).');
       return;
     }
 
@@ -66,7 +66,7 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
       <div
         role="button"
         tabIndex={0}
-        aria-label="Поле за избор или пускане на PDF файл"
+        aria-label="Dropzone to select or drag and drop a PDF file"
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
@@ -91,20 +91,20 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
           className="hidden"
         />
 
-        {/* Икона с контрастен кръг */}
+        {/* High-contrast icon badge */}
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-transform duration-200 group-hover:scale-105">
           <UploadCloud className="h-10 w-10" />
         </div>
 
         <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-          Пуснете вашия PDF файл тук или кликнете за избор
+          Drop Your PDF File Here or Click to Browse
         </h2>
 
         <p className="mx-auto mt-2.5 max-w-xl text-sm text-slate-600 sm:text-base">
-          Обработката стартира мигновено на <strong className="text-slate-900">100% локално в RAM паметта</strong> на вашия браузър. Без качване на сървър и без лимит на размера.
+          Conversion runs <strong className="text-slate-900">100% locally in your browser RAM</strong>. Zero server uploads, no file size limits, and total privacy.
         </p>
 
-        {/* Главни CTA бутони */}
+        {/* Primary CTA Buttons */}
         <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
           <button
             type="button"
@@ -116,24 +116,24 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
             className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-indigo-600 px-7 py-3.5 text-base font-bold text-white shadow-md shadow-indigo-600/25 transition hover:bg-indigo-700 active:scale-[0.99] sm:w-auto"
           >
             <FileUp className="h-5 w-5" />
-            <span>Изберете PDF файл</span>
+            <span>Select PDF File</span>
           </button>
 
           <DemoFileButton onSelectDemoFile={onFileSelected} disabled={isProcessing} />
         </div>
 
-        {/* Гаранции за сигурност */}
+        {/* Security & Trust Pills */}
         <div className="mt-7 flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-500">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 shadow-sm ring-1 ring-slate-200/80">
             <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
-            Без качване в облак
+            No Cloud Uploads
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 shadow-sm ring-1 ring-slate-200/80">
             <Lock className="h-3.5 w-3.5 text-indigo-600" />
-            Zero-Server RAM Архитектура
+            Zero-Server RAM Architecture
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 shadow-sm ring-1 ring-slate-200/80">
-            100% Безплатно и без имейл
+            100% Free • No Email Required
           </span>
         </div>
 

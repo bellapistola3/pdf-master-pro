@@ -22,7 +22,7 @@ export default function FileCard({ meta, onRemoveFile }: FileCardProps) {
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-800">
                 <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
-                Зареден в RAM паметта
+                Loaded in Browser RAM
               </span>
               <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-semibold text-indigo-700">
                 <Cpu className="h-3.5 w-3.5" />
@@ -40,15 +40,15 @@ export default function FileCard({ meta, onRemoveFile }: FileCardProps) {
             <div className="mt-2 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-500 sm:text-sm">
               <span className="inline-flex items-center gap-1.5 text-slate-700">
                 <Layers className="h-4 w-4 text-indigo-600" />
-                Брой страници: <strong>{meta.pageCount}</strong>
+                Pages: <strong>{meta.pageCount}</strong>
               </span>
               <span>•</span>
               <span className="inline-flex items-center gap-1.5 text-slate-700">
                 <HardDrive className="h-4 w-4 text-indigo-600" />
-                Размер: <strong>{formatFileSize(meta.fileSize)}</strong>
+                Size: <strong>{formatFileSize(meta.fileSize)}</strong>
               </span>
               <span>•</span>
-              <span className="text-emerald-700">🔒 Локална обработка (0 B качени в мрежата)</span>
+              <span className="text-emerald-700">🔒 Local Processing (0 Bytes Uploaded)</span>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function FileCard({ meta, onRemoveFile }: FileCardProps) {
             className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700"
           >
             <Trash2 className="h-4 w-4" />
-            <span>Изчисти от RAM / Нов файл</span>
+            <span>Clear RAM / New PDF</span>
           </button>
         </div>
       </div>

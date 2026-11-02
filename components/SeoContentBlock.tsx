@@ -11,7 +11,7 @@ interface SeoContentBlockProps {
 export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
   return (
     <article className="mx-auto mt-14 max-w-5xl px-4 sm:px-6">
-      {/* СЕКЦИЯ 1: Как работи стъпка по стъпка (HowTo) */}
+      {/* SECTION 1: Step-by-Step HowTo Guide */}
       <section
         aria-labelledby="howto-heading"
         className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-10"
@@ -19,7 +19,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
         <div className="mb-8 max-w-3xl">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-700">
             <ListOrdered className="h-3.5 w-3.5" />
-            Ръководство Стъпка по Стъпка
+            Step-by-Step User Guide
           </div>
           <h2
             id="howto-heading"
@@ -44,17 +44,17 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.text}</p>
               </div>
               <div className="mt-4 border-t border-slate-200/60 pt-3 text-xs font-semibold text-emerald-700">
-                ✓ 100% Локално изпълнение в RAM
+                ✓ 100% Local In-Memory Execution
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* СЛОТ В (In-Article AdSense): Между инструкциите и дълбокото SEO съдържание / ЧЗВ */}
+      {/* SLOT C (In-Article AdSense): Between HowTo instructions and deep SEO content / FAQs */}
       <AdBanner slotId="3344556677" variant="in-article" />
 
-      {/* СЕКЦИЯ 2: Дълги SEO статии и технически предимства */}
+      {/* SECTION 2: In-Depth SEO Articles & Technical Advantages */}
       <section className="mt-10 space-y-8 rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-10">
         {pageData.articleSections.map((section) => (
           <div key={section.heading} className="border-b border-slate-100 pb-8 last:border-none last:pb-0">
@@ -83,42 +83,42 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
           </div>
         ))}
 
-        {/* Вътрешни SEO линкове за crawlability */}
+        {/* Internal SEO Silo Links */}
         <div className="rounded-2xl bg-gradient-to-r from-indigo-50 via-slate-50 to-violet-50 p-6 ring-1 ring-indigo-100">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-700">
             <Sparkles className="h-4 w-4" />
-            Всички специализирани модули на PDFDaVinci.com
+            Explore All Specialized Tools on PDFDaVinci.com
           </div>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <Link
               href="/"
               className="rounded-xl bg-white p-3.5 text-xs font-bold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:ring-indigo-400"
             >
-              ⚡ Универсален PDF Конвертор →
+              ⚡ All-in-One PDF Converter →
             </Link>
             <Link
               href="/pdf-to-jpg"
               className="rounded-xl bg-white p-3.5 text-xs font-bold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:ring-indigo-400"
             >
-              🖼️ PDF в JPG Висока Резолюция →
+              🖼️ High-Res PDF to JPG (ZIP) →
             </Link>
             <Link
               href="/pdf-to-word"
               className="rounded-xl bg-white p-3.5 text-xs font-bold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:ring-indigo-400"
             >
-              📝 PDF в Редактируем Word (.DOC) →
+              📝 Editable PDF to Word (.DOC) →
             </Link>
             <Link
               href="/pdf-to-text"
               className="rounded-xl bg-white p-3.5 text-xs font-bold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:ring-indigo-400"
             >
-              📄 Извличане на Текст от PDF (.TXT) →
+              📄 Extract PDF to Text (.TXT) →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* СЕКЦИЯ 3: Често задавани въпроси (FAQPage) */}
+      {/* SECTION 3: Frequently Asked Questions (FAQPage) */}
       <section
         aria-labelledby="faq-heading"
         className="mt-10 rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-10"
@@ -126,7 +126,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
         <div className="mb-6 flex items-center gap-2 text-indigo-700">
           <HelpCircle className="h-5 w-5" />
           <span className="text-xs font-bold uppercase tracking-wider">
-            Често Задавани Въпроси (FAQ)
+            Frequently Asked Questions (FAQ)
           </span>
         </div>
 
@@ -134,7 +134,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
           id="faq-heading"
           className="mb-6 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
         >
-          Всичко за сигурността и работата с PDFDaVinci
+          Everything You Need to Know About PDFDaVinci
         </h2>
 
         <div className="space-y-4">
@@ -159,8 +159,8 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
         <div className="mt-8 flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4 text-xs font-semibold text-emerald-900">
           <ShieldCheck className="h-5 w-5 shrink-0 text-emerald-600" />
           <span>
-            Гаранция за поверителност на PDFDaVinci (pdfdavinci.com): Вашите документи се
-            обработват изцяло локално в браузъра и никога не се предават по интернет.
+            PDFDaVinci (pdfdavinci.com) Privacy Guarantee: All PDF documents are processed strictly
+            inside your local browser memory and are never transmitted over the internet.
           </span>
         </div>
       </section>

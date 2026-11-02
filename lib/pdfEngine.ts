@@ -25,7 +25,7 @@ let pdfjsLibPromise: Promise<typeof import('pdfjs-dist')> | null = null;
 
 async function getPdfJs() {
   if (typeof window === 'undefined') {
-    throw new Error('PDF.js може да се изпълнява само в браузърна среда (Client-Side).');
+    throw new Error('PDF.js can only run in a browser environment (Client-Side).');
   }
 
   if (!pdfjsLibPromise) {
@@ -39,7 +39,7 @@ async function getPdfJs() {
 }
 
 /**
- * Зарежда PDF файл в RAM паметта и връща броя страници и инстанцията на документа
+ * Loads a PDF file into browser RAM and returns the PDF document instance
  */
 export async function loadPdfFromRam(file: File) {
   const pdfjs = await getPdfJs();
@@ -57,7 +57,7 @@ export async function loadPdfFromRam(file: File) {
 }
 
 /**
- * Извлича структуриран текст от конкретна PDF страница със запазване на редовете по Y координати
+ * Extracts structured text from a PDF page preserving line breaks by Y coordinates
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function extractStructuredPageText(page: any): Promise<string> {
@@ -111,7 +111,7 @@ async function extractStructuredPageText(page: any): Promise<string> {
 }
 
 /**
- * Обработва всички страници на PDF документа локално в RAM чрез HTML5 Canvas + Text Extraction
+ * Processes all pages of the PDF document locally in RAM via HTML5 Canvas + Text Extraction
  */
 export async function processPdfInRam(
   file: File,
@@ -133,7 +133,7 @@ export async function processPdfInRam(
         currentPage: pageNum,
         totalPages,
         percentage: Math.round(((pageNum - 1) / totalPages) * 100),
-        statusText: `Рендиране на страница ${pageNum} от ${totalPages} в RAM паметта...`,
+        statusText: `Rendering page ${pageNum} of ${totalPages} in local RAM...`,
       });
     }
 
@@ -144,13 +144,13 @@ export async function processPdfInRam(
     const context = canvas.getContext('2d', { alpha: false });
 
     if (!context) {
-      throw new Error('Браузърът не успя да инициализира 2D Canvas контекст.');
+      throw new Error('Browser could not initialize 2D Canvas context.');
     }
 
     canvas.width = Math.floor(viewport.width);
     canvas.height = Math.floor(viewport.height);
 
-    // Запълваме с чист бял фон за JPG експорт
+    // Pure white background for clean JPEG export
     context.fillStyle = '#FFFFFF';
     context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -170,7 +170,6 @@ export async function processPdfInRam(
       textContent: pageText,
     });
 
-    // Освобождаваме паметта на временния canvas
     canvas.width = 0;
     canvas.height = 0;
   }
@@ -180,15 +179,15 @@ export async function processPdfInRam(
       currentPage: totalPages,
       totalPages,
       percentage: 100,
-      statusText: 'Локалната обработка в RAM завърши успешно!',
+      statusText: 'Local RAM processing completed!',
     });
   }
 
   const fullText = renderedPages
     .map(
       (p) =>
-        `==================== СТРАНИЦА ${p.pageNumber} / ${totalPages} ====================\n\n${
-          p.textContent || '[Няма открит текстов слой на тази страница]'
+        `==================== PAGE ${p.pageNumber} / ${totalPages} ====================\n\n${
+          p.textContent || '[No embedded text layer detected on this page]'
         }`
     )
     .join('\n\n\n');
@@ -205,7 +204,7 @@ export async function processPdfInRam(
 }
 
 /**
- * Генерира Microsoft Word (.doc) съвместим документ с UTF-8 поддръжка и разделение по страници
+ * Generates a Microsoft Word (.doc) compatible document with UTF-8 encoding and page breaks
  */
 export function createWordDocBlob(
   fileName: string,
@@ -237,12 +236,12 @@ export function createWordDocBlob(
 
       const fallbackNotice =
         !paragraphs && !includePageImages
-          ? `<p style="color: #64748b; font-style: italic;">[Страница ${page.pageNumber}: Няма текстов слой — активирайте опцията за вграждане на визуални страници или използвайте JPG режима.]</p>`
+          ? `<p style="color: #64748b; font-style: italic;">[Page ${page.pageNumber}: No vector text layer detected — enable visual page embedding above or use PDF to JPG mode.]</p>`
           : '';
 
       const imageBlock = includePageImages
         ? `<div style="margin: 12pt 0; text-align: center;"><img src="${page.dataUrl}" width="560" style="max-width: 100%; height: auto; border: 1px solid #e2e8f0;" alt="Page ${page.pageNumber}" /></div>`
-        : '';
+          : '';
 
       const pageBreak =
         idx < pages.length - 1
@@ -252,7 +251,7 @@ export function createWordDocBlob(
       return `
         <div class="pdf-page-section">
           <p style="margin: 0 0 12pt 0; padding-bottom: 4pt; border-bottom: 1px solid #cbd5e1; font-size: 9pt; color: #64748b; font-family: 'Arial', sans-serif;">
-            <strong>${escapeHtml(cleanTitle)}</strong> — Страница ${page.pageNumber} от ${pages.length} (Генерирано с PDFDaVinci.com)
+            <strong>${escapeHtml(cleanTitle)}</strong> — Page ${page.pageNumber} of ${pages.length} (Generated locally with PDFDaVinci.com)
           </p>
           ${paragraphs}
           ${fallbackNotice}
@@ -301,8 +300,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 }
 
 /**
- * Генерира 100% валиден двустраничен демонстрационен PDF файл директно в RAM паметта
- * с точни байтови отмествания (xref таблица), за да може потребителят да тества веднага
+ * Generates a valid 2-page demonstration PDF file directly in RAM
  */
 export function generateDemoPdfFileInRam(): File {
   const page1Lines = [
@@ -332,24 +330,23 @@ export function generateDemoPdfFileInRam(): File {
     'Thank you for testing PDFDaVinci (https://pdfdavinci.com)!',
   ];
 
+  const escapePdfText = (text: string) =>
+    text.replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)');
+
   const buildContentStream = (lines: string[], headerBannerColor: string) => {
     const ops: string[] = [];
-    // Декоративен горен банер
     ops.push(`${headerBannerColor} rg`);
     ops.push('40 735 515 38 re f');
-    // Декоративна рамка около страницата
     ops.push('0.78 0.82 0.88 RG');
     ops.push('1 w');
     ops.push('40 60 515 713 re S');
 
-    // Текст в банера (бял)
     ops.push('BT');
     ops.push('/F1 14 Tf');
     ops.push('1 1 1 rg');
     ops.push(`54 749 Td (${escapePdfText(lines[0])}) Tj`);
     ops.push('ET');
 
-    // Основен текст
     ops.push('BT');
     ops.push('/F1 11 Tf');
     ops.push('0.12 0.16 0.23 rg');
@@ -363,9 +360,6 @@ export function generateDemoPdfFileInRam(): File {
 
     return ops.join('\n');
   };
-
-  const escapePdfText = (text: string) =>
-    text.replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)');
 
   const stream1 = buildContentStream(page1Lines, '0.31 0.27 0.90');
   const stream2 = buildContentStream(page2Lines, '0.06 0.46 0.43');
