@@ -12,6 +12,7 @@ import {
   Layers,
   ListOrdered,
   Lock,
+  Mail,
   Scale,
   ShieldCheck,
   Sparkles,
@@ -429,14 +430,32 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
               and Plain Text (.txt) 100% locally inside their own browser RAM.
             </p>
           </div>
-          <div className="mt-6 border-t border-slate-100 pt-4">
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-1.5 text-xs font-extrabold text-indigo-600 hover:text-indigo-800"
-            >
-              <span>Read Full About Us & Engineering Architecture</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+          <div className="mt-6 space-y-3 border-t border-slate-100 pt-4">
+            <div className="flex flex-wrap items-center gap-3 text-xs font-bold">
+              <a
+                href="mailto:office@pdfdavinci.com"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-100 bg-indigo-50/70 px-3 py-1.5 text-indigo-700 transition hover:bg-indigo-100"
+              >
+                <Mail className="h-3.5 w-3.5" />
+                <span>office@pdfdavinci.com</span>
+              </a>
+              <a
+                href="mailto:support@pdfdavinci.com"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-100 bg-emerald-50/70 px-3 py-1.5 text-emerald-700 transition hover:bg-emerald-100"
+              >
+                <Mail className="h-3.5 w-3.5" />
+                <span>support@pdfdavinci.com</span>
+              </a>
+            </div>
+            <div>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-1.5 text-xs font-extrabold text-indigo-600 hover:text-indigo-800"
+              >
+                <span>Read Full About Us & Engineering Architecture</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -457,22 +476,40 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
               commercial use, supported by non-intrusive, policy-compliant advertising.
             </p>
           </div>
-          <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-slate-100 pt-4 text-xs font-extrabold">
-            <Link
-              href="/terms"
-              className="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800"
-            >
-              <span>Read Full Terms of Service</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-            <span className="text-slate-300">•</span>
-            <Link
-              href="/privacy"
-              className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-900"
-            >
-              <span>Read Privacy & GDPR Policy</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+          <div className="mt-6 space-y-3 border-t border-slate-100 pt-4">
+            <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-600">
+              <span>Official Inquiries:</span>
+              <a
+                href="mailto:office@pdfdavinci.com"
+                className="font-extrabold text-indigo-600 hover:underline"
+              >
+                office@pdfdavinci.com
+              </a>
+              <span>•</span>
+              <a
+                href="mailto:support@pdfdavinci.com"
+                className="font-extrabold text-emerald-700 hover:underline"
+              >
+                support@pdfdavinci.com
+              </a>
+            </div>
+            <div className="flex flex-wrap items-center gap-4 text-xs font-extrabold">
+              <Link
+                href="/terms"
+                className="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800"
+              >
+                <span>Read Full Terms of Service</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <span className="text-slate-300">•</span>
+              <Link
+                href="/privacy"
+                className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-900"
+              >
+                <span>Read Privacy & GDPR Policy</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

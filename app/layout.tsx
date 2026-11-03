@@ -63,6 +63,21 @@ const globalWebsiteSchema = {
     '@type': 'Organization',
     name: SITE_NAME,
     url: `${SITE_URL}/`,
+    email: 'office@pdfdavinci.com',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        email: 'office@pdfdavinci.com',
+        contactType: 'corporate & legal inquiries',
+        availableLanguage: ['English'],
+      },
+      {
+        '@type': 'ContactPoint',
+        email: 'support@pdfdavinci.com',
+        contactType: 'customer support',
+        availableLanguage: ['English'],
+      },
+    ],
     logo: {
       '@type': 'ImageObject',
       url: `${SITE_URL}/icon.svg`,
