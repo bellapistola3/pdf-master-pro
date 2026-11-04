@@ -110,37 +110,134 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
 
   const hasLoadedFile = Boolean(meta && pages.length > 0);
 
-  // Uniform 4 feature cards with identical 1-line title + 1-line subtitle structure
-  const uniformHeroFeatures = [
-    {
-      title: '100% Free Forever',
-      subtitle: 'No credit card or trial trap',
-      icon: Check,
-      iconBg:
-        'bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/20',
-    },
-    {
-      title: '100% Local RAM Mode',
-      subtitle: 'Files never leave your device',
-      icon: ShieldCheck,
-      iconBg:
-        'bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/20',
-    },
-    {
-      title: '2.0x HiDPI Quality',
-      subtitle: 'Preserves original layout & fonts',
-      icon: Sparkles,
-      iconBg:
-        'bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/20',
-    },
-    {
-      title: 'Works on All Devices',
-      subtitle: 'Windows, Mac, iOS & Android',
-      icon: Laptop,
-      iconBg:
-        'bg-gradient-to-br from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/20',
-    },
-  ];
+  // Page-specific 4 uniform feature cards with identical 1-line title + 1-line subtitle structure
+  const heroFeatureMap: Record<
+    string,
+    { title: string; subtitle: string; icon: typeof Check; iconBg: string }[]
+  > = {
+    '/': [
+      {
+        title: '100% Free Forever',
+        subtitle: 'No credit card or trial trap',
+        icon: Check,
+        iconBg:
+          'bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/20',
+      },
+      {
+        title: '100% Local RAM Mode',
+        subtitle: 'Files never leave your device',
+        icon: ShieldCheck,
+        iconBg:
+          'bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/20',
+      },
+      {
+        title: '2.0x HiDPI Quality',
+        subtitle: 'Preserves original layout & fonts',
+        icon: Sparkles,
+        iconBg:
+          'bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/20',
+      },
+      {
+        title: 'Works on All Devices',
+        subtitle: 'Windows, Mac, iOS & Android',
+        icon: Laptop,
+        iconBg:
+          'bg-gradient-to-br from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/20',
+      },
+    ],
+    '/pdf-to-jpg': [
+      {
+        title: '300 DPI HiDPI Output',
+        subtitle: '2.0x supersampled crystal-clear text',
+        icon: Sparkles,
+        iconBg:
+          'bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/20',
+      },
+      {
+        title: '1-Click Batch .ZIP',
+        subtitle: 'Download all pages or single JPGs',
+        icon: Check,
+        iconBg:
+          'bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/20',
+      },
+      {
+        title: '100% Local RAM Render',
+        subtitle: 'Zero server upload or cloud queues',
+        icon: ShieldCheck,
+        iconBg:
+          'bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/20',
+      },
+      {
+        title: 'Pure White Backing',
+        subtitle: 'Zero dark transparency artifacts',
+        icon: Laptop,
+        iconBg:
+          'bg-gradient-to-br from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/20',
+      },
+    ],
+    '/pdf-to-word': [
+      {
+        title: 'Editable Word (.DOC)',
+        subtitle: 'Compatible with Word & Google Docs',
+        icon: Sparkles,
+        iconBg:
+          'bg-gradient-to-br from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/20',
+      },
+      {
+        title: 'Smart Paragraph Flow',
+        subtitle: 'Rebuilds lines & page section breaks',
+        icon: Check,
+        iconBg:
+          'bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/20',
+      },
+      {
+        title: 'Zero Email Required',
+        subtitle: 'Instant direct in-browser download',
+        icon: ShieldCheck,
+        iconBg:
+          'bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/20',
+      },
+      {
+        title: 'Optional Page Snapshots',
+        subtitle: 'Embed high-res visuals inside Word',
+        icon: Laptop,
+        iconBg:
+          'bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/20',
+      },
+    ],
+    '/pdf-to-text': [
+      {
+        title: 'Clean UTF-8 .TXT',
+        subtitle: 'Coordinate-sorted line reconstruction',
+        icon: Sparkles,
+        iconBg:
+          'bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/20',
+      },
+      {
+        title: 'Live In-Browser Editor',
+        subtitle: 'Real-time word & character counters',
+        icon: Check,
+        iconBg:
+          'bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/20',
+      },
+      {
+        title: '1-Click Clipboard Copy',
+        subtitle: 'Ready for AI prompts & workflows',
+        icon: Laptop,
+        iconBg:
+          'bg-gradient-to-br from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/20',
+      },
+      {
+        title: '100% Local RAM Privacy',
+        subtitle: 'Zero external API data exposure',
+        icon: ShieldCheck,
+        iconBg:
+          'bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/20',
+      },
+    ],
+  };
+
+  const uniformHeroFeatures = heroFeatureMap[pageData.slug] || heroFeatureMap['/'];
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-slate-50 via-white to-slate-100/70 text-slate-900">

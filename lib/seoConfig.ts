@@ -43,7 +43,13 @@ export interface PageSeoData {
 
 export const SITE_NAME = 'PDFDaVinci';
 export const SITE_URL = 'https://pdfdavinci.com';
-export const ADSENSE_CLIENT_ID = 'ca-pub-0000000000000000'; // Replace with your live Google AdSense Publisher ID
+export const ADSENSE_CLIENT_ID =
+  process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-0000000000000000'; // Replace with your live Google AdSense Publisher ID
+export const IS_ADSENSE_CONFIGURED = Boolean(
+  ADSENSE_CLIENT_ID &&
+    ADSENSE_CLIENT_ID.startsWith('ca-pub-') &&
+    !ADSENSE_CLIENT_ID.includes('0000000000')
+);
 
 const DEFAULT_REVIEWS: UserReview[] = [
   {
@@ -168,6 +174,16 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
         answer:
           'Yes! Both our 2x HiDPI JPG visual renderer and our UTF-8 Word (.doc) and Text (.txt) extractors preserve international scripts, accented characters, symbols, and technical typography accurately.',
       },
+      {
+        question: 'Can I convert confidential legal, financial, or medical PDF documents safely?',
+        answer:
+          'Yes. Because PDFDaVinci executes 100% locally inside your browser’s volatile memory (RAM) with zero server uploads, your confidential contracts, tax returns, bank statements, and medical records never leave your computer or phone.',
+      },
+      {
+        question: 'Does PDFDaVinci work on Windows, Mac, iPhone (iOS), and Android without installing software?',
+        answer:
+          'Yes! PDFDaVinci works directly inside any modern browser (Chrome, Safari, Microsoft Edge, Firefox, Brave) on desktop and mobile devices with zero plugins or software downloads required.',
+      },
     ],
   },
 
@@ -252,6 +268,21 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
         answer:
           'Yes. Our Mozilla PDF.js interpreter renders embedded fonts, vector paths, gradients, and high-res bitmap layers with 100% visual accuracy.',
       },
+      {
+        question: 'How does the batch ZIP download work for multi-page PDF files?',
+        answer:
+          'When you load a multi-page PDF, PDFDaVinci renders all pages in local browser RAM and bundles them on the fly using JSZip into a single, sequentially numbered ZIP archive (page-001.jpg, page-002.jpg, etc.) with one click.',
+      },
+      {
+        question: 'Will transparent PDF backgrounds turn black when converted to JPG?',
+        answer:
+          'No. PDFDaVinci automatically applies a pure white (#FFFFFF) alpha backing layer before encoding each JPEG image, preventing dark or inverted transparency artifacts.',
+      },
+      {
+        question: 'Is there any watermark added to the exported JPG images?',
+        answer:
+          'Never. All JPG images and ZIP archives exported from PDFDaVinci are 100% clean, watermark-free, and ready for commercial or personal use.',
+      },
     ],
   },
 
@@ -334,6 +365,21 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
         answer:
           'In the PDF to Word panel, you can check the option "Embed high-resolution visual page snapshots inside the Word document" to include crisp visual renders alongside the extracted text.',
       },
+      {
+        question: 'How does PDFDaVinci reconstruct paragraphs without uploading to a server?',
+        answer:
+          'Our local in-browser parser inspects the X and Y coordinate matrices of every text glyph in the PDF, detecting line breaks, paragraph spacing, and page boundaries directly inside your device RAM.',
+      },
+      {
+        question: 'Can I edit the converted .doc file in Google Docs or Apple Pages?',
+        answer:
+          'Yes! You can open and edit the downloaded .doc file directly in Microsoft Word, upload it to Google Drive for editing in Google Docs, or open it in Apple Pages and LibreOffice Writer.',
+      },
+      {
+        question: 'Are my private contracts or resumes safe when converting PDF to Word?',
+        answer:
+          '100% safe. Unlike cloud converters that upload your documents to remote servers, PDFDaVinci converts your PDF to Word entirely inside your own browser tab with zero network transmission.',
+      },
     ],
   },
 
@@ -415,6 +461,21 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
         question: 'How does it handle scanned PDFs that do not contain a text layer?',
         answer:
           'PDFDaVinci extracts all embedded vector text streams from the PDF. If a page is a pure scanned bitmap without an embedded text layer, the tool clearly notes it and lets you switch to "PDF to JPG" mode with 1 click to export high-resolution page images.',
+      },
+      {
+        question: 'Is the exported .txt file encoded in standard UTF-8 format?',
+        answer:
+          'Yes. Every exported .txt file uses clean UTF-8 encoding, preserving international alphabets, mathematical symbols, currencies, and special punctuation without garbled characters.',
+      },
+      {
+        question: 'Can I use the PDF to Text extractor to prepare documents for ChatGPT, Claude, or Gemini?',
+        answer:
+          'Absolutely! Researchers and professionals use PDFDaVinci to extract clean, page-delimited text from long PDFs and copy it with 1 click into AI prompts without uploading confidential PDF files to third-party servers.',
+      },
+      {
+        question: 'Can I edit the extracted text right inside the browser before downloading?',
+        answer:
+          'Yes. Our interactive text studio lets you edit, add notes, or trim unwanted sections right in the browser before copying to the clipboard or saving your .txt file.',
       },
     ],
   },

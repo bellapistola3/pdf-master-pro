@@ -30,6 +30,14 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-banner.svg`,
+        width: 1200,
+        height: 630,
+        alt: `About Us & Official Contact | ${SITE_NAME}`,
+      },
+    ],
   },
 };
 

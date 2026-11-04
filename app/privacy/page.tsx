@@ -21,12 +21,37 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-banner.svg`,
+        width: 1200,
+        height: 630,
+        alt: `Privacy & GDPR Policy | ${SITE_NAME}`,
+      },
+    ],
   },
 };
 
 export default function PrivacyPage() {
+  const privacySchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: `Privacy Policy & GDPR Disclosure | ${SITE_NAME}`,
+    url: `${SITE_URL}/privacy/`,
+    inLanguage: 'en-US',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+    },
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacySchema) }}
+      />
       <Header />
 
       <main className="mx-auto w-full max-w-[1440px] flex-1 px-4 py-12 sm:px-8 sm:py-16 lg:px-12">

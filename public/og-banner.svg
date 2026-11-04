@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <linearGradient id="indigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+
+  <!-- Subtle Grid Pattern -->
+  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1">
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="360" x2="1200" y2="360" />
+    <line x1="0" y1="480" x2="1200" y2="480" />
+    <line x1="240" y1="0" x2="240" y2="630" />
+    <line x1="480" y1="0" x2="480" y2="630" />
+    <line x1="720" y1="0" x2="720" y2="630" />
+    <line x1="960" y1="0" x2="960" y2="630" />
+  </g>
+
+  <!-- Main Card Frame -->
+  <rect x="60" y="55" width="1080" height="520" rx="32" fill="#1e293b" fill-opacity="0.55" stroke="#4f46e5" stroke-opacity="0.4" stroke-width="2" />
+
+  <!-- Top Security Pill -->
+  <rect x="110" y="105" width="460" height="44" rx="22" fill="#065f46" fill-opacity="0.45" stroke="#10b981" stroke-opacity="0.5" stroke-width="1.5" />
+  <circle cx="138" cy="127" r="7" fill="#34d399" />
+  <text x="158" y="133" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="17" font-weight="800" fill="#a7f3d0" letter-spacing="0.5">
+    100% LOCAL BROWSER RAM • ZERO CLOUD UPLOADS
+  </text>
+
+  <!-- Brand Title -->
+  <text x="110" y="240" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="76" font-weight="900" fill="#ffffff" letter-spacing="-1.5">
+    PDF<tspan fill="url(#goldGrad)">DaVinci</tspan>
+  </text>
+  <rect x="575" y="190" width="145" height="42" rx="10" fill="#f59e0b" fill-opacity="0.18" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5" />
+  <text x="647" y="218" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="20" font-weight="900" fill="#fcd34d" letter-spacing="2">
+    PRO RAM
+  </text>
+
+  <!-- Subtitle -->
+  <text x="110" y="310" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="32" font-weight="700" fill="#e2e8f0">
+    Ultra-Fast &amp; 100% Private Online PDF Converter
+  </text>
+  <text x="110" y="358" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="22" font-weight="500" fill="#94a3b8">
+    Convert PDF to High-Res JPG (ZIP), Editable Word (.DOC) &amp; Clean Text (.TXT)
+  </text>
+
+  <!-- 4 Feature Pills -->
+  <g transform="translate(110, 415)">
+    <rect x="0" y="0" width="230" height="90" rx="18" fill="url(#indigoGrad)" />
+    <text x="24" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#ffffff">PDF to JPG</text>
+    <text x="24" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#c7d2fe">300 DPI • Batch .ZIP</text>
+
+    <rect x="250" y="0" width="230" height="90" rx="18" fill="#0f172a" stroke="#38bdf8" stroke-opacity="0.45" stroke-width="1.5" />
+    <text x="274" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#ffffff">PDF to Word</text>
+    <text x="274" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#7dd3fc">Editable .DOC Export</text>
+
+    <rect x="500" y="0" width="230" height="90" rx="18" fill="#0f172a" stroke="#34d399" stroke-opacity="0.45" stroke-width="1.5" />
+    <text x="524" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#ffffff">PDF to Text</text>
+    <text x="524" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#6ee7b7">Clean UTF-8 .TXT</text>
+
+    <rect x="750" y="0" width="230" height="90" rx="18" fill="#0f172a" stroke="#fbbf24" stroke-opacity="0.45" stroke-width="1.5" />
+    <text x="774" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#fcd34d">100% Free</text>
+    <text x="774" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#fde68a">pdfdavinci.com</text>
+  </g>
+</svg>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { ADSENSE_CLIENT_ID } from '@/lib/seoConfig';
+import { ADSENSE_CLIENT_ID, IS_ADSENSE_CONFIGURED } from '@/lib/seoConfig';
 
 export type AdVariant = 'leaderboard' | 'rectangle' | 'in-article' | 'mobile-box';
 
@@ -21,7 +21,7 @@ export default function AdBanner({
   const adInitialized = useRef(false);
 
   useEffect(() => {
-    if (adInitialized.current) return;
+    if (!IS_ADSENSE_CONFIGURED || adInitialized.current) return;
     try {
       if (typeof window !== 'undefined') {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,6 +33,12 @@ export default function AdBanner({
       // Silently ignore in local dev or when an ad blocker is active
     }
   }, []);
+
+  // Google AdSense Policy Compliance: Never display empty "ADVERTISEMENT" placeholder boxes
+  // before a live Publisher ID (ca-pub-...) is configured.
+  if (!IS_ADSENSE_CONFIGURED) {
+    return null;
+  }
 
   const sizeClasses: Record<AdVariant, string> = {
     leaderboard: 'min-h-[90px] md:min-h-[90px]',
@@ -55,17 +61,8 @@ export default function AdBanner({
       </div>
 
       <div
-        className={`relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100/50 p-2 shadow-inner ${sizeClasses[variant]}`}
+        className={`relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-50/60 p-2 ${sizeClasses[variant]}`}
       >
-        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center text-xs text-slate-400">
-          <span className="font-medium text-slate-400/80">
-            PDFDaVinci AdSense Slot ({slotId})
-          </span>
-          <span className="mt-0.5 text-[11px] text-slate-400/60">
-            Zero-CLS Reserved Container • Viewability Optimized
-          </span>
-        </div>
-
         <ins
           className="adsbygoogle relative z-10 block w-full text-center"
           style={{ display: 'block' }}
