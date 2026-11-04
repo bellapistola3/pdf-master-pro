@@ -44,12 +44,15 @@ export interface PageSeoData {
 export const SITE_NAME = 'PDFDaVinci';
 export const SITE_URL = 'https://pdfdavinci.com';
 export const ADSENSE_CLIENT_ID =
-  process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-0000000000000000'; // Replace with your live Google AdSense Publisher ID
+  process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-8552016454740259';
 export const IS_ADSENSE_CONFIGURED = Boolean(
   ADSENSE_CLIENT_ID &&
     ADSENSE_CLIENT_ID.startsWith('ca-pub-') &&
     !ADSENSE_CLIENT_ID.includes('0000000000')
 );
+// Keep manual ad unit containers hidden until AdSense approves the site and manual Ad Unit IDs are created;
+// Google AdSense Auto Ads (loaded in <head>) automatically places ads across the site upon approval.
+export const ENABLE_MANUAL_AD_SLOTS = false;
 
 const DEFAULT_REVIEWS: UserReview[] = [
   {

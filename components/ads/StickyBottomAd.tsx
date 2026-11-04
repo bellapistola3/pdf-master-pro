@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
-import { ADSENSE_CLIENT_ID, IS_ADSENSE_CONFIGURED } from '@/lib/seoConfig';
+import { ADSENSE_CLIENT_ID, ENABLE_MANUAL_AD_SLOTS, IS_ADSENSE_CONFIGURED } from '@/lib/seoConfig';
 
 interface StickyBottomAdProps {
   slotId?: string;
@@ -17,7 +17,7 @@ export default function StickyBottomAd({ slotId = '9900112233' }: StickyBottomAd
   const adPushed = useRef(false);
 
   useEffect(() => {
-    if (!IS_ADSENSE_CONFIGURED || isDismissed || adPushed.current) return;
+    if (!IS_ADSENSE_CONFIGURED || !ENABLE_MANUAL_AD_SLOTS || isDismissed || adPushed.current) return;
     try {
       if (typeof window !== 'undefined') {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -30,7 +30,7 @@ export default function StickyBottomAd({ slotId = '9900112233' }: StickyBottomAd
     }
   }, [isDismissed]);
 
-  if (!IS_ADSENSE_CONFIGURED || isDismissed) {
+  if (!IS_ADSENSE_CONFIGURED || !ENABLE_MANUAL_AD_SLOTS || isDismissed) {
     return null;
   }
 

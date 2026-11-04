@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { ADSENSE_CLIENT_ID, IS_ADSENSE_CONFIGURED } from '@/lib/seoConfig';
+import { ADSENSE_CLIENT_ID, ENABLE_MANUAL_AD_SLOTS, IS_ADSENSE_CONFIGURED } from '@/lib/seoConfig';
 
 export type AdVariant = 'leaderboard' | 'rectangle' | 'in-article' | 'mobile-box';
 
@@ -21,7 +21,7 @@ export default function AdBanner({
   const adInitialized = useRef(false);
 
   useEffect(() => {
-    if (!IS_ADSENSE_CONFIGURED || adInitialized.current) return;
+    if (!IS_ADSENSE_CONFIGURED || !ENABLE_MANUAL_AD_SLOTS || adInitialized.current) return;
     try {
       if (typeof window !== 'undefined') {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -35,8 +35,8 @@ export default function AdBanner({
   }, []);
 
   // Google AdSense Policy Compliance: Never display empty "ADVERTISEMENT" placeholder boxes
-  // before a live Publisher ID (ca-pub-...) is configured.
-  if (!IS_ADSENSE_CONFIGURED) {
+  // while the domain is under AdSense review or using Google AdSense Auto Ads.
+  if (!IS_ADSENSE_CONFIGURED || !ENABLE_MANUAL_AD_SLOTS) {
     return null;
   }
 

@@ -1,13 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
 import './globals.css';
-import {
-  ADSENSE_CLIENT_ID,
-  IS_ADSENSE_CONFIGURED,
-  SEO_PAGES,
-  SITE_NAME,
-  SITE_URL,
-} from '@/lib/seoConfig';
+import { ADSENSE_CLIENT_ID, SEO_PAGES, SITE_NAME, SITE_URL } from '@/lib/seoConfig';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -35,6 +28,12 @@ export const metadata: Metadata = {
       'en-US': `${SITE_URL}/`,
       'x-default': `${SITE_URL}/`,
     },
+  },
+  verification: {
+    google: '-eLm-jBtjOPY16PRycplu77TwSyIHujm1G5b1DNUUh0',
+  },
+  other: {
+    'google-adsense-account': ADSENSE_CLIENT_ID,
   },
   robots: {
     index: true,
@@ -123,9 +122,13 @@ export default function RootLayout({
           httpEquiv="Permissions-Policy"
           content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
         />
-        {IS_ADSENSE_CONFIGURED && (
-          <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
-        )}
+        <meta name="google-site-verification" content="-eLm-jBtjOPY16PRycplu77TwSyIHujm1G5b1DNUUh0" />
+        <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+          crossOrigin="anonymous"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -150,16 +153,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalWebsiteSchema) }}
         />
-        {/* Google AdSense Asynchronous Script (Loads automatically once real ca-pub ID is configured) */}
-        {IS_ADSENSE_CONFIGURED && (
-          <Script
-            id="adsense-init"
-            async
-            strategy="afterInteractive"
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
-            crossOrigin="anonymous"
-          />
-        )}
       </head>
       <body className="min-h-screen font-sans antialiased">{children}</body>
     </html>
