@@ -8,6 +8,7 @@ import Dropzone from './Dropzone';
 import FileCard from './FileCard';
 import FormatSelector from './FormatSelector';
 import ConversionPanels from './ConversionPanels';
+import ShareGrowthBar from './ShareGrowthBar';
 import SeoContentBlock from './SeoContentBlock';
 import AdBanner from './ads/AdBanner';
 import StickyBottomAd from './ads/StickyBottomAd';
@@ -372,6 +373,9 @@ export default function PdfConverterWorkspace({ pageData }: PdfConverterWorkspac
             isProcessing={isProcessing}
             progress={progress}
           />
+
+          {/* Viral Product-Led Growth Share & Bookmark Bar */}
+          <ShareGrowthBar />
         </section>
 
         {/* SLOT B (Below Tool): Large rectangle/leaderboard banner right before SEO article */}
