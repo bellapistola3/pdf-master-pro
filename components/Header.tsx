@@ -15,15 +15,17 @@ export default function Header({ hasLoadedFile = false, onResetFile }: HeaderPro
 
   const navLinks = [
     { href: '/', label: 'All PDF Tools' },
-    { href: '/pdf-to-jpg', label: 'PDF to JPG' },
-    { href: '/pdf-to-word', label: 'PDF to Word' },
-    { href: '/pdf-to-text', label: 'PDF to Text' },
-    { href: '/about', label: 'About Us' },
+    { href: '/pdf-to-jpg/', label: 'PDF to JPG' },
+    { href: '/pdf-to-word/', label: 'PDF to Word' },
+    { href: '/pdf-to-text/', label: 'PDF to Text' },
+    { href: '/about/', label: 'About Us' },
   ];
 
   const isRouteActive = (href: string) => {
     if (href === '/') return pathname === '/';
-    return pathname === href || pathname === `${href}/`;
+    const cleanHref = href.replace(/\/$/, '');
+    const cleanPath = (pathname || '').replace(/\/$/, '');
+    return cleanPath === cleanHref;
   };
 
   return (

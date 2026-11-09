@@ -66,17 +66,17 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/pdf-to-jpg" className="transition hover:text-amber-400">
+                <Link href="/pdf-to-jpg/" className="transition hover:text-amber-400">
                   PDF to High-Resolution JPG (ZIP)
                 </Link>
               </li>
               <li>
-                <Link href="/pdf-to-word" className="transition hover:text-amber-400">
+                <Link href="/pdf-to-word/" className="transition hover:text-amber-400">
                   PDF to Editable Word (.DOC)
                 </Link>
               </li>
               <li>
-                <Link href="/pdf-to-text" className="transition hover:text-amber-400">
+                <Link href="/pdf-to-text/" className="transition hover:text-amber-400">
                   Extract Plain Text from PDF (.TXT)
                 </Link>
               </li>
@@ -121,17 +121,17 @@ export default function Footer() {
             </div>
             <ul className="space-y-3 text-sm font-medium">
               <li>
-                <Link href="/about" className="transition hover:text-amber-400">
+                <Link href="/about/" className="transition hover:text-amber-400">
                   About Us & Our Mission
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="transition hover:text-amber-400">
+                <Link href="/terms/" className="transition hover:text-amber-400">
                   Terms of Service (Rules of Use)
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="transition hover:text-amber-400">
+                <Link href="/privacy/" className="transition hover:text-amber-400">
                   Privacy Policy & GDPR / Cookies
                 </Link>
               </li>
@@ -173,13 +173,13 @@ export default function Footer() {
             >
               support@pdfdavinci.com
             </a>
-            <Link href="/about" className="transition hover:text-white">
+            <Link href="/about/" className="transition hover:text-white">
               About Us
             </Link>
-            <Link href="/terms" className="transition hover:text-white">
+            <Link href="/terms/" className="transition hover:text-white">
               Terms of Service
             </Link>
-            <Link href="/privacy" className="transition hover:text-white">
+            <Link href="/privacy/" className="transition hover:text-white">
               Privacy Policy
             </Link>
             <Link href="/sitemap.xml" className="transition hover:text-white">

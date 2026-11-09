@@ -40,7 +40,7 @@ const specializedToolCards = [
     hoverBorder: 'hover:border-indigo-400',
   },
   {
-    href: '/pdf-to-jpg',
+    href: '/pdf-to-jpg/',
     badge: '300 DPI RASTER',
     title: 'PDF to High-Res JPG (ZIP)',
     description:
@@ -52,7 +52,7 @@ const specializedToolCards = [
     hoverBorder: 'hover:border-amber-400',
   },
   {
-    href: '/pdf-to-word',
+    href: '/pdf-to-word/',
     badge: 'EDITABLE .DOC',
     title: 'PDF to Editable Word (.DOC)',
     description:
@@ -64,7 +64,7 @@ const specializedToolCards = [
     hoverBorder: 'hover:border-blue-400',
   },
   {
-    href: '/pdf-to-text',
+    href: '/pdf-to-text/',
     badge: 'UTF-8 EXTRACTOR',
     title: 'Extract PDF to Text (.TXT)',
     description:
@@ -542,7 +542,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
             </div>
             <div>
               <Link
-                href="/about"
+                href="/about/"
                 className="inline-flex items-center gap-1.5 text-xs font-extrabold text-indigo-600 hover:text-indigo-800"
               >
                 <span>Read Full About Us & Engineering Architecture</span>
@@ -588,7 +588,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
             </div>
             <div className="flex flex-wrap items-center gap-4 text-xs font-extrabold">
               <Link
-                href="/terms"
+                href="/terms/"
                 className="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800"
               >
                 <span>Read Full Terms of Service</span>
@@ -596,7 +596,7 @@ export default function SeoContentBlock({ pageData }: SeoContentBlockProps) {
               </Link>
               <span className="text-slate-300">•</span>
               <Link
-                href="/privacy"
+                href="/privacy/"
                 className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-900"
               >
                 <span>Read Privacy & GDPR Policy</span>

@@ -241,11 +241,11 @@ export default function AboutPage() {
 
             <p className="mt-6 text-xs leading-relaxed text-slate-600">
               You can also review our{' '}
-              <Link href="/privacy" className="font-bold text-indigo-600 underline">
+              <Link href="/privacy/" className="font-bold text-indigo-600 underline">
                 Privacy & GDPR Policy
               </Link>{' '}
               and{' '}
-              <Link href="/terms" className="font-bold text-indigo-600 underline">
+              <Link href="/terms/" className="font-bold text-indigo-600 underline">
                 Terms of Service
               </Link>
               , or return to the{' '}
