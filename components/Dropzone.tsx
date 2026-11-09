@@ -2,7 +2,6 @@
 
 import React, { useRef, useState } from 'react';
 import { FileUp, Lock, ShieldCheck, AlertCircle, CheckCircle2, Zap } from 'lucide-react';
-import DemoFileButton from './DemoFileButton';
 import { verifyPdfMagicBytes } from '@/lib/pdfEngine';
 
 interface DropzoneProps {
@@ -209,8 +208,8 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
             <span className="h-px flex-1 bg-slate-300/80" />
           </div>
 
-          {/* Primary CTA Buttons */}
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          {/* Primary CTA Button */}
+          <div className="flex flex-col items-center justify-center sm:flex-row">
             <button
               type="button"
               onClick={(e) => {
@@ -223,8 +222,6 @@ export default function Dropzone({ onFileSelected, isProcessing = false }: Dropz
               <FileUp className="h-5 w-5" />
               <span>Select PDF File</span>
             </button>
-
-            <DemoFileButton onSelectDemoFile={onFileSelected} disabled={isProcessing} />
           </div>
 
           {/* Security & Trust Pills */}
