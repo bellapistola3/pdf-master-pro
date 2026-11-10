@@ -16,9 +16,9 @@ import {
 import { SITE_NAME, SITE_URL } from '@/lib/seoConfig';
 
 export const metadata: Metadata = {
-  title: 'About Us — 100% Client-Side RAM PDF Architecture & Contact',
+  title: 'About Us — 100% Local RAM PDF Studio',
   description:
-    'Learn about PDFDaVinci (pdfdavinci.com), our mission to provide 100% free, client-side in-browser PDF conversion tools with zero cloud uploads. Contact us at office@pdfdavinci.com or support@pdfdavinci.com.',
+    'Learn how PDFDaVinci converts PDF to JPG, Word (.doc), and Text (.txt) 100% locally in browser RAM with zero cloud uploads. Contact office@pdfdavinci.com.',
   alternates: {
     canonical: `${SITE_URL}/about/`,
   },

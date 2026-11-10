@@ -7,9 +7,9 @@ import { ShieldCheck, ArrowLeft, Mail } from 'lucide-react';
 import { SITE_NAME, SITE_URL } from '@/lib/seoConfig';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy, GDPR & Google AdSense Cookie Disclosure',
+  title: 'Privacy Policy, GDPR & AdSense Disclosure',
   description:
-    'Read the Privacy Policy for PDFDaVinci (pdfdavinci.com). 100% local in-browser RAM PDF processing with zero file uploads, plus full GDPR, CCPA, and Google AdSense cookie transparency.',
+    'Read the PDFDaVinci Privacy Policy. 100% local in-browser RAM PDF conversion with zero server uploads, plus full GDPR, CCPA, and Google AdSense transparency.',
   alternates: {
     canonical: `${SITE_URL}/privacy/`,
   },

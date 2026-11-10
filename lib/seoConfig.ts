@@ -87,9 +87,9 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
     breadcrumbLabel: 'All-in-One PDF Converter',
     canonicalUrl: `${SITE_URL}/`,
     defaultFormat: 'jpg',
-    title: 'PDFDaVinci — Free Online PDF Converter (100% Client-Side RAM • No Sign-Up)',
+    title: 'PDFDaVinci — Free Online PDF Converter (100% Local RAM)',
     metaDescription:
-      'Convert PDF to high-resolution JPG images (ZIP), editable Microsoft Word (.doc), and plain Text (.txt) online for free. 100% local in-browser RAM processing — zero server uploads, no credit card, no watermarks.',
+      'Convert PDF to high-res JPG (ZIP), editable Word (.doc), and plain Text (.txt) online for free. 100% local browser RAM mode — zero uploads, no sign-up.',
     keywords: [
       'pdfdavinci',
       'convert pdf online free',
@@ -195,9 +195,9 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
     breadcrumbLabel: 'PDF to JPG Converter',
     canonicalUrl: `${SITE_URL}/pdf-to-jpg/`,
     defaultFormat: 'jpg',
-    title: 'Convert PDF to JPG Online Free — High Resolution & ZIP Download | PDFDaVinci',
+    title: 'Convert PDF to JPG Online Free — 300 DPI & ZIP',
     metaDescription:
-      'Convert PDF pages to high-resolution JPG images (300 DPI equivalent) online for free. Download all pages as a single ZIP archive or save individual JPGs locally in your browser.',
+      'Convert PDF pages to high-resolution 300 DPI JPG images online for free. Download all pages as a ZIP archive or save single JPGs in local browser RAM.',
     keywords: [
       'convert pdf to jpg',
       'pdf to image high resolution',
@@ -294,9 +294,9 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
     breadcrumbLabel: 'PDF to Word Converter',
     canonicalUrl: `${SITE_URL}/pdf-to-word/`,
     defaultFormat: 'word',
-    title: 'Convert PDF to Word Online Free (.DOC / .DOCX) — No Email | PDFDaVinci',
+    title: 'Convert PDF to Word Online Free (.DOC) — No Email',
     metaDescription:
-      'Convert PDF to editable Microsoft Word (.doc) documents online for free without email or sign-up. 100% client-side in-browser processing with PDFDaVinci for complete privacy.',
+      'Convert PDF to editable Microsoft Word (.doc) documents online for free with no email or sign-up. 100% local in-browser RAM processing for full privacy.',
     keywords: [
       'convert pdf to word docx free',
       'pdf to doc without email',
@@ -391,9 +391,9 @@ export const SEO_PAGES: Record<'home' | 'jpg' | 'word' | 'text', PageSeoData> = 
     breadcrumbLabel: 'PDF to Text Extractor',
     canonicalUrl: `${SITE_URL}/pdf-to-text/`,
     defaultFormat: 'text',
-    title: 'Extract Text from PDF Online Free (PDF to TXT Converter) | PDFDaVinci',
+    title: 'Extract Text from PDF Online Free (PDF to TXT)',
     metaDescription:
-      'Extract clean plain text from any PDF file online in seconds. Edit in-browser, copy to clipboard with 1 click, or download as a UTF-8 .txt file — 100% locally with PDFDaVinci.',
+      'Extract clean UTF-8 plain text from any PDF file online in seconds. Edit live, copy with 1 click, or download as a .txt file in local browser RAM.',
     keywords: [
       'extract text from pdf online',
       'pdf to txt converter',

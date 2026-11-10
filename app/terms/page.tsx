@@ -9,7 +9,7 @@ import { SITE_NAME, SITE_URL } from '@/lib/seoConfig';
 export const metadata: Metadata = {
   title: 'Terms of Service & Acceptable Use Policy',
   description:
-    'Read the official Terms of Service for PDFDaVinci (pdfdavinci.com). 100% free client-side PDF conversion for personal and commercial use with full document ownership.',
+    'Read the official Terms of Service for PDFDaVinci (pdfdavinci.com). 100% free client-side RAM PDF conversion for personal and commercial use.',
   alternates: {
     canonical: `${SITE_URL}/terms/`,
   },
